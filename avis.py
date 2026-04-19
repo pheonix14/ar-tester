@@ -2,10 +2,11 @@ import logging
 import math
 from supabase import create_client, Client
 
-# --- Logging Configuration ---
+# --- LOGGING CONFIGURATION ---
+# Logs to both 'avis_system.log' and your terminal
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - [AVIS-CORE] - %(levelname)s - %(message)s',
+    format='%(asctime)s - [AVIS-ENGINE] - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler("avis_system.log"),
         logging.StreamHandler()
@@ -13,9 +14,12 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-def calculate_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
-    """Calculates distance in meters between two GPS points using Haversine."""
-    R = 6371000  # Radius of Earth in meters
+def calculate_haversine(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """
+    Calculates the great-circle distance between two points 
+    on the Earth's surface in meters.
+    """
+    R = 6371000  # Earth radius in meters
     phi_1 = math.radians(lat1)
     phi_2 = math.radians(lat2)
     delta_phi = math.radians(lat2 - lat1)
@@ -30,28 +34,31 @@ def calculate_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> fl
 
 class AvisDataExtractor:
     def __init__(self, url: str, key: str):
+        """Initializes connection to Supabase World Database."""
         try:
             self.supabase: Client = create_client(url, key)
-            logger.info("Supabase Engine Initialized.")
+            logger.info("✅ Supabase Engine Connection Established.")
         except Exception as e:
-            logger.error(f"Initialization Failed: {e}")
+            logger.error(f"❌ Failed to connect to Supabase: {e}")
             raise
 
     def get_local_world_data(self, user_lat: float, user_lon: float, radius_m: float = 2000):
         """
-        Fetches locations, merges stories, and filters out objects beyond the radius.
+        1. Fetches all locations and lore stories.
+        2. Merges them based on location IDs.
+        3. Filters based on the user's current GPS position.
         """
-        logger.info(f"Extracting local data for coordinates: {user_lat}, {user_lon} (Radius: {radius_m}m)")
+        logger.info(f"🛰️ Scanning world objects within {radius_m}m of ({user_lat}, {user_lon})")
         
         try:
-            # Fetch base data (If DB gets massive, this should migrate to a Supabase PostGIS RPC call)
+            # Fetch raw data from your Supabase tables
             loc_res = self.supabase.table("locations").select("*").execute()
             story_res = self.supabase.table("stories").select("*").execute()
 
             locations = loc_res.data
             stories = story_res.data
 
-            # Story mapping for O(1) lookup
+            # Create an efficient lookup for stories indexed by loc_id
             story_lookup = {}
             for s in stories:
                 l_id = s.get("loc_id")
@@ -59,40 +66,50 @@ class AvisDataExtractor:
                     story_lookup[l_id] = []
                 story_lookup[l_id].append(s)
 
-            final_map_data = []
-            for loc in locations:
-                target_lat = loc.get("lat")
-                target_lon = loc.get("lon")
+            processed_world = []
 
-                # Skip if coordinates are missing
-                if target_lat is None or target_lon is None:
+            for loc in locations:
+                # Support both 'lat/lon' and 'latitude/longitude' naming conventions
+                t_lat = loc.get("lat") or loc.get("latitude")
+                t_lon = loc.get("lon") or loc.get("longitude")
+
+                if t_lat is None or t_lon is None:
                     continue
 
-                # Filter by distance
-                distance = calculate_distance(user_lat, user_lon, target_lat, target_lon)
-                if distance <= radius_m:
-                    loc_id = loc.get("id")
-                    loc["lore"] = story_lookup.get(loc_id, [])
-                    
-                    processed_node = {
-                        "id": loc_id,
-                        "name": loc.get("name"),
-                        "lat": target_lat,
-                        "lon": target_lon,
-                        "category": loc.get("category"),
-                        "reward": loc.get("reward_per_visit"),
-                        "icon": loc.get("icon", "treasure"),
-                        "stories": loc["lore"],
-                        "distance_m": round(distance, 2),
-                        "is_legend": any(s.get("is_resident_legend") for s in loc["lore"])
-                    }
-                    
-                    # Ready for location encryption API processing here if needed
-                    final_map_data.append(processed_node)
+                # Distance calculation
+                dist_m = calculate_haversine(user_lat, user_lon, t_lat, t_lon)
 
-            logger.info(f"Extraction Complete. Yielding {len(final_map_data)} local nodes.")
-            return final_map_data
+                # Only include objects within the active "loading" radius
+                if dist_m <= radius_m:
+                    loc_id = loc.get("id")
+                    
+                    # Merge story lore into the location object
+                    loc_stories = story_lookup.get(loc_id, [])
+                    
+                    node = {
+                        "id": loc_id,
+                        "name": loc.get("name", "Unknown Landmark"),
+                        "lat": t_lat,
+                        "lon": t_lon,
+                        "category": loc.get("category", "point_of_interest"),
+                        "reward": loc.get("reward_per_visit", 100),
+                        "icon": loc.get("icon", "treasure"),
+                        "stories": loc_stories,
+                        "distance_meters": round(dist_m, 2),
+                        "is_legend": any(s.get("is_resident_legend") for s in loc_stories)
+                    }
+                    processed_world.append(node)
+
+            logger.info(f"🎯 Extraction Success: {len(processed_world)} objects synced to AR view.")
+            return processed_world
 
         except Exception as e:
-            logger.error(f"Critical Extraction Error: {e}")
+            logger.error(f"🔥 Critical Data Extraction Failure: {e}")
             return []
+
+# --- INTEGRATION HOOK ---
+# Used by main.py to quickly boot the system
+def load_avis_system():
+    URL = "https://ihdllispdbwvwcwxlvhr.supabase.co"
+    KEY = "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P"
+    return AvisDataExtractor(URL, KEY)
