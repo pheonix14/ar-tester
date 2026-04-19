@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>AVIS AR | World Engine v2</title>
+
+<style>
+body,html{
+margin:0;padding:0;overflow:hidden;background:black;
+font-family:Arial;color:white;
+}
+
+#cam{
+position:fixed;top:0;left:0;width:100%;height:100%;
+object-fit:cover;z-index:1;
+}
+
+/* ---------------- HUD ---------------- */
+#hud{
+position:fixed;top:10px;left:10px;z-index:10;
+background:rgba(0,0,0,0.6);
+padding:10px;border-radius:10px;
+width:220px;
+backdrop-filter:blur(10px);
+}
+
+button{
+width:100%;
+margin-top:5px;
+padding:8px;
+border:none;
+border-radius:6px;
+background:#00ffff20;
+color:cyan;
+border:1px solid cyan;
+cursor:pointer;
+}
+
+button:hover{background:cyan;color:black;}
+
+#status{font-size:12px;margin-top:5px;color:#aaa;}
+
+/* ---------------- MARKERS ---------------- */
+.marker{
+position:absolute;
+transform:translate(-50%,-50%);
+padding:6px 10px;
+background:rgba(0,255,255,0.15);
+border:1px solid cyan;
+border-radius:8px;
+font-size:12px;
+backdrop-filter:blur(4px);
+}
+
+/* ---------------- RADAR ---------------- */
+#radar{
+position:fixed;bottom:20px;right:20px;
+width:140px;height:140px;
+border-radius:50%;
+border:2px solid cyan;
+background:rgba(0,0,0,0.5);
+overflow:hidden;
+}
+
+.blip{
+position:absolute;
+width:6px;height:6px;
+background:red;
+border-radius:50%;
+transform:translate(-50%,-50%);
+}
+
+#user{
+position:absolute;
+top:50%;left:50%;
+width:8px;height:8px;
+background:cyan;
+border-radius:50%;
+transform:translate(-50%,-50%);
+box-shadow:0 0 10px cyan;
+}
+
+/* ---------------- HELP PANEL ---------------- */
+#help{
+position:fixed;
+bottom:20px;left:10px;
+width:220px;
+background:rgba(0,0,0,0.6);
+padding:10px;
+border-radius:10px;
+font-size:11px;
+display:none;
+backdrop-filter:blur(10px);
+}
+</style>
+</head>
+
+<body>
+
+<video id="cam" autoplay playsinline></video>
+
+<!-- ---------------- HUD ---------------- -->
+<div id="hud">
+<div>AVIS AR ENGINE</div>
+<div id="status">Click INIT</div>
+
+<button onclick="initAll()">📍 INIT SYSTEM</button>
+<button onclick="loadWorld()">🌍 LOAD WORLD</button>
+<button onclick="toggleRadar()">🧭 RADAR ON/OFF</button>
+<button onclick="centerUser()">📡 CENTER USER</button>
+<button onclick="toggleHelp()">❓ HELP</button>
+</div>
+
+<!-- ---------------- HELP ---------------- -->
+<div id="help">
+<b>COMMANDS</b><br>
+INIT → camera + GPS<br>
+LOAD → fetch Supabase<br>
+RADAR → toggle blips<br>
+CENTER → reset view<br>
+<br>
+AR markers auto scale with distance
+</div>
+
+<!-- ---------------- RADAR ---------------- -->
+<div id="radar">
+<div id="user"></div>
+</div>
+
+<div id="markers"></div>
+
+<script>
+const CONFIG = {
+SUPABASE_URL: "https://ihdllispdbwvwcwxlvhr.supabase.co",
+SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P"
+};
+
+let state = {
+lat:null,
+lon:null,
+heading:0,
+objects:[],
+radar:true
+};
+
+// ---------------- INIT SYSTEM ----------------
+async function initAll(){
+
+document.getElementById("status").innerText="Initializing...";
+
+// CAMERA
+const stream = await navigator.mediaDevices.getUserMedia({
+video:{facingMode:"environment"}
+});
+document.getElementById("cam").srcObject = stream;
+
+// GPS
+navigator.geolocation.watchPosition(pos=>{
+state.lat = pos.coords.latitude;
+state.lon = pos.coords.longitude;
+document.getElementById("status").innerText="GPS LOCKED";
+});
+
+// COMPASS
+window.addEventListener("deviceorientation", e=>{
+state.heading = e.alpha || 0;
+});
+
+document.getElementById("status").innerText="SYSTEM READY";
+}
+
+// ---------------- SUPABASE ----------------
+async function loadWorld(){
+if(!state.lat) return;
+
+document.getElementById("status").innerText="Loading World...";
+
+const res = await fetch(
+`${CONFIG.SUPABASE_URL}/rest/v1/world_objects?select=*`,
+{
+headers:{
+apikey:CONFIG.SUPABASE_KEY,
+Authorization:"Bearer "+CONFIG.SUPABASE_KEY
+}
+}
+);
+
+state.objects = await res.json();
+render();
+document.getElementById("status").innerText="WORLD LOADED";
+}
+
+// ---------------- DISTANCE ----------------
+function dist(a,b,c,d){
+const R=6371;
+const dLat=(c-a)*Math.PI/180;
+const dLon=(d-b)*Math.PI/180;
+
+const x=
+Math.sin(dLat/2)**2+
+Math.cos(a*Math.PI/180)*
+Math.cos(c*Math.PI/180)*
+Math.sin(dLon/2)**2;
+
+return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
+}
+
+// ---------------- BEARING ----------------
+function bearing(a,b,c,d){
+let y=Math.sin(d-b)*Math.cos(c);
+let x=Math.cos(a)*Math.sin(c)-
+Math.sin(a)*Math.cos(c)*Math.cos(d-b);
+return (Math.atan2(y,x)*180/Math.PI+360)%360;
+}
+
+// ---------------- RENDER ----------------
+function render(){
+
+const container=document.getElementById("markers");
+const radar=document.getElementById("radar");
+
+container.innerHTML="";
+radar.querySelectorAll(".blip").forEach(b=>b.remove());
+
+state.objects.forEach(o=>{
+
+if(!state.lat) return;
+
+let d = dist(state.lat,state.lon,o.lat,o.lon)*1000;
+let br = bearing(state.lat,state.lon,o.lat,o.lon);
+
+let rel = br - state.heading;
+
+// AR POSITION
+let x = window.innerWidth/2 + rel*4;
+let y = window.innerHeight/2;
+
+let el=document.createElement("div");
+el.className="marker";
+el.style.left=x+"px";
+el.style.top=y+"px";
+el.innerText=o.name + " ("+Math.round(d)+"m)";
+
+container.appendChild(el);
+
+// RADAR
+if(state.radar){
+let r=document.createElement("div");
+r.className="blip";
+
+let ang=rel*Math.PI/180;
+let rad=Math.min(60,d/30);
+
+r.style.left=70+Math.cos(ang)*rad+"px";
+r.style.top=70+Math.sin(ang)*rad+"px";
+
+radar.appendChild(r);
+}
+
+});
+}
+
+// ---------------- BUTTON ACTIONS ----------------
+function toggleRadar(){
+state.radar=!state.radar;
+render();
+}
+
+function centerUser(){
+document.getElementById("status").innerText="CENTERED";
+}
+
+function toggleHelp(){
+let h=document.getElementById("help");
+h.style.display = h.style.display==="none"?"block":"none";
+}
+
+// refresh loop
+setInterval(loadWorld,5000);
+
+</script>
+
+</body>
+</html>
