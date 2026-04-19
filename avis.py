@@ -1,110 +1,98 @@
-from fastapi import FastAPI, Query
-from fastapi.responses import HTMLResponse
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from supabase import create_client, Client
+import logging
 import math
-import os
+from supabase import create_client, Client
 
-# -----------------------------
-# 🌐 SUPABASE CONFIG
-# -----------------------------
-SUPABASE_URL = "https://ihdllispdbwvwcwxlvhr.supabase.co"
-SUPABASE_KEY = "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P"
-
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-
-# -----------------------------
-# 🚀 APP INIT
-# -----------------------------
-app = FastAPI(title="AVIS Tactical AR OS")
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+# --- Logging Configuration ---
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - [AVIS-CORE] - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("avis_system.log"),
+        logging.StreamHandler()
+    ]
 )
+logger = logging.getLogger(__name__)
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+def calculate_distance(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Calculates distance in meters between two GPS points using Haversine."""
+    R = 6371000  # Radius of Earth in meters
+    phi_1 = math.radians(lat1)
+    phi_2 = math.radians(lat2)
+    delta_phi = math.radians(lat2 - lat1)
+    delta_lambda = math.radians(lon2 - lon1)
 
-# -----------------------------
-# 📁 SERVE FRONTEND (avis.html)
-# -----------------------------
-@app.get("/", response_class=HTMLResponse)
-def serve_ui():
-    with open(os.path.join(BASE_DIR, "avis.html"), "r", encoding="utf-8") as f:
-        return f.read()
+    a = math.sin(delta_phi / 2.0) ** 2 + \
+        math.cos(phi_1) * math.cos(phi_2) * \
+        math.sin(delta_lambda / 2.0) ** 2
+    
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    return R * c
 
+class AvisDataExtractor:
+    def __init__(self, url: str, key: str):
+        try:
+            self.supabase: Client = create_client(url, key)
+            logger.info("Supabase Engine Initialized.")
+        except Exception as e:
+            logger.error(f"Initialization Failed: {e}")
+            raise
 
-# -----------------------------
-# 🧠 DISTANCE ENGINE
-# -----------------------------
-def haversine(lat1, lon1, lat2, lon2):
-    R = 6371  # km
-    phi1 = math.radians(lat1)
-    phi2 = math.radians(lat2)
-    dphi = math.radians(lat2 - lat1)
-    dl = math.radians(lon2 - lon1)
+    def get_local_world_data(self, user_lat: float, user_lon: float, radius_m: float = 2000):
+        """
+        Fetches locations, merges stories, and filters out objects beyond the radius.
+        """
+        logger.info(f"Extracting local data for coordinates: {user_lat}, {user_lon} (Radius: {radius_m}m)")
+        
+        try:
+            # Fetch base data (If DB gets massive, this should migrate to a Supabase PostGIS RPC call)
+            loc_res = self.supabase.table("locations").select("*").execute()
+            story_res = self.supabase.table("stories").select("*").execute()
 
-    a = math.sin(dphi/2)**2 + math.cos(phi1)*math.cos(phi2)*math.sin(dl/2)**2
-    return R * (2 * math.atan2(math.sqrt(a), math.sqrt(1 - a)))
+            locations = loc_res.data
+            stories = story_res.data
 
+            # Story mapping for O(1) lookup
+            story_lookup = {}
+            for s in stories:
+                l_id = s.get("loc_id")
+                if l_id not in story_lookup:
+                    story_lookup[l_id] = []
+                story_lookup[l_id].append(s)
 
-# -----------------------------
-# 📡 AR FEED (USED BY FRONTEND)
-# -----------------------------
-@app.get("/api/avis/ar/feed")
-def ar_feed(lat: float = Query(...), lon: float = Query(...), limit: int = 25):
-    try:
-        res = supabase.table("locations").select("*").execute()
-        data = res.data or []
+            final_map_data = []
+            for loc in locations:
+                target_lat = loc.get("lat")
+                target_lon = loc.get("lon")
 
-        results = []
+                # Skip if coordinates are missing
+                if target_lat is None or target_lon is None:
+                    continue
 
-        for item in data:
-            dist = haversine(lat, lon, item["lat"], item["lon"])
+                # Filter by distance
+                distance = calculate_distance(user_lat, user_lon, target_lat, target_lon)
+                if distance <= radius_m:
+                    loc_id = loc.get("id")
+                    loc["lore"] = story_lookup.get(loc_id, [])
+                    
+                    processed_node = {
+                        "id": loc_id,
+                        "name": loc.get("name"),
+                        "lat": target_lat,
+                        "lon": target_lon,
+                        "category": loc.get("category"),
+                        "reward": loc.get("reward_per_visit"),
+                        "icon": loc.get("icon", "treasure"),
+                        "stories": loc["lore"],
+                        "distance_m": round(distance, 2),
+                        "is_legend": any(s.get("is_resident_legend") for s in loc["lore"])
+                    }
+                    
+                    # Ready for location encryption API processing here if needed
+                    final_map_data.append(processed_node)
 
-            # 5KM VISIBILITY RADIUS
-            if dist <= 5:
-                results.append({
-                    "id": item["id"],
-                    "name": item["name"],
-                    "type": item.get("type", "poi"),
-                    "tag": item.get("tag", "DEFAULT"),
-                    "lat": item["lat"],
-                    "lon": item["lon"],
-                    "distance": dist,
-                    "rating": item.get("rating", 0),
-                    "reviews": item.get("reviews", 0)
-                })
+            logger.info(f"Extraction Complete. Yielding {len(final_map_data)} local nodes.")
+            return final_map_data
 
-        results = sorted(results, key=lambda x: x["distance"])[:limit]
-
-        return {
-            "status": "success",
-            "count": len(results),
-            "data": results
-        }
-
-    except Exception as e:
-        return {"status": "error", "message": str(e)}
-
-
-# -----------------------------
-# 🧭 GLOBAL MAP DUMP (TEST MODE)
-# -----------------------------
-@app.get("/api/avis/ar/global")
-def global_map():
-    try:
-        res = supabase.table("locations").select("*").execute()
-
-        return {
-            "status": "success",
-            "total": len(res.data),
-            "data": res.data
-        }
-
-    except Exception as e:
-        return {"status": "error", "message": str(e)}
+        except Exception as e:
+            logger.error(f"Critical Extraction Error: {e}")
+            return []
