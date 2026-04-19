@@ -3,96 +3,148 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>AVIS AR | World Engine v2</title>
+<title>AVIS AR | Treasure & Lore Engine</title>
 
 <style>
-body,html{
-margin:0;padding:0;overflow:hidden;background:black;
-font-family:Arial;color:white;
-}
+    /* ---------------- BASE ---------------- */
+    body, html {
+        margin: 0; padding: 0; overflow: hidden; background: #111;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: white; user-select: none;
+    }
 
-#cam{
-position:fixed;top:0;left:0;width:100%;height:100%;
-object-fit:cover;z-index:1;
-}
+    #cam {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        object-fit: cover; z-index: 1;
+    }
 
-/* ---------------- HUD ---------------- */
-#hud{
-position:fixed;top:10px;left:10px;z-index:10;
-background:rgba(0,0,0,0.6);
-padding:10px;border-radius:10px;
-width:220px;
-backdrop-filter:blur(10px);
-}
+    /* ---------------- TOP HUD (PLAYER STATS) ---------------- */
+    #top-hud {
+        position: fixed; top: 20px; left: 20px; right: 20px; z-index: 10;
+        display: flex; justify-content: space-between; align-items: flex-start;
+    }
 
-button{
-width:100%;
-margin-top:5px;
-padding:8px;
-border:none;
-border-radius:6px;
-background:#00ffff20;
-color:cyan;
-border:1px solid cyan;
-cursor:pointer;
-}
+    .stat-pill {
+        background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(8px);
+        padding: 8px 16px; border-radius: 30px; border: 2px solid #00ffcc;
+        display: flex; align-items: center; gap: 8px; font-weight: bold;
+        box-shadow: 0 4px 15px rgba(0, 255, 204, 0.3);
+    }
 
-button:hover{background:cyan;color:black;}
+    .gold-text { color: #ffd700; font-size: 18px; }
 
-#status{font-size:12px;margin-top:5px;color:#aaa;}
+    /* ---------------- AR LAYER ---------------- */
+    #ar-world {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 5; pointer-events: none;
+        perspective: 800px; /* 3D depth for AR */
+    }
 
-/* ---------------- MARKERS ---------------- */
-.marker{
-position:absolute;
-transform:translate(-50%,-50%);
-padding:6px 10px;
-background:rgba(0,255,255,0.15);
-border:1px solid cyan;
-border-radius:8px;
-font-size:12px;
-backdrop-filter:blur(4px);
-}
+    .ar-node {
+        position: absolute; top: 50%; left: 50%;
+        transform-style: preserve-3d;
+        pointer-events: auto; cursor: pointer;
+        display: flex; flex-direction: column; align-items: center;
+        transition: transform 0.1s linear;
+    }
 
-/* ---------------- RADAR ---------------- */
-#radar{
-position:fixed;bottom:20px;right:20px;
-width:140px;height:140px;
-border-radius:50%;
-border:2px solid cyan;
-background:rgba(0,0,0,0.5);
-overflow:hidden;
-}
+    .ar-icon {
+        width: 60px; height: 60px;
+        background: radial-gradient(circle, #00ffcc 0%, #005544 80%);
+        border: 3px solid white; border-radius: 50% 50% 0 50%;
+        transform: rotate(45deg);
+        box-shadow: 0 0 20px #00ffcc;
+        animation: float 2s ease-in-out infinite alternate;
+    }
 
-.blip{
-position:absolute;
-width:6px;height:6px;
-background:red;
-border-radius:50%;
-transform:translate(-50%,-50%);
-}
+    .ar-label {
+        margin-top: 15px; background: rgba(0,0,0,0.8);
+        padding: 4px 10px; border-radius: 8px; font-size: 12px;
+        border: 1px solid #00ffcc; text-align: center;
+        white-space: nowrap; text-shadow: 1px 1px 2px black;
+    }
 
-#user{
-position:absolute;
-top:50%;left:50%;
-width:8px;height:8px;
-background:cyan;
-border-radius:50%;
-transform:translate(-50%,-50%);
-box-shadow:0 0 10px cyan;
-}
+    @keyframes float {
+        0% { transform: rotate(45deg) translate(0px, 0px); }
+        100% { transform: rotate(45deg) translate(-10px, -10px); }
+    }
 
-/* ---------------- HELP PANEL ---------------- */
-#help{
-position:fixed;
-bottom:20px;left:10px;
-width:220px;
-background:rgba(0,0,0,0.6);
-padding:10px;
-border-radius:10px;
-font-size:11px;
-display:none;
-backdrop-filter:blur(10px);
-}
+    /* ---------------- DISTORTED MINIMAP ---------------- */
+    #minimap-container {
+        position: fixed; bottom: 30px; right: 20px; z-index: 10;
+        width: 140px; height: 140px;
+        perspective: 600px;
+    }
+
+    #minimap {
+        width: 100%; height: 100%;
+        border-radius: 30%; /* "No shape" organic feel */
+        background: repeating-linear-gradient(0deg, transparent, transparent 19px, rgba(0,255,204,0.2) 20px),
+                    repeating-linear-gradient(90deg, transparent, transparent 19px, rgba(0,255,204,0.2) 20px),
+                    rgba(0, 20, 15, 0.8);
+        border: 3px solid #00ffcc;
+        transform: rotateX(60deg) rotateZ(0deg); /* 3D distortion */
+        box-shadow: 0 10px 20px rgba(0,0,0,0.8), inset 0 0 20px rgba(0,255,204,0.5);
+        position: relative; overflow: hidden;
+        transition: transform 0.2s ease-out;
+    }
+
+    .map-blip {
+        position: absolute; width: 8px; height: 8px;
+        background: #ffd700; border-radius: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 8px #ffd700;
+    }
+
+    #map-player {
+        position: absolute; top: 50%; left: 50%;
+        width: 12px; height: 12px; background: #00ffcc;
+        border-radius: 50%; transform: translate(-50%, -50%);
+        border: 2px solid white; z-index: 2;
+    }
+
+    /* ---------------- BOTTOM ACTIONS ---------------- */
+    #action-bar {
+        position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+        z-index: 10; display: flex; gap: 15px;
+    }
+
+    .main-btn {
+        width: 70px; height: 70px; border-radius: 50%;
+        background: radial-gradient(circle, #fff 0%, #ddd 100%);
+        border: 5px solid #00ffcc;
+        box-shadow: 0 0 25px rgba(0,255,204,0.6);
+        cursor: pointer; display: flex; justify-content: center; align-items: center;
+        font-size: 24px; color: #111; font-weight: bold;
+    }
+
+    .main-btn:active { transform: scale(0.9); }
+
+    .sub-btn {
+        width: 50px; height: 50px; border-radius: 50%; margin-top: 10px;
+        background: rgba(0,0,0,0.7); border: 2px solid #00ffcc; color: white;
+        display: flex; justify-content: center; align-items: center; font-size: 20px;
+        cursor: pointer; backdrop-filter: blur(5px);
+    }
+
+    /* ---------------- MODALS (LORE & REWARDS) ---------------- */
+    #story-modal {
+        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9);
+        width: 85%; max-width: 350px; background: rgba(10, 25, 20, 0.95);
+        border: 2px solid #00ffcc; border-radius: 20px; padding: 20px;
+        z-index: 50; display: none; opacity: 0; transition: 0.3s;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9); text-align: center;
+    }
+
+    #story-modal.active { display: block; opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    #story-title { font-size: 22px; color: #00ffcc; margin-bottom: 10px; }
+    #story-content { font-size: 15px; line-height: 1.5; color: #ddd; margin-bottom: 20px; }
+    .reward-box { background: rgba(255, 215, 0, 0.2); padding: 10px; border-radius: 10px; color: #ffd700; font-weight: bold; margin-bottom: 20px;}
+    
+    .close-btn {
+        background: #00ffcc; color: #111; border: none; padding: 10px 30px;
+        border-radius: 20px; font-weight: bold; cursor: pointer; width: 100%;
+    }
 </style>
 </head>
 
@@ -100,184 +152,264 @@ backdrop-filter:blur(10px);
 
 <video id="cam" autoplay playsinline></video>
 
-<!-- ---------------- HUD ---------------- -->
-<div id="hud">
-<div>AVIS AR ENGINE</div>
-<div id="status">Click INIT</div>
-
-<button onclick="initAll()">📍 INIT SYSTEM</button>
-<button onclick="loadWorld()">🌍 LOAD WORLD</button>
-<button onclick="toggleRadar()">🧭 RADAR ON/OFF</button>
-<button onclick="centerUser()">📡 CENTER USER</button>
-<button onclick="toggleHelp()">❓ HELP</button>
+<div id="top-hud">
+    <div class="stat-pill">
+        <span>LVL 1</span>
+        <div style="width: 1px; height: 15px; background: #00ffcc;"></div>
+        <span id="status-text">Awaiting Init...</span>
+    </div>
+    <div class="stat-pill">
+        <span>💰</span>
+        <span class="gold-text" id="gold-display">0</span>
+    </div>
 </div>
 
-<!-- ---------------- HELP ---------------- -->
-<div id="help">
-<b>COMMANDS</b><br>
-INIT → camera + GPS<br>
-LOAD → fetch Supabase<br>
-RADAR → toggle blips<br>
-CENTER → reset view<br>
-<br>
-AR markers auto scale with distance
+<div id="ar-world"></div>
+
+<div id="minimap-container">
+    <div id="minimap">
+        <div id="map-player"></div>
+        <div id="map-markers"></div>
+    </div>
 </div>
 
-<!-- ---------------- RADAR ---------------- -->
-<div id="radar">
-<div id="user"></div>
+<div id="action-bar">
+    <div class="sub-btn" onclick="initSystem()">📡</div>
+    <div class="main-btn" onclick="loadWorld()">🌐</div>
+    <div class="sub-btn" onclick="centerView()">🎯</div>
 </div>
 
-<div id="markers"></div>
+<div id="story-modal">
+    <div id="story-title">Location Discovered</div>
+    <div id="story-content">Loading lore...</div>
+    <div class="reward-box">Found: <span id="reward-amount">0</span> Gold!</div>
+    <button class="close-btn" onclick="closeStory()">CLAIM & CLOSE</button>
+</div>
 
 <script>
+// --- CONFIGURATION ---
 const CONFIG = {
-SUPABASE_URL: "https://ihdllispdbwvwcwxlvhr.supabase.co",
-SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P"
+    SUPABASE_URL: "https://ihdllispdbwvwcwxlvhr.supabase.co",
+    SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P"
 };
 
 let state = {
-lat:null,
-lon:null,
-heading:0,
-objects:[],
-radar:true
+    lat: null, lon: null, heading: 0,
+    objects: [], gold: 0, systemActive: false
 };
 
-// ---------------- INIT SYSTEM ----------------
-async function initAll(){
+// --- CORE SYSTEM INITIALIZATION ---
+async function initSystem() {
+    updateStatus("Locking GPS...");
+    
+    // 1. Start Camera
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
+        document.getElementById("cam").srcObject = stream;
+    } catch(e) { console.warn("Camera access denied or unavailable."); }
 
-document.getElementById("status").innerText="Initializing...";
+    // 2. Start GPS Tracking
+    if(navigator.geolocation) {
+        navigator.geolocation.watchPosition(pos => {
+            state.lat = pos.coords.latitude;
+            state.lon = pos.coords.longitude;
+            if(!state.systemActive) {
+                state.systemActive = true;
+                updateStatus("System Online");
+                loadWorld(); // Auto-load once GPS is locked
+            }
+            render();
+        }, err => updateStatus("GPS Error"), { enableHighAccuracy: true });
+    }
 
-// CAMERA
-const stream = await navigator.mediaDevices.getUserMedia({
-video:{facingMode:"environment"}
-});
-document.getElementById("cam").srcObject = stream;
-
-// GPS
-navigator.geolocation.watchPosition(pos=>{
-state.lat = pos.coords.latitude;
-state.lon = pos.coords.longitude;
-document.getElementById("status").innerText="GPS LOCKED";
-});
-
-// COMPASS
-window.addEventListener("deviceorientation", e=>{
-state.heading = e.alpha || 0;
-});
-
-document.getElementById("status").innerText="SYSTEM READY";
+    // 3. Compass Tracking (Device Orientation)
+    window.addEventListener("deviceorientation", e => {
+        // Handle iOS vs Android differences
+        let alpha = e.webkitCompassHeading || Math.abs(e.alpha - 360);
+        if(alpha) {
+            state.heading = alpha;
+            render();
+        }
+    });
 }
 
-// ---------------- SUPABASE ----------------
-async function loadWorld(){
-if(!state.lat) return;
+// --- DATA FETCHING (VIA FASTAPI BACKEND) ---
+async function loadWorld() {
+    if(!state.lat) {
+        updateStatus("Need GPS to load map.");
+        return;
+    }
+    updateStatus("Scanning Local Area...");
 
-document.getElementById("status").innerText="Loading World...";
-
-const res = await fetch(
-`${CONFIG.SUPABASE_URL}/rest/v1/world_objects?select=*`,
-{
-headers:{
-apikey:CONFIG.SUPABASE_KEY,
-Authorization:"Bearer "+CONFIG.SUPABASE_KEY
-}
-}
-);
-
-state.objects = await res.json();
-render();
-document.getElementById("status").innerText="WORLD LOADED";
-}
-
-// ---------------- DISTANCE ----------------
-function dist(a,b,c,d){
-const R=6371;
-const dLat=(c-a)*Math.PI/180;
-const dLon=(d-b)*Math.PI/180;
-
-const x=
-Math.sin(dLat/2)**2+
-Math.cos(a*Math.PI/180)*
-Math.cos(c*Math.PI/180)*
-Math.sin(dLon/2)**2;
-
-return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x));
+    try {
+        // Calls your new main.py endpoint, passing the user's exact coordinates
+        const res = await fetch(`/api/v1/scan?lat=${state.lat}&lon=${state.lon}&radius=2000`);
+        const responseData = await res.json();
+        
+        let data = responseData.data;
+        
+        // Fallback mockup data if DB is empty for testing
+        if(!data || data.length === 0) {
+            data = [
+                { id: 1, name: "Ancient Relic", lat: state.lat + 0.0001, lon: state.lon + 0.0001, reward_per_visit: 50, stories: [{content: "A glowing artifact left by the original mappers."}] },
+                { id: 2, name: "Lost Cache", lat: state.lat - 0.0002, lon: state.lon + 0.0001, reward_per_visit: 150, stories: [{content: "Pirates buried coordinates here centuries ago."}] }
+            ];
+        }
+        
+        state.objects = data;
+        updateStatus(`Found ${data.length} Objects`);
+        render();
+    } catch(e) {
+        console.error("Backend fetch error:", e);
+        updateStatus("Network Error");
+    }
 }
 
-// ---------------- BEARING ----------------
-function bearing(a,b,c,d){
-let y=Math.sin(d-b)*Math.cos(c);
-let x=Math.cos(a)*Math.sin(c)-
-Math.sin(a)*Math.cos(c)*Math.cos(d-b);
-return (Math.atan2(y,x)*180/Math.PI+360)%360;
+// --- MATH & GEOMETRY ---
+function dist(lat1, lon1, lat2, lon2) {
+    const R = 6371e3; // Earth radius in meters
+    const rad = Math.PI / 180;
+    const dLat = (lat2 - lat1) * rad;
+    const dLon = (lon2 - lon1) * rad;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * rad) * Math.cos(lat2 * rad) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c; // Distance in meters
 }
 
-// ---------------- RENDER ----------------
-function render(){
-
-const container=document.getElementById("markers");
-const radar=document.getElementById("radar");
-
-container.innerHTML="";
-radar.querySelectorAll(".blip").forEach(b=>b.remove());
-
-state.objects.forEach(o=>{
-
-if(!state.lat) return;
-
-let d = dist(state.lat,state.lon,o.lat,o.lon)*1000;
-let br = bearing(state.lat,state.lon,o.lat,o.lon);
-
-let rel = br - state.heading;
-
-// AR POSITION
-let x = window.innerWidth/2 + rel*4;
-let y = window.innerHeight/2;
-
-let el=document.createElement("div");
-el.className="marker";
-el.style.left=x+"px";
-el.style.top=y+"px";
-el.innerText=o.name + " ("+Math.round(d)+"m)";
-
-container.appendChild(el);
-
-// RADAR
-if(state.radar){
-let r=document.createElement("div");
-r.className="blip";
-
-let ang=rel*Math.PI/180;
-let rad=Math.min(60,d/30);
-
-r.style.left=70+Math.cos(ang)*rad+"px";
-r.style.top=70+Math.sin(ang)*rad+"px";
-
-radar.appendChild(r);
+function bearing(lat1, lon1, lat2, lon2) {
+    const rad = Math.PI / 180;
+    lat1 *= rad; lat2 *= rad;
+    const dLon = (lon2 - lon1) * rad;
+    const y = Math.sin(dLon) * Math.cos(lat2);
+    const x = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
 }
 
-});
+// --- RENDERING ENGINE ---
+function render() {
+    if(!state.lat) return;
+
+    const arWorld = document.getElementById("ar-world");
+    const mapMarkers = document.getElementById("map-markers");
+    const minimap = document.getElementById("minimap");
+
+    arWorld.innerHTML = "";
+    mapMarkers.innerHTML = "";
+
+    // Rotate the minimap based on compass heading to give a dynamic 3D feel
+    minimap.style.transform = `rotateX(60deg) rotateZ(${-state.heading}deg)`;
+
+    state.objects.forEach(obj => {
+        let d = dist(state.lat, state.lon, obj.lat, obj.lon);
+        let br = bearing(state.lat, state.lon, obj.lat, obj.lon);
+        
+        // 1. MINIMAP LOGIC
+        // Map distance to pixels (scale factor)
+        let mapScale = 1.5; 
+        let dx = Math.sin(br * Math.PI / 180) * d * mapScale;
+        let dy = -Math.cos(br * Math.PI / 180) * d * mapScale; // negative because up is North
+        
+        if (d < 500) { // Only show on minimap if within 500 meters
+            let blip = document.createElement("div");
+            blip.className = "map-blip";
+            blip.style.left = `calc(50% + ${dx}px)`;
+            blip.style.top = `calc(50% + ${dy}px)`;
+            
+            // Counter-rotate the blip so shadows look right
+            blip.style.transform = `translate(-50%, -50%) rotateZ(${state.heading}deg)`;
+            mapMarkers.appendChild(blip);
+        }
+
+        // 2. AR WORLD LOGIC
+        let relativeAngle = br - state.heading;
+        if (relativeAngle < -180) relativeAngle += 360;
+        if (relativeAngle > 180) relativeAngle -= 360;
+
+        // If object is somewhat in front of the camera
+        if (Math.abs(relativeAngle) < 90 && d < 1000) {
+            
+            // Map angle to X screen coordinate
+            let xPos = (window.innerWidth / 2) + (relativeAngle * (window.innerWidth / 60));
+            
+            // Map distance to Y/Z scale (closer = bigger, lower on screen)
+            let scale = Math.max(0.3, 1 - (d / 150));
+            let yPos = (window.innerHeight / 2) + ((10 - d) * 2);
+
+            let arNode = document.createElement("div");
+            arNode.className = "ar-node";
+            // Translate3D gives smoother hardware-accelerated movement
+            arNode.style.transform = `translate3d(${xPos}px, ${yPos}px, 0) scale(${scale})`;
+            
+            arNode.innerHTML = `
+                <div class="ar-icon"></div>
+                <div class="ar-label">${obj.name}<br>${Math.round(d)}m</div>
+            `;
+
+            // Interaction Event
+            arNode.onclick = () => interactWithObject(obj);
+            arWorld.appendChild(arNode);
+        }
+    });
 }
 
-// ---------------- BUTTON ACTIONS ----------------
-function toggleRadar(){
-state.radar=!state.radar;
-render();
+// --- GAMEPLAY INTERACTION ---
+function interactWithObject(obj) {
+    const modal = document.getElementById("story-modal");
+    const title = document.getElementById("story-title");
+    const content = document.getElementById("story-content");
+    const rewardAmt = document.getElementById("reward-amount");
+
+    title.innerText = obj.name;
+    
+    // Handle Supabase Lore/Story JSON structure
+    let lore = "A mysterious coordinate echoing in the digital ether.";
+    if (obj.stories && obj.stories.length > 0) {
+        lore = obj.stories[0].content || lore;
+    } else if (obj.notes) {
+        lore = obj.notes;
+    }
+    
+    content.innerText = lore;
+    
+    // Handle Gold Logic
+    let goldReward = obj.reward_per_visit || Math.floor(Math.random() * 50) + 10;
+    rewardAmt.innerText = goldReward;
+    
+    // Save pending gold to state
+    state.pendingGold = goldReward;
+
+    modal.classList.add("active");
 }
 
-function centerUser(){
-document.getElementById("status").innerText="CENTERED";
+function closeStory() {
+    const modal = document.getElementById("story-modal");
+    modal.classList.remove("active");
+    
+    // Add gold
+    if(state.pendingGold) {
+        state.gold += state.pendingGold;
+        document.getElementById("gold-display").innerText = state.gold;
+        state.pendingGold = 0;
+    }
 }
 
-function toggleHelp(){
-let h=document.getElementById("help");
-h.style.display = h.style.display==="none"?"block":"none";
+// --- UTILS ---
+function updateStatus(msg) {
+    document.getElementById("status-text").innerText = msg;
 }
 
-// refresh loop
-setInterval(loadWorld,5000);
+function centerView() {
+    // Manually force a re-render/re-calc
+    render();
+    updateStatus("View Recalibrated");
+}
+
+// Optional: Auto-refresh data every 10 seconds
+setInterval(() => {
+    if(state.systemActive) loadWorld();
+}, 10000);
 
 </script>
 
