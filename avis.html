@@ -210,7 +210,8 @@ window.onload = async () => {
 
         navigator.geolocation.watchPosition(updateGPS, handleError, { enableHighAccuracy: true });
 
-        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+        // Some browsers strictly require a user gesture for this
+        if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
             const permission = await DeviceOrientationEvent.requestPermission();
             if (permission === 'granted') window.addEventListener("deviceorientation", updateHeading);
         } else {
@@ -219,7 +220,7 @@ window.onload = async () => {
 
         startEngine("ONLINE");
     } catch (err) {
-        console.warn("Permissions denied, forcing test mode.");
+        console.warn("Permissions denied or blocked by browser security, forcing test mode.");
         enterTestMode();
     }
 };
