@@ -3,167 +3,193 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>AVIS AR | World Engine v2.5</title>
+<title>AVIS AR | Spatial Engine v3.0</title>
 
 <style>
-    /* ---------------- BASE & THEME ---------------- */
+    /* ==========================================================================
+       AVIS CORE STYLESHEET
+       ========================================================================== */
     :root {
+        --theme-bg: #050a0f;
         --neon-cyan: #00ffcc;
         --neon-gold: #ffd700;
         --neon-red: #ff3333;
-        --glass: rgba(0, 0, 0, 0.7);
+        --neon-purple: #b026ff;
+        --neon-blue: #0088ff;
+        --glass: rgba(5, 10, 15, 0.75);
+        --glass-border: rgba(0, 255, 204, 0.3);
     }
 
+    * { box-sizing: border-box; }
+
     body, html {
-        margin: 0; padding: 0; overflow: hidden; background: #000;
+        margin: 0; padding: 0; overflow: hidden; background: var(--theme-bg);
         font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         color: white; user-select: none; touch-action: none;
     }
 
+    /* ---------------- CAMERA FEED ---------------- */
     #cam {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        object-fit: cover; z-index: 1; filter: contrast(1.1) brightness(0.9);
+        object-fit: cover; z-index: 1; filter: contrast(1.1) brightness(0.85);
+        transition: filter 0.3s;
     }
+    
+    #cam.locked { filter: contrast(1.1) brightness(0.4) grayscale(0.5); }
 
-    /* ---------------- PLAYER HUD ---------------- */
+    /* ---------------- HUD ELEMENTS ---------------- */
     #top-hud {
         position: fixed; top: 20px; left: 20px; right: 20px; z-index: 10;
         display: flex; justify-content: space-between; align-items: flex-start;
+        pointer-events: none;
     }
 
     .stat-pill {
         background: var(--glass); backdrop-filter: blur(12px);
-        padding: 10px 20px; border-radius: 40px; border: 1px solid var(--neon-cyan);
+        padding: 10px 20px; border-radius: 40px; border: 1px solid var(--glass-border);
         display: flex; align-items: center; gap: 12px; font-weight: 800;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        pointer-events: auto;
     }
 
-    .xp-bar-container {
-        position: absolute; top: 75px; left: 30px; width: 150px;
-        height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;
+    .sys-logs {
+        position: fixed; top: 80px; left: 20px; width: 250px;
+        font-family: monospace; font-size: 10px; color: var(--neon-cyan);
+        z-index: 10; pointer-events: none; text-shadow: 0 0 5px black;
+        display: flex; flex-direction: column; gap: 4px; opacity: 0.8;
     }
 
-    #xp-fill {
-        width: 30%; height: 100%; background: var(--neon-cyan);
-        box-shadow: 0 0 10px var(--neon-cyan); transition: width 0.5s ease;
-    }
-
-    /* ---------------- AR RENDERING ---------------- */
+    /* ---------------- AR SPATIAL RENDERER ---------------- */
     #ar-world {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
         z-index: 5; pointer-events: none; perspective: 1200px;
+        transform-style: preserve-3d;
     }
 
     .ar-node {
         position: absolute; top: 50%; left: 50%;
         transform-style: preserve-3d; pointer-events: auto;
         display: flex; flex-direction: column; align-items: center;
-        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        will-change: transform;
     }
 
     .ar-icon {
         width: 80px; height: 80px;
-        background: url('https://cdn-icons-png.flaticon.com/512/1491/1491410.png') no-repeat center;
-        background-size: contain; filter: drop-shadow(0 0 15px var(--neon-cyan));
-        animation: float 3s ease-in-out infinite alternate;
+        background-size: contain; background-position: center; background-repeat: no-repeat;
+        filter: drop-shadow(0 0 15px var(--neon-cyan));
     }
 
-    @keyframes float {
-        from { transform: translateY(0px) rotate(0deg); }
-        to { transform: translateY(-20px) rotate(5deg); }
+    .ar-node.common .ar-icon { filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
+    .ar-node.rare .ar-icon { filter: drop-shadow(0 0 20px var(--neon-blue)); }
+    .ar-node.ultra-rare .ar-icon { filter: drop-shadow(0 0 30px var(--neon-purple)); }
+    .ar-node.cluster .ar-icon { filter: drop-shadow(0 0 20px var(--neon-gold)); transform: scale(1.2); }
+
+    .ar-label {
+        background: rgba(0,0,0,0.8); border: 1px solid var(--neon-cyan);
+        padding: 4px 10px; border-radius: 6px; margin-top: 8px;
+        font-size: 11px; text-align: center; text-transform: uppercase;
+        letter-spacing: 1px; box-shadow: 0 5px 15px rgba(0,0,0,0.9);
     }
+
+    /* Spatial Floating Animations */
+    @keyframes float-fast { 0% { transform: translateY(0px); } 100% { transform: translateY(-15px); } }
+    @keyframes float-med { 0% { transform: translateY(0px); } 100% { transform: translateY(-25px); } }
+    @keyframes float-slow { 0% { transform: translateY(0px); } 100% { transform: translateY(-35px); } }
 
     /* ---------------- ISOMETRIC MINIMAP ---------------- */
     #minimap-container {
-        position: fixed; bottom: 40px; right: 20px; z-index: 20;
-        width: 160px; height: 160px; perspective: 800px;
+        position: fixed; bottom: 130px; right: 20px; z-index: 20;
+        width: 140px; height: 140px; perspective: 800px; pointer-events: none;
     }
 
     #minimap {
-        width: 100%; height: 100%; border-radius: 40px;
-        background: rgba(0, 20, 30, 0.85); border: 2px solid var(--neon-cyan);
+        width: 100%; height: 100%; border-radius: 50%;
+        background: rgba(0, 15, 25, 0.9); border: 3px solid var(--neon-cyan);
         transform: rotateX(55deg) rotateZ(0deg);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,255,204,0.2);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.9), inset 0 0 40px rgba(0,255,204,0.3);
         overflow: hidden; position: relative;
     }
 
     .grid-lines {
-        position: absolute; width: 200%; height: 200%; top: -50%; left: -50%;
+        position: absolute; width: 300%; height: 300%; top: -100%; left: -100%;
         background-image: linear-gradient(var(--neon-cyan) 1px, transparent 1px),
                           linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px);
-        background-size: 30px 30px; opacity: 0.15;
-        transition: background-position 0.2s linear;
+        background-size: 25px 25px; opacity: 0.2;
+        transition: background-position 0.5s ease-out;
     }
 
-    /* PLAYER DOT & DIRECTIONAL ARROW */
     #map-player {
         position: absolute; top: 50%; left: 50%;
-        width: 16px; height: 16px; background: white;
+        width: 14px; height: 14px; background: white;
         border: 3px solid var(--neon-cyan); border-radius: 50%;
         transform: translate(-50%, -50%); z-index: 25;
-        box-shadow: 0 0 10px var(--neon-cyan);
+        box-shadow: 0 0 15px var(--neon-cyan);
     }
 
-    /* The View Cone / Arrow pointing forward */
     #map-player::after {
-        content: '';
-        position: absolute;
-        top: -14px; left: 50%;
+        content: ''; position: absolute; top: -16px; left: 50%;
         transform: translateX(-50%);
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
+        border-left: 7px solid transparent; border-right: 7px solid transparent;
         border-bottom: 14px solid var(--neon-cyan);
     }
 
-    /* ---------------- GAMEPLAY UI ---------------- */
-    #action-bar {
-        position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
-        z-index: 30; display: flex; align-items: center; gap: 20px;
+    .map-blip {
+        position: absolute; border-radius: 50%; z-index: 10;
+        transform: translate(-50%, -50%); transition: all 0.3s;
+    }
+    .map-blip.common { width: 6px; height: 6px; background: white; box-shadow: 0 0 5px white; }
+    .map-blip.rare { width: 8px; height: 8px; background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
+    .map-blip.ultra-rare { width: 10px; height: 10px; background: var(--neon-purple); box-shadow: 0 0 15px var(--neon-purple); }
+    .map-blip.cluster { width: 12px; height: 12px; background: var(--neon-gold); border: 2px solid white; box-shadow: 0 0 20px var(--neon-gold); }
+
+    /* ---------------- BUTTON-ONLY OS CONTROLS ---------------- */
+    #os-controls {
+        position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+        z-index: 30; display: flex; gap: 10px; background: var(--glass);
+        padding: 10px; border-radius: 20px; border: 1px solid var(--glass-border);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
 
-    .btn-main {
-        width: 85px; height: 85px; border-radius: 50%;
-        background: white; border: 6px solid var(--neon-cyan);
-        cursor: pointer; display: flex; justify-content: center; align-items: center;
-        box-shadow: 0 0 30px var(--neon-cyan); transition: 0.2s;
-        font-weight: bold;
+    .os-btn {
+        background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan);
+        padding: 12px 16px; border-radius: 12px; font-weight: bold; font-size: 11px;
+        text-transform: uppercase; cursor: pointer; transition: 0.2s;
+        display: flex; flex-direction: column; align-items: center; gap: 5px; width: 75px;
     }
 
-    .btn-main:active { transform: scale(0.85) rotate(15deg); }
+    .os-btn:active { transform: scale(0.9); background: rgba(0,255,204,0.2); }
+    .os-btn.active { background: var(--neon-cyan); color: black; }
+    .os-btn i { font-size: 18px; font-style: normal; }
 
     /* ---------------- MODALS ---------------- */
     .modal {
         position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        width: 80%; max-width: 400px; background: rgba(5, 10, 15, 0.98);
-        border: 2px solid var(--neon-cyan); border-radius: 30px; padding: 30px;
+        width: 85%; max-width: 400px; background: rgba(5, 10, 15, 0.95);
+        border: 2px solid var(--neon-cyan); border-radius: 20px; padding: 25px;
         z-index: 100; display: none; text-align: center;
-        box-shadow: 0 0 100px rgba(0,0,0,1);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
     }
-
-    .modal.active { display: block; animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-
-    @keyframes modalPop {
-        from { opacity: 0; transform: translate(-50%, -60%) scale(0.8); }
-        to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
+    .modal.active { display: block; animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    @keyframes pop { from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
 </style>
 </head>
-
 <body>
-
-<video id="cam" autoplay playsinline></video>
 
 <div id="top-hud">
     <div class="stat-pill">
-        <span id="lvl-tag">LVL 1</span>
-        <span id="status-text" style="font-size:10px; color:var(--neon-cyan);">BOOTING...</span>
+        <span style="color:var(--neon-cyan);">CELL:</span>
+        <span id="grid-id">WAIT</span>
     </div>
     <div class="stat-pill">
-        <span style="color:var(--neon-gold)">💰</span>
-        <span id="gold-display">0</span>
+        <span style="color:var(--neon-gold)">DATA</span>
+        <span id="node-count">0</span>
     </div>
 </div>
-<div class="xp-bar-container"><div id="xp-fill"></div></div>
+
+<div class="sys-logs" id="sys-log-container">
+    <div>[AVIS_OS] BOOT SEQUENCE INITIATED</div>
+</div>
 
 <div id="ar-world"></div>
 
@@ -175,257 +201,435 @@
     </div>
 </div>
 
-<div id="action-bar">
-    <div class="btn-main" onclick="refreshScan()">🌐</div>
+<div id="os-controls">
+    <button class="os-btn" onclick="SAK_Controller.forceScan()"><i>📡</i><span>SCAN</span></button>
+    <button class="os-btn" id="btn-filter" onclick="SAK_Controller.cycleFilter()"><i>👁️</i><span id="lbl-filter">ALL</span></button>
+    <button class="os-btn" id="btn-lock" onclick="SAK_Controller.toggleLock()"><i>🔒</i><span>LOCK</span></button>
+    <button class="os-btn" onclick="SAK_Controller.expandClusters()"><i>💥</i><span>EXPAND</span></button>
 </div>
 
-<div id="story-modal" class="modal">
-    <h2 id="story-title" style="color:var(--neon-cyan)">Relic Found</h2>
-    <p id="story-content" style="color:#ccc; line-height:1.6;"></p>
-    <div style="background:rgba(255,215,0,0.1); padding:15px; border-radius:15px; margin:20px 0;">
-        <span style="color:var(--neon-gold); font-weight:bold;">+ <span id="reward-val">0</span> GOLD</span>
-    </div>
-    <button onclick="closeStory()" style="background:var(--neon-cyan); color:black; border:none; padding:12px 40px; border-radius:20px; font-weight:800; cursor:pointer;">COLLECT</button>
+<div id="data-modal" class="modal">
+    <h2 id="data-title" style="color:var(--neon-cyan); margin-top:0;">NODE_DATA</h2>
+    <div id="data-meta" style="font-size:12px; color:gray; margin-bottom:15px;"></div>
+    <p id="data-content" style="color:#ddd; line-height:1.5; font-size:14px;"></p>
+    <button class="os-btn" style="width:100%; margin-top:20px; background:var(--neon-cyan); color:black;" onclick="SAK_Controller.closeModal()">ACKNOWLEDGE</button>
 </div>
 
 <script>
+/**
+ * ============================================================================
+ * AVIS SAK ENGINE (Spatial Augmented Kernel)
+ * Core System Logic for geospatial tracking, grid hashing, and AR rendering.
+ * ============================================================================
+ */
+
 const CONFIG = {
     SUPABASE_URL: "https://ihdllispdbwvwcwxlvhr.supabase.co",
-    SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P"
+    SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P",
+    GRID_PRECISION: 3, // Decimals for Lat/Lon (3 = ~110m cells)
+    MOVE_THRESHOLD_M: 15, // Meters user must move to trigger hard scene refresh
+    CLUSTER_RADIUS_M: 20, // Distance to group nodes into a cluster
+    RENDER_RAD_M: 800, // Max distance to render AR nodes
+    MINIMAP_RAD_M: 400 // Scale reference for minimap edges
 };
 
-let state = {
+// Global State
+const STATE = {
     lat: null, lon: null, heading: 0,
-    gold: 0, xp: 0, lvl: 1,
-    objects: [],
-    active: false
+    lastUpdateLat: null, lastUpdateLon: null,
+    activeCell: "",
+    nodes: [], // Raw processed nodes
+    renderQueue: [], // Nodes/Clusters currently drawn
+    viewLocked: false,
+    filterMode: 'ALL', // ALL, LANDMARK, LEGEND
+    clustersExpanded: false
 };
 
-// ---------------- PERMISSIONS & START ----------------
-// Automatically requests permissions when the window loads
-window.onload = async () => {
+// Icons (Base64 or standard URLs for categories)
+const ICONS = {
+    landmark: 'https://cdn-icons-png.flaticon.com/512/1491/1491410.png',
+    cluster: 'https://cdn-icons-png.flaticon.com/512/8205/8205367.png',
+    default: 'https://cdn-icons-png.flaticon.com/512/684/684908.png'
+};
+
+// ---------------- SYSTEM LOGGER ----------------
+function sysLog(msg) {
+    const container = document.getElementById('sys-log-container');
+    const log = document.createElement('div');
+    log.innerText = `[${new Date().toLocaleTimeString().split(' ')[0]}] ${msg}`;
+    container.prepend(log);
+    if(container.children.length > 6) container.removeChild(container.lastChild);
+    console.log(msg);
+}
+
+// ---------------- SPATIAL MATH LIBRARY ----------------
+const MathGeo = {
+    dist: (lat1, lon1, lat2, lon2) => {
+        const R = 6371000;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    },
+    bearing: (lat1, lon1, lat2, lon2) => {
+        const dLon = (lon2 - lon1) * Math.PI / 180;
+        const y = Math.sin(dLon) * Math.cos(lat2 * Math.PI / 180);
+        const x = Math.cos(lat1 * Math.PI / 180) * Math.sin(lat2 * Math.PI / 180) - Math.sin(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.cos(dLon);
+        return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+    },
+    getCellId: (lat, lon) => {
+        return `C:${lat.toFixed(CONFIG.GRID_PRECISION)}|${lon.toFixed(CONFIG.GRID_PRECISION)}`;
+    }
+};
+
+// ---------------- DATA PIPELINE ----------------
+const SAK_Data = {
+    fetch: async () => {
+        sysLog("INITIATING API SPATIAL SCAN...");
+        try {
+            // Simulating API Call to Python Backend (or direct to Supabase for test)
+            const res = await fetch(`${CONFIG.SUPABASE_URL}/rest/v1/locations?select=*,stories(*)`, {
+                headers: { apikey: CONFIG.SUPABASE_KEY, Authorization: "Bearer " + CONFIG.SUPABASE_KEY }
+            });
+            const rawData = await res.json();
+            
+            // Auto-Mock if DB is unreachable or empty
+            let data = rawData.length ? rawData : SAK_Data.generateMockGrid();
+            SAK_Data.process(data);
+        } catch (e) {
+            sysLog("NETWORK ERROR. USING LOCAL CACHE.");
+            SAK_Data.process(SAK_Data.generateMockGrid());
+        }
+    },
+
+    process: (rawData) => {
+        STATE.nodes = [];
+        rawData.forEach(item => {
+            let lat = item.lat || item.latitude;
+            let lon = item.lon || item.longitude;
+            if(!lat || !lon) return;
+
+            // Enforce Rules: Assign Rarity & Status
+            let rand = Math.random();
+            let rarity = rand > 0.95 ? 'ultra-rare' : (rand > 0.7 ? 'rare' : 'common');
+            
+            let node = {
+                id: item.id || Math.random().toString(36).substr(2, 9),
+                name: item.name || "UNIDENTIFIED NODE",
+                lat: lat, lon: lon,
+                category: item.category || 'landmark',
+                rarity: rarity,
+                visibilityRange: rarity === 'ultra-rare' ? 1000 : 500,
+                status: 'active',
+                stories: item.stories || []
+            };
+            STATE.nodes.push(node);
+        });
+
+        document.getElementById('node-count').innerText = STATE.nodes.length;
+        sysLog(`PROCESSED ${STATE.nodes.length} SAK NODES`);
+        SAK_Engine.compileScene();
+    },
+
+    generateMockGrid: () => {
+        // Generates an S2-style grid of POIs around the user
+        let mocks = [];
+        if(!STATE.lat) return mocks;
+        const spread = 0.005; // Roughly 500m
+        for(let i=0; i<10; i++) {
+            mocks.push({
+                id: "MOCK_"+i,
+                name: "ECHO PROTOCOL " + i,
+                lat: STATE.lat + (Math.random() * spread * 2 - spread),
+                lon: STATE.lon + (Math.random() * spread * 2 - spread),
+                category: i % 3 === 0 ? 'legend' : 'landmark'
+            });
+        }
+        return mocks;
+    }
+};
+
+// ---------------- SAK SPATIAL ENGINE ----------------
+const SAK_Engine = {
+    compileScene: () => {
+        if(!STATE.lat || STATE.viewLocked) return;
+
+        let activeNodes = STATE.nodes.filter(n => {
+            if(STATE.filterMode === 'LANDMARK' && n.category !== 'landmark') return false;
+            if(STATE.filterMode === 'LEGEND' && n.category !== 'legend') return false;
+            return true;
+        });
+
+        // Calculate Distances
+        activeNodes.forEach(n => {
+            n.dist = MathGeo.dist(STATE.lat, STATE.lon, n.lat, n.lon);
+            n.bearing = MathGeo.bearing(STATE.lat, STATE.lon, n.lat, n.lon);
+        });
+
+        // Sort by distance (Performance Rule: Prioritize nearest)
+        activeNodes.sort((a,b) => a.dist - b.dist);
+
+        // Intelligent Clustering Rule
+        if(!STATE.clustersExpanded) {
+            STATE.renderQueue = SAK_Engine.cluster(activeNodes);
+        } else {
+            STATE.renderQueue = activeNodes;
+        }
+
+        SAK_Renderer.draw();
+    },
+
+    cluster: (nodes) => {
+        let clusters = [];
+        let visited = new Set();
+
+        for(let i=0; i<nodes.length; i++) {
+            if(visited.has(i)) continue;
+            let current = nodes[i];
+            let clusterGroup = [current];
+
+            for(let j=i+1; j<nodes.length; j++) {
+                if(visited.has(j)) continue;
+                let target = nodes[j];
+                let distBetween = MathGeo.dist(current.lat, current.lon, target.lat, target.lon);
+                
+                if(distBetween < CONFIG.CLUSTER_RADIUS_M) {
+                    clusterGroup.push(target);
+                    visited.add(j);
+                }
+            }
+
+            if(clusterGroup.length > 1) {
+                // Generate Cluster Node
+                clusters.push({
+                    isCluster: true,
+                    id: "CLUSTER_" + current.id,
+                    name: `CLUSTER (${clusterGroup.length})`,
+                    lat: current.lat, lon: current.lon,
+                    dist: current.dist, bearing: current.bearing,
+                    rarity: 'cluster', children: clusterGroup
+                });
+            } else {
+                clusters.push(current);
+            }
+        }
+        return clusters;
+    }
+};
+
+// ---------------- RENDERER ----------------
+const SAK_Renderer = {
+    draw: () => {
+        const arWorld = document.getElementById("ar-world");
+        const mapMarkers = document.getElementById("map-markers");
+        
+        arWorld.innerHTML = "";
+        mapMarkers.innerHTML = "";
+
+        STATE.renderQueue.forEach((node, index) => {
+            if(node.dist > CONFIG.RENDER_RAD_M) return;
+
+            // 1. MINIMAP BLIP
+            let radarScale = (node.dist / CONFIG.MINIMAP_RAD_M) * 70;
+            if(radarScale > 70) radarScale = 70; // Clamp to edge
+
+            let blip = document.createElement("div");
+            blip.className = `map-blip ${node.rarity}`;
+            blip.style.left = `calc(50% + ${Math.sin(node.bearing * Math.PI / 180) * radarScale}px)`;
+            blip.style.top = `calc(50% + ${Math.cos(node.bearing * Math.PI / 180) * -radarScale}px)`;
+            mapMarkers.appendChild(blip);
+
+            // 2. AR NODE
+            let relAngle = node.bearing - STATE.heading;
+            if (relAngle < -180) relAngle += 360;
+            if (relAngle > 180) relAngle -= 360;
+
+            // Culling: Only render if within 75 degrees of forward view
+            if (Math.abs(relAngle) < 75) {
+                let x = (window.innerWidth / 2) + (relAngle * (window.innerWidth / 45));
+                let scale = Math.max(0.15, 1 - (node.dist / CONFIG.RENDER_RAD_M));
+                let y = (window.innerHeight / 2) + (node.dist * 0.15); // Perspective drop
+
+                let arNode = document.createElement("div");
+                arNode.className = `ar-node ${node.rarity}`;
+                arNode.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
+                
+                // Assign deterministic floating animation based on ID
+                let floatSpeed = (index % 3 === 0) ? 'float-fast' : (index % 2 === 0 ? 'float-med' : 'float-slow');
+                let floatDuration = (0.5 + (index % 1.5)) + 's';
+
+                let iconUrl = node.isCluster ? ICONS.cluster : (ICONS[node.category] || ICONS.default);
+
+                arNode.innerHTML = `
+                    <div class="ar-icon" style="background-image:url('${iconUrl}'); animation: ${floatSpeed} ${floatDuration} infinite alternate ease-in-out;"></div>
+                    <div class="ar-label">[${Math.round(node.dist)}m]<br>${node.name}</div>
+                `;
+
+                arNode.onclick = () => SAK_Controller.openModal(node);
+                arWorld.appendChild(arNode);
+            }
+        });
+    },
+
+    updateSensors: () => {
+        if(STATE.viewLocked) return;
+        
+        // Rotate Minimap
+        document.getElementById("minimap").style.transform = `rotateX(55deg) rotateZ(${-STATE.heading}deg)`;
+        document.getElementById("map-player").style.transform = `translate(-50%, -50%) rotateZ(${state.heading}deg)`;
+
+        // Move Grid (Translating GPS to Pixels)
+        if(STATE.lat && STATE.lon) {
+            const grid = document.getElementById("map-grid");
+            grid.style.backgroundPosition = `${-STATE.lon * 200000}px ${STATE.lat * 200000}px`;
+        }
+    }
+};
+
+// ---------------- HARDWARE SENSORS ----------------
+async function bootHardware() {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
         document.getElementById("cam").srcObject = stream;
 
-        navigator.geolocation.watchPosition(updateGPS, handleError, { enableHighAccuracy: true });
+        navigator.geolocation.watchPosition(
+            (pos) => {
+                STATE.lat = pos.coords.latitude;
+                STATE.lon = pos.coords.longitude;
+                
+                // Update Cell ID HUD
+                let newCell = MathGeo.getCellId(STATE.lat, STATE.lon);
+                if(newCell !== STATE.activeCell) {
+                    STATE.activeCell = newCell;
+                    document.getElementById('grid-id').innerText = newCell;
+                    sysLog(`CELL TRANSITION: ${newCell}`);
+                }
 
-        // Some browsers strictly require a user gesture for this
+                // Threshold Check Rule (Prevent Jitter)
+                if(!STATE.lastUpdateLat) {
+                    STATE.lastUpdateLat = STATE.lat;
+                    STATE.lastUpdateLon = STATE.lon;
+                    SAK_Data.fetch();
+                } else {
+                    let moveDist = MathGeo.dist(STATE.lastUpdateLat, STATE.lastUpdateLon, STATE.lat, STATE.lon);
+                    if(moveDist > CONFIG.MOVE_THRESHOLD_M) {
+                        STATE.lastUpdateLat = STATE.lat;
+                        STATE.lastUpdateLon = STATE.lon;
+                        sysLog("THRESHOLD EXCEEDED. RE-COMPILING SCENE.");
+                        SAK_Engine.compileScene();
+                    }
+                }
+            },
+            (err) => { sysLog("GPS SIGNAL LOST. WAITING..."); },
+            { enableHighAccuracy: true, maximumAge: 0 }
+        );
+
         if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-            const permission = await DeviceOrientationEvent.requestPermission();
-            if (permission === 'granted') window.addEventListener("deviceorientation", updateHeading);
+            const perm = await DeviceOrientationEvent.requestPermission();
+            if (perm === 'granted') window.addEventListener("deviceorientation", (e) => handleOrientation(e));
         } else {
-            window.addEventListener("deviceorientation", updateHeading);
+            window.addEventListener("deviceorientation", (e) => handleOrientation(e));
         }
 
-        startEngine("ONLINE");
-    } catch (err) {
-        console.warn("Permissions denied or blocked by browser security, forcing test mode.");
-        enterTestMode();
+        // 60FPS Render Loop
+        setInterval(() => {
+            SAK_Renderer.updateSensors();
+            SAK_Renderer.draw(); // Continuous draw to handle compass rotation smoothly
+        }, 16);
+
+    } catch(e) {
+        sysLog("HARDWARE BOOT FAILED. INJECTING TEST COORDS.");
+        // Test Coordinates (Durgapur)
+        STATE.lat = 23.5204; STATE.lon = 87.3119; STATE.heading = 0;
+        document.getElementById('grid-id').innerText = MathGeo.getCellId(STATE.lat, STATE.lon);
+        SAK_Data.fetch();
+        setInterval(() => SAK_Renderer.draw(), 16);
+    }
+}
+
+function handleOrientation(e) {
+    if(e.webkitCompassHeading) {
+        STATE.heading = e.webkitCompassHeading;
+    } else {
+        // Android fallback (approximate)
+        STATE.heading = 360 - e.alpha;
+    }
+}
+
+// ---------------- UI CONTROLLER (BUTTON ONLY) ----------------
+const SAK_Controller = {
+    forceScan: () => {
+        sysLog("USER TRIGGERED MANUAL SCAN");
+        SAK_Data.fetch();
+    },
+
+    cycleFilter: () => {
+        const modes = ['ALL', 'LANDMARK', 'LEGEND'];
+        let idx = modes.indexOf(STATE.filterMode);
+        STATE.filterMode = modes[(idx + 1) % modes.length];
+        
+        const btn = document.getElementById('btn-filter');
+        document.getElementById('lbl-filter').innerText = STATE.filterMode;
+        btn.classList.add('active');
+        setTimeout(() => btn.classList.remove('active'), 200);
+        
+        sysLog(`FILTER APPLIED: ${STATE.filterMode}`);
+        SAK_Engine.compileScene();
+    },
+
+    toggleLock: () => {
+        STATE.viewLocked = !STATE.viewLocked;
+        const btn = document.getElementById('btn-lock');
+        const cam = document.getElementById('cam');
+        if(STATE.viewLocked) {
+            btn.classList.add('active');
+            cam.classList.add('locked');
+            sysLog("VIEW LOCKED.");
+        } else {
+            btn.classList.remove('active');
+            cam.classList.remove('locked');
+            sysLog("VIEW UNLOCKED.");
+            SAK_Engine.compileScene(); // Refresh immediately
+        }
+    },
+
+    expandClusters: () => {
+        STATE.clustersExpanded = !STATE.clustersExpanded;
+        sysLog(STATE.clustersExpanded ? "CLUSTERS EXPANDED" : "CLUSTERS COLLAPSED");
+        SAK_Engine.compileScene();
+    },
+
+    openModal: (node) => {
+        if(node.isCluster) {
+            SAK_Controller.expandClusters();
+            return;
+        }
+
+        const modal = document.getElementById("data-modal");
+        document.getElementById("data-title").innerText = node.name;
+        
+        let meta = `ID: ${node.id} | TYPE: ${node.rarity.toUpperCase()}<br>GEO: ${node.lat.toFixed(5)}, ${node.lon.toFixed(5)}`;
+        document.getElementById("data-meta").innerHTML = meta;
+
+        let lore = node.stories && node.stories.length > 0 ? node.stories[0].content : "No local data streams found at this coordinate.";
+        document.getElementById("data-content").innerText = lore;
+        
+        modal.classList.add("active");
+    },
+
+    closeModal: () => {
+        document.getElementById("data-modal").classList.remove("active");
     }
 };
 
-function enterTestMode() {
-    // Falls back to Durgapur, India for testing without GPS
-    state.lat = 23.5204; 
-    state.lon = 87.3119;
-    state.heading = 0;
-    startEngine("TEST MODE");
-}
-
-function startEngine(statusMsg) {
-    state.active = true;
-    updateStatus(statusMsg);
-    loadWorld();
-}
-
-function updateGPS(pos) {
-    state.lat = pos.coords.latitude;
-    state.lon = pos.coords.longitude;
-    if (state.objects.length === 0) loadWorld();
-    render();
-}
-
-function updateHeading(e) {
-    state.heading = e.webkitCompassHeading || (360 - e.alpha);
-    render();
-}
-
-// ---------------- BACKEND API INTEGRATION & TARGETING ----------------
-async function loadWorld() {
-    if (!state.lat) return;
-    updateStatus("SCANNING...");
-
-    try {
-        const res = await fetch(`/api/v1/scan?lat=${state.lat}&lon=${state.lon}&radius=40000000`);
-        const responseData = await res.json();
-        let data = responseData.data;
-
-        // Auto-Mock System if DB is empty
-        if (data.length === 0) {
-            console.log("Database empty. Injecting local mock locations.");
-            data = [
-                { id: "M1", name: "Alpha Relic", lat: state.lat + 0.0005, lon: state.lon + 0.0002, reward_per_visit: 150, stories: [{content: "A hidden cache just north of your location."}] },
-                { id: "M2", name: "Beta Node", lat: state.lat - 0.0004, lon: state.lon - 0.0003, reward_per_visit: 200, stories: [{content: "Energy spikes detected in this vicinity."}] },
-            ];
-        }
-
-        // BROWSER CONSOLE LOGGING - User GPS
-        console.log(`📍 [USER GPS] Lat: ${state.lat.toFixed(6)} | Lon: ${state.lon.toFixed(6)}`);
-        console.log(`📦 [BACKEND] Retrieved ${data.length} total world locations.`);
-
-        // TARGETING ALGORITHM: Find the single absolute closest location
-        let nearestObj = null;
-        let minDistance = Infinity;
-
-        data.forEach(obj => {
-            let t_lat = obj.lat || obj.latitude;
-            let t_lon = obj.lon || obj.longitude;
-            if (!t_lat || !t_lon) return;
-
-            let d = dist(state.lat, state.lon, t_lat, t_lon);
-            if (d < minDistance) {
-                minDistance = d;
-                nearestObj = obj;
-            }
-        });
-
-        if (nearestObj) {
-            let n_lat = nearestObj.lat || nearestObj.latitude;
-            let n_lon = nearestObj.lon || nearestObj.longitude;
-            
-            // BROWSER CONSOLE LOGGING - Nearest Location Data
-            console.log(`🎯 [TARGET ACQUIRED]`);
-            console.log(`    Name: ${nearestObj.name || 'Unknown'}`);
-            console.log(`    Coords: ${n_lat.toFixed(6)}, ${n_lon.toFixed(6)}`);
-            console.log(`    Distance: ${Math.round(minDistance)} meters`);
-
-            // Overwrite state objects so only ONE blip and ONE AR node renders
-            state.objects = [nearestObj];
-            updateStatus("1 TARGET FOUND");
-        } else {
-            state.objects = [];
-            updateStatus("NO TARGETS");
-        }
-
-        render();
-    } catch (e) {
-        console.error("Fetch error:", e);
-        updateStatus("SYNC ERROR");
-    }
-}
-
-// ---------------- GAME LOGIC ----------------
-function interact(obj) {
-    const modal = document.getElementById("story-modal");
-    document.getElementById("story-title").innerText = obj.name || "Unknown Relic";
-    
-    let lore = obj.stories && obj.stories.length > 0 ? obj.stories[0].content : "A fragment of digital history...";
-    document.getElementById("story-content").innerText = lore;
-    
-    let reward = obj.reward_per_visit || obj.reward || 100;
-    document.getElementById("reward-val").innerText = reward;
-    state.lastReward = reward;
-
-    modal.classList.add("active");
-}
-
-function closeStory() {
-    state.gold += state.lastReward;
-    state.xp += 25;
-    if (state.xp >= 100) { state.lvl++; state.xp = 0; }
-    
-    document.getElementById("gold-display").innerText = state.gold;
-    document.getElementById("lvl-tag").innerText = "LVL " + state.lvl;
-    document.getElementById("xp-fill").style.width = state.xp + "%";
-    
-    document.getElementById("story-modal").classList.remove("active");
-}
-
-// ---------------- MATH & RENDER ----------------
-function dist(lat1, lon1, lat2, lon2) {
-    const R = 6371000;
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-    const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-}
-
-function bearing(lat1, lon1, lat2, lon2) {
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-    const y = Math.sin(dLon) * Math.cos(lat2 * Math.PI / 180);
-    const x = Math.cos(lat1 * Math.PI / 180) * Math.sin(lat2 * Math.PI / 180) - Math.sin(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.cos(dLon);
-    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
-}
-
-function render() {
-    if (!state.active || !state.lat) return;
-
-    const arWorld = document.getElementById("ar-world");
-    const mapMarkers = document.getElementById("map-markers");
-    const grid = document.getElementById("map-grid");
-    const playerDot = document.getElementById("map-player");
-
-    arWorld.innerHTML = "";
-    mapMarkers.innerHTML = "";
-
-    // 1. The map world rotates around the player
-    document.getElementById("minimap").style.transform = `rotateX(55deg) rotateZ(${-state.heading}deg)`;
-    
-    // 2. The player icon counter-rotates so it stays facing "forward" (up) on your screen
-    playerDot.style.transform = `translate(-50%, -50%) rotateZ(${state.heading}deg)`;
-
-    // 3. Grid moving effect based on GPS coordinates
-    grid.style.backgroundPosition = `${-state.lon * 150000}px ${state.lat * 150000}px`;
-
-    // Only iterates over the ONE closest object now
-    state.objects.forEach(obj => {
-        let t_lat = obj.lat || obj.latitude;
-        let t_lon = obj.lon || obj.longitude;
-        if (!t_lat || !t_lon) return;
-
-        let d = dist(state.lat, state.lon, t_lat, t_lon);
-        let br = bearing(state.lat, state.lon, t_lat, t_lon);
-
-        // --- MAP BLIP (SINGLE RED DOT) ---
-        let radarScale = 1000; 
-        let scaledDist = (d / radarScale) * 70; 
-        if (scaledDist > 70) scaledDist = 70; // Locks to radar edge if faraway
-
-        let b = document.createElement("div");
-        b.style.cssText = `position:absolute; width:8px; height:8px; background:var(--neon-red); border:1px solid white; border-radius:50%; top:calc(50% + ${Math.cos(br * Math.PI / 180) * -scaledDist}px); left:calc(50% + ${Math.sin(br * Math.PI / 180) * scaledDist}px); transform:translate(-50%,-50%); box-shadow: 0 0 10px var(--neon-red); z-index: 10;`;
-        mapMarkers.appendChild(b);
-
-        // --- AR RENDERING ---
-        let rel = br - state.heading;
-        if (rel < -180) rel += 360;
-        if (rel > 180) rel -= 360;
-
-        if (Math.abs(rel) < 60 && d < 1000) {
-            let x = (window.innerWidth / 2) + (rel * (window.innerWidth / 40));
-            let scale = Math.max(0.2, 1 - (d / 1000));
-            let y = (window.innerHeight / 2) + (d * 0.2); 
-
-            let node = document.createElement("div");
-            node.className = "ar-node";
-            node.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
-            node.innerHTML = `<div class="ar-icon"></div><div style="background:black; padding:2px 8px; border-radius:5px; margin-top:5px; font-size:10px;">${obj.name || 'Relic'} (${Math.round(d)}m)</div>`;
-            node.onclick = () => interact(obj);
-            arWorld.appendChild(node);
-        }
-    });
-}
-
-function updateStatus(t) { document.getElementById("status-text").innerText = t; }
-function refreshScan() { loadWorld(); }
-function handleError(e) { 
-    updateStatus("GPS LOST"); 
-    console.warn("GPS lost, entering test mode automatically.");
-    enterTestMode(); 
-}
-
-// Background Sync
-setInterval(loadWorld, 20000);
+// Auto-Boot Sequence
+window.onload = () => {
+    document.getElementById("shield").style.opacity = "0";
+    setTimeout(() => {
+        document.getElementById("shield").style.display = "none";
+        bootHardware();
+    }, 500);
+};
 </script>
 
 </body>
