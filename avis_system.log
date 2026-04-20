@@ -1,0 +1,12 @@
+2026-04-20 02:49:29,637 - [AVIS-CORE] - INFO - Supabase Engine Initialized.
+2026-04-20 09:44:20,636 - [AVIS-ENGINE] - INFO - [SUCCESS] Supabase Engine Connection Established.
+2026-04-20 09:47:34,925 - [AVIS-ENGINE] - INFO - [SUCCESS] Supabase Engine Connection Established.
+2026-04-20 09:49:27,642 - [AVIS-ENGINE] - INFO - [STARTUP] Booting AVIS Data Extractor...
+2026-04-20 09:49:27,989 - [AVIS-ENGINE] - INFO - [SUCCESS] Supabase Engine Connection Established.
+2026-04-20 09:49:28,022 - [AVIS-ENGINE] - INFO - 🚀 Uvicorn Server spinning up on http://0.0.0.0:8000
+2026-04-20 09:52:22,731 - [AVIS-ENGINE] - INFO - [STARTUP] Booting AVIS Data Extractor...
+2026-04-20 09:52:23,080 - [AVIS-ENGINE] - INFO - [SUCCESS] Supabase Engine Connection Established.
+2026-04-20 09:52:23,108 - [AVIS-ENGINE] - INFO - 🚀 Uvicorn Server spinning up on http://0.0.0.0:8000
+2026-04-20 09:52:32,389 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 09:52:32,391 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 09:52:32,394 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
