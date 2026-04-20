@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>AVIS AR | Environment Scanner</title>
+
+<script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+
+<style>
+    /* ==========================================================================
+       AVIS SCANNER & TACTICAL UI
+       ========================================================================== */
+    :root {
+        --neon-yellow: #ffea00;
+        --neon-cyan: #00ffcc;
+        --glass: rgba(5, 10, 15, 0.85);
+        --alert: #ff3333;
+    }
+
+    body, html {
+        margin: 0; padding: 0; overflow: hidden; background: #000;
+        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        color: white; user-select: none; touch-action: none;
+    }
+
+    /* ---------------- UI OVERLAY (Works inside WebXR) ---------------- */
+    #ui-layer {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        z-index: 1000; pointer-events: none; display: flex;
+        flex-direction: column; justify-content: space-between;
+    }
+
+    /* Top HUD */
+    .hud-header {
+        display: flex; justify-content: space-between; padding: 20px;
+    }
+
+    .status-panel {
+        background: var(--glass); border: 1px solid var(--neon-cyan);
+        padding: 10px 15px; border-radius: 8px; font-size: 11px;
+        font-family: monospace; letter-spacing: 1px; color: var(--neon-cyan);
+        backdrop-filter: blur(10px); box-shadow: 0 4px 15px rgba(0,255,204,0.1);
+    }
+
+    .status-panel span { display: block; margin-bottom: 4px; }
+    .status-panel .val { color: white; font-weight: bold; }
+    .status-panel .warn { color: var(--neon-yellow); }
+
+    /* Action Footer */
+    .hud-footer {
+        padding: 30px 20px; display: flex; flex-direction: column;
+        align-items: center; gap: 15px;
+    }
+
+    .btn-mark {
+        pointer-events: auto; background: rgba(255, 234, 0, 0.1);
+        border: 2px solid var(--neon-yellow); color: var(--neon-yellow);
+        width: 80%; max-width: 300px; padding: 18px; border-radius: 30px;
+        font-size: 16px; font-weight: 900; letter-spacing: 2px;
+        text-transform: uppercase; cursor: pointer; transition: 0.2s;
+        box-shadow: 0 0 20px rgba(255, 234, 0, 0.2), inset 0 0 10px rgba(255, 234, 0, 0.1);
+        display: flex; justify-content: center; align-items: center; gap: 10px;
+    }
+
+    .btn-mark:active { transform: scale(0.95); background: var(--neon-yellow); color: black; }
+    .btn-mark:disabled { border-color: gray; color: gray; box-shadow: none; pointer-events: none; }
+
+    /* Toast Notifications */
+    #toast-container {
+        position: fixed; top: 120px; left: 50%; transform: translateX(-50%);
+        display: flex; flex-direction: column; gap: 10px; align-items: center;
+        pointer-events: none; z-index: 1001;
+    }
+
+    .toast {
+        background: var(--glass); border: 1px solid var(--neon-yellow);
+        color: var(--neon-yellow); padding: 10px 20px; border-radius: 20px;
+        font-size: 12px; font-weight: bold; font-family: monospace;
+        animation: fadeOut 3s forwards; box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+    }
+    .toast.success { border-color: var(--neon-cyan); color: var(--neon-cyan); }
+    .toast.error { border-color: var(--alert); color: var(--alert); }
+
+    @keyframes fadeOut {
+        0% { opacity: 0; transform: translateY(-10px); }
+        10% { opacity: 1; transform: translateY(0); }
+        80% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(-10px); }
+    }
+
+    /* A-Frame UI overrides */
+    .a-enter-vr-button { bottom: 120px !important; }
+</style>
+
+<script>
+    AFRAME.registerComponent('ar-hit-test', {
+        init: function () {
+            this.xrHitTestSource = null;
+            this.viewerSpace = null;
+            this.refSpace = null;
+
+            this.el.sceneEl.renderer.xr.addEventListener('sessionstart', (ev) => {
+                let session = this.el.sceneEl.renderer.xr.getSession();
+                let element = this.el;
+                
+                session.requestReferenceSpace('viewer').then((space) => {
+                    this.viewerSpace = space;
+                    session.requestHitTestSource({ space: this.viewerSpace }).then((hitTestSource) => {
+                        this.xrHitTestSource = hitTestSource;
+                    });
+                });
+                session.requestReferenceSpace('local-floor').then((space) => {
+                    this.refSpace = space;
+                });
+            });
+        },
+        tick: function () {
+            if (this.el.sceneEl.is('ar-mode')) {
+                if (!this.viewerSpace) return;
+                let frame = this.el.sceneEl.frame;
+                let xrViewerPose = frame.getViewerPose(this.refSpace);
+                if (this.xrHitTestSource && xrViewerPose) {
+                    let hitTestResults = frame.getHitTestResults(this.xrHitTestSource);
+                    if (hitTestResults.length > 0) {
+                        let pose = hitTestResults[0].getPose(this.refSpace);
+                        let inputMat = new THREE.Matrix4();
+                        inputMat.fromArray(pose.transform.matrix);
+                        let position = new THREE.Vector3();
+                        position.setFromMatrixPosition(inputMat);
+                        
+                        this.el.setAttribute('position', position);
+                        this.el.setAttribute('visible', 'true');
+                        window.AR_READY = true; // Signal UI that surface is found
+                        document.getElementById('calib-status').innerText = "SURFACE LOCKED";
+                        document.getElementById('calib-status').classList.remove('warn');
+                    } else {
+                        this.el.setAttribute('visible', 'false');
+                        window.AR_READY = false;
+                        document.getElementById('calib-status').innerText = "SCANNING...";
+                        document.getElementById('calib-status').classList.add('warn');
+                    }
+                }
+            }
+        }
+    });
+</script>
+</head>
+
+<body>
+
+<a-scene 
+    webxr="requiredFeatures: hit-test, local-floor; optionalFeatures: dom-overlay; overlayElement: #ui-layer"
+    renderer="antialias: true; alpha: true"
+    background="transparent: true"
+    vr-mode-ui="enterVRButton: #custom-ar-btn">
+
+    <a-camera position="0 1.6 0"></a-camera>
+
+    <a-entity id="reticle" ar-hit-test visible="false">
+        <a-ring radius-inner="0.15" radius-outer="0.2" color="#00ffcc" rotation="-90 0 0" opacity="0.8"></a-ring>
+        <a-circle radius="0.05" color="#00ffcc" rotation="-90 0 0" opacity="0.5"></a-circle>
+    </a-entity>
+
+    <a-entity id="marker-container"></a-entity>
+
+</a-scene>
+
+<div id="ui-layer">
+    <div class="hud-header">
+        <div class="status-panel">
+            <span>GPS: <span id="gps-status" class="warn val">SEARCHING...</span></span>
+            <span>LAT: <span id="gps-lat" class="val">--.------</span></span>
+            <span>LON: <span id="gps-lon" class="val">--.------</span></span>
+            <span>ALT: <span id="gps-alt" class="val">-- m</span></span>
+        </div>
+        <div class="status-panel" style="text-align: right;">
+            <span>SYNC: <span id="net-status" class="val">ONLINE</span></span>
+            <span>XR SENSOR: <span id="calib-status" class="warn val">STANDBY</span></span>
+            <span>QUEUE: <span id="queue-count" class="val">0</span></span>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <div class="hud-footer">
+        <button class="btn-mark" id="btn-mark" onclick="AVIS_System.markLocation()" disabled>
+            <span style="font-size: 24px;">⌖</span> MARK LOCATION
+        </button>
+    </div>
+</div>
+
+<script>
+/**
+ * ============================================================================
+ * AVIS AC ENGINE (AR Capturing System)
+ * Handles GPS, Reverse Geocoding, AR Object Instantiation, and Supabase Sync.
+ * ============================================================================
+ */
+
+const CONFIG = {
+    SUPABASE_URL: "https://ihdllispdbwvwcwxlvhr.supabase.co",
+    SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P",
+    GPS_THROTTLE_MS: 2000 
+};
+
+// State
+const STATE = {
+    lat: null, lon: null, alt: null,
+    lastGpsTime: 0,
+    offlineQueue: JSON.parse(localStorage.getItem('avis_sync_queue')) || []
+};
+
+// ---------------- UI & FEEDBACK ----------------
+function showToast(msg, type = 'normal') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.innerText = msg;
+    container.appendChild(toast);
+    setTimeout(() => { if (toast.parentNode) toast.remove(); }, 3000);
+}
+
+function updateQueueUI() {
+    document.getElementById('queue-count').innerText = STATE.offlineQueue.length;
+}
+
+// ---------------- SENSOR MANAGEMENT (GPS) ----------------
+function startSensors() {
+    if (navigator.geolocation) {
+        navigator.geolocation.watchPosition(
+            (pos) => {
+                let now = Date.now();
+                if (now - STATE.lastGpsTime < CONFIG.GPS_THROTTLE_MS) return;
+                STATE.lastGpsTime = now;
+
+                STATE.lat = pos.coords.latitude;
+                STATE.lon = pos.coords.longitude;
+                STATE.alt = pos.coords.altitude || 0;
+
+                document.getElementById('gps-status').innerText = "LOCKED";
+                document.getElementById('gps-status').classList.remove('warn');
+                document.getElementById('gps-status').style.color = "var(--neon-cyan)";
+                document.getElementById('gps-lat').innerText = STATE.lat.toFixed(6);
+                document.getElementById('gps-lon').innerText = STATE.lon.toFixed(6);
+                document.getElementById('gps-alt').innerText = Math.round(STATE.alt) + "m";
+                
+                // Enable button once GPS is secured
+                document.getElementById('btn-mark').disabled = false;
+            },
+            (err) => {
+                document.getElementById('gps-status').innerText = "SIGNAL LOST";
+                document.getElementById('gps-status').classList.add('warn');
+            },
+            { enableHighAccuracy: true, maximumAge: 0 }
+        );
+    }
+}
+
+// ---------------- LOCATION LOGIC ----------------
+const AVIS_System = {
+    // 1. Get Area Name (Reverse Geocode)
+    getRegionName: async (lat, lon) => {
+        try {
+            // Free client-side reverse geocoder
+            const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
+            const data = await res.json();
+            return `${data.locality || data.city || 'Unknown Zone'}, ${data.principalSubdivision || data.countryCode}`;
+        } catch (e) {
+            return "Uncharted Territory";
+        }
+    },
+
+    // 2. Generate Tomb Raider Style 3D Marker
+    spawnARMarker: (positionVector) => {
+        const container = document.getElementById('marker-container');
+        
+        // The Root Entity
+        let marker = document.createElement('a-entity');
+        marker.setAttribute('position', positionVector);
+
+        // Ground Ring (Pulsing)
+        let ring = document.createElement('a-ring');
+        ring.setAttribute('radius-inner', '0.3');
+        ring.setAttribute('radius-outer', '0.35');
+        ring.setAttribute('color', '#ffea00');
+        ring.setAttribute('rotation', '-90 0 0');
+        ring.setAttribute('opacity', '0.8');
+        ring.setAttribute('animation', 'property: scale; to: 1.5 1.5 1.5; dir: alternate; dur: 1500; loop: true; easing: easeInOutSine');
+        marker.appendChild(ring);
+
+        // Core Spike (Low Poly, glowing)
+        let spike = document.createElement('a-cone');
+        spike.setAttribute('radius-bottom', '0.05');
+        spike.setAttribute('radius-top', '0');
+        spike.setAttribute('height', '2.5');
+        spike.setAttribute('color', '#ffea00');
+        spike.setAttribute('material', 'emissive: #ffea00; emissiveIntensity: 0.6');
+        spike.setAttribute('position', '0 1.25 0');
+        // Float animation
+        spike.setAttribute('animation', 'property: position; to: 0 1.4 0; dir: alternate; dur: 2000; loop: true; easing: easeInOutSine');
+        marker.appendChild(spike);
+
+        container.appendChild(marker);
+    },
+
+    // 3. Main Action Trigger
+    markLocation: async () => {
+        if (!STATE.lat || !STATE.lon) {
+            showToast("GPS Required. Cannot drop marker.", "error");
+            return;
+        }
+
+        // Disable button temporarily to prevent spam
+        const btn = document.getElementById('btn-mark');
+        btn.disabled = true;
+        btn.innerHTML = `<span style="font-size: 24px;">⌛</span> PROCESSING...`;
+
+        // Determine 3D Coordinates from Reticle
+        let placementPosition = { x: 0, y: 0, z: 0 };
+        const reticle = document.getElementById('reticle');
+        
+        if (window.AR_READY && reticle.getAttribute('visible')) {
+            placementPosition = reticle.getAttribute('position');
+            AVIS_System.spawnARMarker(placementPosition);
+            showToast("AR Anchor Placed.", "success");
+        } else {
+            showToast("No AR Surface. Using GPS Only.", "warn");
+        }
+
+        // Build Payload
+        const hexId = Math.random().toString(16).substr(2, 6).toUpperCase();
+        const regionName = await AVIS_System.getRegionName(STATE.lat, STATE.lon);
+        
+        const payload = {
+            idx: Math.floor(Date.now() / 1000), // Epoch timestamp as Int
+            id: hexId,
+            name: regionName,
+            lat: parseFloat(STATE.lat.toFixed(6)),
+            lon: parseFloat(STATE.lon.toFixed(6)),
+            points_pool: 100000,
+            created_by: null,
+            created_at: new Date().toISOString(),
+            realtime_pricing: null,
+            story_lore: null,
+            top_review: null,
+            icon: "treasure",
+            reward_per_visit: 100,
+            coordinates: `${STATE.lat.toFixed(6)}, ${STATE.lon.toFixed(6)}`,
+            category: "tactical_drop",
+            notes: null,
+            custom_logo: null
+        };
+
+        // Attempt Upload
+        await AVIS_System.uploadToSupabase(payload);
+
+        // Reset Button
+        setTimeout(() => {
+            btn.disabled = false;
+            btn.innerHTML = `<span style="font-size: 24px;">⌖</span> MARK LOCATION`;
+        }, 1000);
+    },
+
+    // 4. Supabase Network Logic
+    uploadToSupabase: async (payload) => {
+        try {
+            const response = await fetch(`${CONFIG.SUPABASE_URL}/rest/v1/locations`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'apikey': CONFIG.SUPABASE_KEY,
+                    'Authorization': `Bearer ${CONFIG.SUPABASE_KEY}`,
+                    'Prefer': 'return=minimal'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) throw new Error("Network response was not ok");
+            
+            showToast(`Uplink Successful: [${payload.id}]`, "success");
+        } catch (error) {
+            console.error("Upload failed, queueing offline:", error);
+            showToast(`Uplink Failed. Cached Locally.`, "error");
+            STATE.offlineQueue.push(payload);
+            localStorage.setItem('avis_sync_queue', JSON.stringify(STATE.offlineQueue));
+            updateQueueUI();
+        }
+    },
+
+    // 5. Background Sync Loop
+    syncOfflineQueue: async () => {
+        if (STATE.offlineQueue.length === 0) return;
+        if (!navigator.onLine) return;
+
+        document.getElementById('net-status').innerText = "SYNCING...";
+        document.getElementById('net-status').style.color = "var(--neon-yellow)";
+
+        let pending = [...STATE.offlineQueue];
+        let successes = 0;
+
+        for (let i = 0; i < pending.length; i++) {
+            let item = pending[i];
+            try {
+                const response = await fetch(`${CONFIG.SUPABASE_URL}/rest/v1/locations`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': CONFIG.SUPABASE_KEY,
+                        'Authorization': `Bearer ${CONFIG.SUPABASE_KEY}`,
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify(item)
+                });
+
+                if (response.ok) {
+                    // Remove from queue
+                    STATE.offlineQueue = STATE.offlineQueue.filter(q => q.id !== item.id);
+                    successes++;
+                }
+            } catch (e) {
+                break; // Stop trying if network fails again
+            }
+        }
+
+        localStorage.setItem('avis_sync_queue', JSON.stringify(STATE.offlineQueue));
+        updateQueueUI();
+        
+        document.getElementById('net-status').innerText = navigator.onLine ? "ONLINE" : "OFFLINE";
+        document.getElementById('net-status').style.color = navigator.onLine ? "white" : "red";
+        
+        if (successes > 0) showToast(`Restored ${successes} cached nodes.`, "success");
+    }
+};
+
+// ---------------- INITIALIZATION ----------------
+window.onload = () => {
+    startSensors();
+    updateQueueUI();
+    
+    // Check network status
+    window.addEventListener('online', () => {
+        document.getElementById('net-status').innerText = "ONLINE";
+        document.getElementById('net-status').style.color = "white";
+        AVIS_System.syncOfflineQueue();
+    });
+    window.addEventListener('offline', () => {
+        document.getElementById('net-status').innerText = "OFFLINE";
+        document.getElementById('net-status').style.color = "red";
+    });
+
+    // Periodic Background Sync Attempt
+    setInterval(AVIS_System.syncOfflineQueue, 15000);
+};
+</script>
+
+</body>
+</html>

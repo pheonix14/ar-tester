@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>AVIS AR | Spatial Engine v3.0</title>
+<title>AVIS AR | Spatial Engine v3.5</title>
 
 <style>
     /* ==========================================================================
-       AVIS CORE STYLESHEET
+       AVIS CORE STYLESHEET - V3.5
        ========================================================================== */
     :root {
         --theme-bg: #050a0f;
@@ -16,8 +16,9 @@
         --neon-red: #ff3333;
         --neon-purple: #b026ff;
         --neon-blue: #0088ff;
-        --glass: rgba(5, 10, 15, 0.75);
-        --glass-border: rgba(0, 255, 204, 0.3);
+        --neon-green: #00ff66;
+        --glass: rgba(5, 10, 15, 0.85);
+        --glass-border: rgba(0, 255, 204, 0.4);
     }
 
     * { box-sizing: border-box; }
@@ -35,7 +36,7 @@
         transition: filter 0.3s;
     }
     
-    #cam.locked { filter: contrast(1.1) brightness(0.4) grayscale(0.5); }
+    #cam.locked { filter: contrast(1.2) brightness(0.3) grayscale(0.8); }
 
     /* ---------------- HUD ELEMENTS ---------------- */
     #top-hud {
@@ -49,20 +50,39 @@
         padding: 10px 20px; border-radius: 40px; border: 1px solid var(--glass-border);
         display: flex; align-items: center; gap: 12px; font-weight: 800;
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-        pointer-events: auto;
+        pointer-events: auto; font-size: 14px; text-transform: uppercase;
     }
 
-    .sys-logs {
-        position: fixed; top: 80px; left: 20px; width: 250px;
-        font-family: monospace; font-size: 10px; color: var(--neon-cyan);
-        z-index: 10; pointer-events: none; text-shadow: 0 0 5px black;
-        display: flex; flex-direction: column; gap: 4px; opacity: 0.8;
+    .xp-bar-container {
+        position: absolute; top: 75px; left: 30px; width: 150px;
+        height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;
     }
+
+    #xp-fill {
+        width: 30%; height: 100%; background: var(--neon-cyan);
+        box-shadow: 0 0 10px var(--neon-cyan); transition: width 0.5s ease;
+    }
+
+    /* ---------------- LIVE LOG VIEWER ---------------- */
+    #live-log-panel {
+        position: fixed; top: 100px; left: 20px; width: 300px; height: 250px;
+        background: rgba(0, 5, 10, 0.9); border: 1px solid var(--neon-cyan);
+        border-radius: 8px; overflow-y: auto; font-family: 'Courier New', Courier, monospace;
+        font-size: 11px; color: var(--neon-cyan); padding: 10px; z-index: 50;
+        box-shadow: 0 0 15px rgba(0, 255, 204, 0.2); display: flex; flex-direction: column;
+        pointer-events: auto; backdrop-filter: blur(5px);
+    }
+    
+    .log-entry { margin-bottom: 5px; border-bottom: 1px solid rgba(0,255,204,0.1); padding-bottom: 3px; word-wrap: break-word; }
+    .log-warn { color: var(--neon-gold); }
+    .log-error { color: var(--neon-red); }
+    .log-success { color: var(--neon-green); }
+    .log-data { color: var(--neon-blue); }
 
     /* ---------------- AR SPATIAL RENDERER ---------------- */
     #ar-world {
         position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        z-index: 5; pointer-events: none; perspective: 1200px;
+        z-index: 5; pointer-events: none; perspective: 1000px;
         transform-style: preserve-3d;
     }
 
@@ -70,37 +90,63 @@
         position: absolute; top: 50%; left: 50%;
         transform-style: preserve-3d; pointer-events: auto;
         display: flex; flex-direction: column; align-items: center;
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        will-change: transform;
+        /* Hardware acceleration for smooth panning */
+        will-change: transform, opacity;
+        animation: fadeInNode 0.8s ease-out forwards;
+    }
+
+    /* Visual Effect: Fade in on load */
+    @keyframes fadeInNode {
+        0% { opacity: 0; transform: scale(0.1) translateY(50px); }
+        100% { opacity: var(--target-opacity); transform: scale(var(--target-scale)) translateY(0); }
     }
 
     .ar-icon {
         width: 80px; height: 80px;
         background-size: contain; background-position: center; background-repeat: no-repeat;
-        filter: drop-shadow(0 0 15px var(--neon-cyan));
     }
 
+    /* Visual Effect: Glow based on Rarity */
     .ar-node.common .ar-icon { filter: drop-shadow(0 0 10px rgba(255,255,255,0.5)); }
     .ar-node.rare .ar-icon { filter: drop-shadow(0 0 20px var(--neon-blue)); }
-    .ar-node.ultra-rare .ar-icon { filter: drop-shadow(0 0 30px var(--neon-purple)); }
-    .ar-node.cluster .ar-icon { filter: drop-shadow(0 0 20px var(--neon-gold)); transform: scale(1.2); }
+    .ar-node.ultra-rare .ar-icon { filter: drop-shadow(0 0 35px var(--neon-purple)); }
+    .ar-node.cluster .ar-icon { filter: drop-shadow(0 0 25px var(--neon-gold)); }
+
+    /* Visual Effect: Pulsing animation for active spawns */
+    .ar-node.status-active .ar-icon {
+        animation: pulse-spawn 2s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulse-spawn {
+        0% { transform: scale(0.95); filter: brightness(1); }
+        100% { transform: scale(1.05); filter: brightness(1.3); }
+    }
 
     .ar-label {
         background: rgba(0,0,0,0.8); border: 1px solid var(--neon-cyan);
         padding: 4px 10px; border-radius: 6px; margin-top: 8px;
-        font-size: 11px; text-align: center; text-transform: uppercase;
+        font-size: 12px; text-align: center; text-transform: uppercase;
         letter-spacing: 1px; box-shadow: 0 5px 15px rgba(0,0,0,0.9);
+        backdrop-filter: blur(4px); transition: all 0.2s;
     }
 
-    /* Spatial Floating Animations */
-    @keyframes float-fast { 0% { transform: translateY(0px); } 100% { transform: translateY(-15px); } }
-    @keyframes float-med { 0% { transform: translateY(0px); } 100% { transform: translateY(-25px); } }
-    @keyframes float-slow { 0% { transform: translateY(0px); } 100% { transform: translateY(-35px); } }
+    /* Visual Effect: Hover Tooltip */
+    .ar-tooltip {
+        position: absolute; top: -40px; background: var(--glass);
+        border: 1px solid var(--neon-gold); padding: 5px 10px; border-radius: 4px;
+        opacity: 0; transition: opacity 0.2s, transform 0.2s; pointer-events: none;
+        white-space: nowrap; font-size: 11px; color: var(--neon-gold);
+        transform: translateY(10px);
+    }
+    .ar-node:hover .ar-tooltip, .ar-node:active .ar-tooltip { 
+        opacity: 1; transform: translateY(0); 
+    }
+    .ar-node:hover .ar-label { border-color: var(--neon-gold); color: var(--neon-gold); }
 
     /* ---------------- ISOMETRIC MINIMAP ---------------- */
     #minimap-container {
         position: fixed; bottom: 130px; right: 20px; z-index: 20;
-        width: 140px; height: 140px; perspective: 800px; pointer-events: none;
+        width: 150px; height: 150px; perspective: 800px; pointer-events: none;
     }
 
     #minimap {
@@ -116,7 +162,7 @@
         background-image: linear-gradient(var(--neon-cyan) 1px, transparent 1px),
                           linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px);
         background-size: 25px 25px; opacity: 0.2;
-        transition: background-position 0.5s ease-out;
+        transition: background-position 0.2s linear;
     }
 
     /* PLAYER DOT & COMPASS DIRECTIONAL ARROW */
@@ -132,13 +178,13 @@
         content: ''; position: absolute; top: -18px; left: 50%;
         transform: translateX(-50%);
         border-left: 6px solid transparent; border-right: 6px solid transparent;
-        border-bottom: 14px solid var(--neon-red); /* Red tip compass arrow */
+        border-bottom: 14px solid var(--neon-red);
         filter: drop-shadow(0 -2px 5px var(--neon-red));
     }
 
     .map-blip {
         position: absolute; border-radius: 50%; z-index: 10;
-        transform: translate(-50%, -50%); transition: all 0.3s;
+        transform: translate(-50%, -50%); transition: left 0.5s linear, top 0.5s linear;
     }
     .map-blip.common { width: 6px; height: 6px; background: white; box-shadow: 0 0 5px white; }
     .map-blip.rare { width: 8px; height: 8px; background: var(--neon-blue); box-shadow: 0 0 10px var(--neon-blue); }
@@ -148,16 +194,16 @@
     /* ---------------- BUTTON-ONLY OS CONTROLS ---------------- */
     #os-controls {
         position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-        z-index: 30; display: flex; gap: 10px; background: var(--glass);
+        z-index: 30; display: flex; gap: 8px; background: var(--glass);
         padding: 10px; border-radius: 20px; border: 1px solid var(--glass-border);
         box-shadow: 0 10px 30px rgba(0,0,0,0.8);
     }
 
     .os-btn {
         background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan);
-        padding: 12px 16px; border-radius: 12px; font-weight: bold; font-size: 11px;
+        padding: 10px 12px; border-radius: 12px; font-weight: bold; font-size: 10px;
         text-transform: uppercase; cursor: pointer; transition: 0.2s;
-        display: flex; flex-direction: column; align-items: center; gap: 5px; width: 75px;
+        display: flex; flex-direction: column; align-items: center; gap: 5px; width: 65px;
     }
 
     .os-btn:active { transform: scale(0.9); background: rgba(0,255,204,0.2); }
@@ -167,10 +213,10 @@
     /* ---------------- MODALS ---------------- */
     .modal {
         position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        width: 85%; max-width: 400px; background: rgba(5, 10, 15, 0.95);
+        width: 85%; max-width: 400px; background: rgba(5, 10, 15, 0.98);
         border: 2px solid var(--neon-cyan); border-radius: 20px; padding: 25px;
         z-index: 100; display: none; text-align: center;
-        box-shadow: 0 20px 50px rgba(0,0,0,0.9);
+        box-shadow: 0 20px 50px rgba(0,0,0,0.9); backdrop-filter: blur(10px);
     }
     .modal.active { display: block; animation: pop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     @keyframes pop { from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
@@ -189,8 +235,9 @@
     </div>
 </div>
 
-<div class="sys-logs" id="sys-log-container">
-    <div>[AVIS_OS] BOOT SEQUENCE INITIATED</div>
+<div id="live-log-panel">
+    <div style="text-align:center; border-bottom:1px solid var(--neon-cyan); padding-bottom:5px; margin-bottom:5px; font-weight:bold;">AVIS LIVE TERMINAL</div>
+    <div id="log-output"></div>
 </div>
 
 <div id="ar-world"></div>
@@ -207,6 +254,7 @@
     <button class="os-btn" onclick="SAK_Controller.forceScan()"><i>📡</i><span>SCAN</span></button>
     <button class="os-btn" id="btn-filter" onclick="SAK_Controller.cycleFilter()"><i>👁️</i><span id="lbl-filter">ALL</span></button>
     <button class="os-btn" id="btn-lock" onclick="SAK_Controller.toggleLock()"><i>🔒</i><span>LOCK</span></button>
+    <button class="os-btn" id="btn-logs" onclick="SAK_Controller.toggleLogs()"><i>📋</i><span>LOGS</span></button>
     <button class="os-btn" onclick="SAK_Controller.expandClusters()"><i>💥</i><span>EXPAND</span></button>
 </div>
 
@@ -214,54 +262,71 @@
     <h2 id="data-title" style="color:var(--neon-cyan); margin-top:0;">NODE_DATA</h2>
     <div id="data-meta" style="font-size:12px; color:gray; margin-bottom:15px;"></div>
     <p id="data-content" style="color:#ddd; line-height:1.5; font-size:14px;"></p>
-    <button class="os-btn" style="width:100%; margin-top:20px; background:var(--neon-cyan); color:black;" onclick="SAK_Controller.closeModal()">ACKNOWLEDGE</button>
+    <div style="background:rgba(255,215,0,0.1); padding:10px; border-radius:10px; margin:15px 0;">
+        <span style="color:var(--neon-gold); font-weight:bold;">+ <span id="reward-val">0</span> XP</span>
+    </div>
+    <button class="os-btn" style="width:100%; margin-top:10px; background:var(--neon-cyan); color:black;" onclick="SAK_Controller.closeModal()">EXTRACT DATA</button>
 </div>
 
 <script>
 /**
  * ============================================================================
- * AVIS SAK ENGINE (Spatial Augmented Kernel)
- * Core System Logic for geospatial tracking, grid hashing, and AR rendering.
+ * AVIS SAK ENGINE (Spatial Augmented Kernel) v3.5
+ * High-Performance, Anchored AR, Live Logging, Data Pipeline Integrated.
  * ============================================================================
  */
 
 const CONFIG = {
     SUPABASE_URL: "https://ihdllispdbwvwcwxlvhr.supabase.co",
     SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P",
-    GRID_PRECISION: 4, // Decimals for Lat/Lon (4 = ~11m cells)
-    MOVE_THRESHOLD_M: 10, // Meters user must move to trigger hard scene refresh
-    CLUSTER_RADIUS_M: 20, // Distance to group nodes into a cluster
-    RENDER_RAD_M: 800, // Max distance to render AR nodes
-    MINIMAP_RAD_M: 400 // Scale reference for minimap edges
+    GRID_PRECISION: 4, // Decimals for Lat/Lon (~11m cells)
+    MOVE_THRESHOLD_M: 10, // Lazy Load threshold
+    CLUSTER_RADIUS_M: 25, // Clustering distance
+    RENDER_RAD_M: 1000, // Max AR render distance (Distance Fog threshold)
+    MINIMAP_RAD_M: 500, // Minimap scale
+    MAX_RENDER_NODES: 30, // LOD System limit
+    GPS_THROTTLE_MS: 2000 // Performance: Limit GPS processing
+};
+
+// Performance Caching System
+const CACHE = {
+    cells: new Set(),
+    maxCells: 3
 };
 
 // Global State
 const STATE = {
     lat: null, lon: null, heading: 0,
     lastUpdateLat: null, lastUpdateLon: null,
+    lastGpsTime: 0,
     activeCell: "",
-    nodes: [], // Raw processed nodes
-    renderQueue: [], // Nodes/Clusters currently drawn
+    nodes: [], // Raw pipeline nodes
+    renderQueue: [], // Active LOD batch
     viewLocked: false,
-    filterMode: 'ALL', // ALL, LANDMARK, LEGEND
-    clustersExpanded: false
+    filterMode: 'ALL',
+    clustersExpanded: false,
+    logsVisible: true,
+    gold: 0, xp: 0, lvl: 1
 };
 
-// Icons (Base64 or standard URLs for categories)
+// Icons Pipeline
 const ICONS = {
     landmark: 'https://cdn-icons-png.flaticon.com/512/1491/1491410.png',
+    legend: 'https://cdn-icons-png.flaticon.com/512/1004/1004652.png',
     cluster: 'https://cdn-icons-png.flaticon.com/512/8205/8205367.png',
     default: 'https://cdn-icons-png.flaticon.com/512/684/684908.png'
 };
 
-// ---------------- SYSTEM LOGGER ----------------
-function sysLog(msg) {
-    const container = document.getElementById('sys-log-container');
+// ---------------- LIVE TERMINAL LOGGER ----------------
+function sysLog(msg, type = 'normal') {
+    const output = document.getElementById('log-output');
     const log = document.createElement('div');
-    log.innerText = `[${new Date().toLocaleTimeString().split(' ')[0]}] ${msg}`;
-    container.prepend(log);
-    if(container.children.length > 6) container.removeChild(container.lastChild);
-    console.log(msg);
+    log.className = `log-entry log-${type}`;
+    log.innerHTML = `[${new Date().toISOString().substring(11,19)}] ${msg}`;
+    output.prepend(log);
+    
+    // Memory management for logs
+    if(output.children.length > 50) output.removeChild(output.lastChild);
 }
 
 // ---------------- SPATIAL MATH LIBRARY ----------------
@@ -288,67 +353,91 @@ const MathGeo = {
 const SAK_Data = {
     fetch: async () => {
         if (!STATE.lat || !STATE.lon) return;
-        sysLog("INITIATING API SPATIAL SCAN...");
+        
+        let cellId = MathGeo.getCellId(STATE.lat, STATE.lon);
+        
+        // Cache / Lazy Load System
+        if(CACHE.cells.has(cellId)) {
+            sysLog(`[CACHE] Cell ${cellId} loaded from memory.`, 'success');
+            SAK_Engine.compileScene();
+            return;
+        }
+
+        sysLog(`[NET] Fetching geospatial data for area...`, 'warn');
         try {
-            // Hit Python Backend to process Haversine filtering natively based on user GPS
+            // Adapted Pipeline format fetching
             const res = await fetch(`/api/v1/scan?lat=${STATE.lat}&lon=${STATE.lon}&radius=${CONFIG.RENDER_RAD_M}`);
             const responseData = await res.json();
             let data = responseData.data;
             
-            // Auto-Predictive Spawn if DB is unreachable or empty within radius
             if (!data || data.length === 0) {
-                sysLog("NO LOCAL DB NODES. GENERATING PREDICTIVE GRID.");
+                sysLog(`[DB] No nodes. Generating predictive grid.`, 'warn');
                 data = SAK_Data.generateMockGrid();
             }
             
+            // Manage Cell Cache limits
+            CACHE.cells.add(cellId);
+            if(CACHE.cells.size > CACHE.maxCells) {
+                const firstItem = CACHE.cells.values().next().value;
+                CACHE.cells.delete(firstItem);
+            }
+
             SAK_Data.process(data);
         } catch (e) {
-            sysLog("NETWORK ERROR. USING PREDICTIVE LOCAL CACHE.");
+            sysLog(`[ERR] API Offline. Booting Local Sandbox.`, 'error');
             SAK_Data.process(SAK_Data.generateMockGrid());
         }
     },
 
     process: (rawData) => {
         STATE.nodes = [];
-        rawData.forEach(item => {
+        sysLog(`[DATA] Pipeline processing ${rawData.length} nodes...`, 'data');
+
+        rawData.forEach((item, index) => {
+            // Pipeline format mapping: id, name, lat, lng, type, rarity, status
             let lat = item.lat || item.latitude;
-            let lon = item.lon || item.longitude;
+            let lon = item.lng || item.lon || item.longitude; // Prioritize lng
             if(!lat || !lon) return;
 
-            // Enforce Rules: Assign Rarity & Status
-            let rand = Math.random();
-            let rarity = item.rarity || (rand > 0.95 ? 'ultra-rare' : (rand > 0.7 ? 'rare' : 'common'));
+            let type = item.type || item.category || 'landmark';
+            let rarity = item.rarity || (Math.random() > 0.9 ? 'ultra-rare' : (Math.random() > 0.6 ? 'rare' : 'common'));
+            let status = item.status || 'active';
             
             let node = {
-                id: item.id || Math.random().toString(36).substr(2, 9),
-                name: item.name || "UNIDENTIFIED NODE",
+                id: item.id || `NODE_${index}`,
+                name: item.name || "UNIDENTIFIED",
                 lat: lat, lon: lon,
-                category: item.category || 'landmark',
+                type: type,
                 rarity: rarity,
-                visibilityRange: rarity === 'ultra-rare' ? 1000 : 500,
-                status: 'active',
+                status: status,
+                visibilityRange: rarity === 'ultra-rare' ? 1200 : 800,
                 stories: item.stories || []
             };
+
+            // Log details of high rarity targets to viewer
+            if(rarity === 'ultra-rare' || rarity === 'rare') {
+                sysLog(`--> Detected [${rarity.toUpperCase()}] ${node.name} at ${lat.toFixed(4)}, ${lon.toFixed(4)}`, 'success');
+            }
+
             STATE.nodes.push(node);
         });
 
         document.getElementById('node-count').innerText = STATE.nodes.length;
-        sysLog(`PROCESSED ${STATE.nodes.length} SAK NODES`);
+        sysLog(`[SYS] Indexed ${STATE.nodes.length} anchor points.`, 'success');
         SAK_Engine.compileScene();
     },
 
     generateMockGrid: () => {
-        // Predicts and generates an S2-style grid of POIs around the user in real-time
         let mocks = [];
         if(!STATE.lat) return mocks;
-        const spread = 0.002; // Roughly 200m
-        for(let i=0; i<8; i++) {
+        const spread = 0.003; 
+        for(let i=0; i<15; i++) {
             mocks.push({
-                id: "PREDICTED_"+i,
-                name: "ECHO ANOMALY " + i,
+                id: "ECHO_"+i, name: "Data Fragment " + i,
                 lat: STATE.lat + (Math.random() * spread * 2 - spread),
-                lon: STATE.lon + (Math.random() * spread * 2 - spread),
-                category: i % 3 === 0 ? 'legend' : 'landmark'
+                lng: STATE.lon + (Math.random() * spread * 2 - spread),
+                type: i % 4 === 0 ? 'legend' : 'landmark',
+                status: i % 2 === 0 ? 'active' : 'cooldown'
             });
         }
         return mocks;
@@ -360,26 +449,30 @@ const SAK_Engine = {
     compileScene: () => {
         if(!STATE.lat || STATE.viewLocked) return;
 
+        sysLog(`[ANCHOR] Player GPS: ${STATE.lat.toFixed(5)}, ${STATE.lon.toFixed(5)}`, 'data');
+
         let activeNodes = STATE.nodes.filter(n => {
-            if(STATE.filterMode === 'LANDMARK' && n.category !== 'landmark') return false;
-            if(STATE.filterMode === 'LEGEND' && n.category !== 'legend') return false;
+            if(STATE.filterMode === 'LANDMARK' && n.type !== 'landmark') return false;
+            if(STATE.filterMode === 'LEGEND' && n.type !== 'legend') return false;
             return true;
         });
 
-        // Calculate Distances continuously 
+        // 1. Distance & Bearing Calculation (Geospatial Anchoring)
         activeNodes.forEach(n => {
-            n.dist = MathGeo.dist(STATE.lat, STATE.lon, n.lat, n.lon);
+            n.distance = MathGeo.dist(STATE.lat, STATE.lon, n.lat, n.lon);
             n.bearing = MathGeo.bearing(STATE.lat, STATE.lon, n.lat, n.lon);
         });
 
-        // Sort by distance (Performance Rule: Prioritize nearest)
-        activeNodes.sort((a,b) => a.dist - b.dist);
+        // 2. Sort & LOD System (Limit visible objects for performance)
+        activeNodes.sort((a,b) => a.distance - b.distance);
+        
+        let lodNodes = activeNodes.slice(0, CONFIG.MAX_RENDER_NODES);
 
-        // Intelligent Clustering Rule
+        // 3. Clustering
         if(!STATE.clustersExpanded) {
-            STATE.renderQueue = SAK_Engine.cluster(activeNodes);
+            STATE.renderQueue = SAK_Engine.cluster(lodNodes);
         } else {
-            STATE.renderQueue = activeNodes;
+            STATE.renderQueue = lodNodes;
         }
 
         SAK_Renderer.draw();
@@ -397,23 +490,20 @@ const SAK_Engine = {
             for(let j=i+1; j<nodes.length; j++) {
                 if(visited.has(j)) continue;
                 let target = nodes[j];
-                let distBetween = MathGeo.dist(current.lat, current.lon, target.lat, target.lon);
-                
-                if(distBetween < CONFIG.CLUSTER_RADIUS_M) {
+                if(MathGeo.dist(current.lat, current.lon, target.lat, target.lon) < CONFIG.CLUSTER_RADIUS_M) {
                     clusterGroup.push(target);
                     visited.add(j);
                 }
             }
 
             if(clusterGroup.length > 1) {
-                // Generate Cluster Node
                 clusters.push({
-                    isCluster: true,
-                    id: "CLUSTER_" + current.id,
-                    name: `CLUSTER (${clusterGroup.length})`,
+                    isCluster: true, id: "CLUSTER_" + current.id,
+                    name: `DENSITY ANOMALY (${clusterGroup.length})`,
                     lat: current.lat, lon: current.lon,
-                    dist: current.dist, bearing: current.bearing,
-                    rarity: 'cluster', children: clusterGroup
+                    distance: current.distance, bearing: current.bearing,
+                    type: 'cluster', rarity: 'cluster', status: 'active',
+                    children: clusterGroup
                 });
             } else {
                 clusters.push(current);
@@ -432,12 +522,13 @@ const SAK_Renderer = {
         arWorld.innerHTML = "";
         mapMarkers.innerHTML = "";
 
-        STATE.renderQueue.forEach((node, index) => {
-            if(node.dist > CONFIG.RENDER_RAD_M) return;
+        STATE.renderQueue.forEach((node) => {
+            // Distance Fog / Culling
+            if(node.distance > CONFIG.RENDER_RAD_M) return;
 
-            // 1. MINIMAP BLIP
-            let radarScale = (node.dist / CONFIG.MINIMAP_RAD_M) * 70;
-            if(radarScale > 70) radarScale = 70; // Clamp to edge
+            // --- 1. BATCH RENDER MINIMAP BLIPS ---
+            let radarScale = (node.distance / CONFIG.MINIMAP_RAD_M) * 70;
+            if(radarScale > 70) radarScale = 70; 
 
             let blip = document.createElement("div");
             blip.className = `map-blip ${node.rarity}`;
@@ -445,30 +536,41 @@ const SAK_Renderer = {
             blip.style.top = `calc(50% + ${Math.cos(node.bearing * Math.PI / 180) * -radarScale}px)`;
             mapMarkers.appendChild(blip);
 
-            // 2. AR NODE
+            // --- 2. BATCH RENDER AR WORLD ANCHORS ---
             let relAngle = node.bearing - STATE.heading;
             if (relAngle < -180) relAngle += 360;
             if (relAngle > 180) relAngle -= 360;
 
-            // Culling: Only render if within 75 degrees of forward view
-            if (Math.abs(relAngle) < 75) {
-                let x = (window.innerWidth / 2) + (relAngle * (window.innerWidth / 45));
-                let scale = Math.max(0.15, 1 - (node.dist / CONFIG.RENDER_RAD_M));
-                let y = (window.innerHeight / 2) + (node.dist * 0.15); // Perspective drop
+            // Render if within 80 degrees of forward view
+            if (Math.abs(relAngle) < 80) {
+                // Inverse Distance Scaling (Near = Large, Far = Small)
+                // Creates the effect of camera moving *through* the world
+                let scaleFactor = Math.max(0.15, Math.min(2.5, 50 / Math.max(node.distance, 5)));
+                
+                // Horizontal Placement based on compass heading
+                let x = (window.innerWidth / 2) + (relAngle * (window.innerWidth / 40));
+                
+                // Vertical Placement (Horizon line drop off)
+                let y = (window.innerHeight / 2) + (node.distance * 0.2); 
+
+                // Distance Fog Opacity
+                let opacityFactor = Math.max(0.1, 1 - (node.distance / CONFIG.RENDER_RAD_M));
 
                 let arNode = document.createElement("div");
-                arNode.className = `ar-node ${node.rarity}`;
-                arNode.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
+                arNode.className = `ar-node ${node.rarity} status-${node.status}`;
                 
-                // Assign deterministic floating animation based on ID
-                let floatSpeed = (index % 3 === 0) ? 'float-fast' : (index % 2 === 0 ? 'float-med' : 'float-slow');
-                let floatDuration = (0.5 + (index % 1.5)) + 's';
+                // Use CSS variables for the load-in animation interpolation
+                arNode.style.setProperty('--target-scale', scaleFactor);
+                arNode.style.setProperty('--target-opacity', opacityFactor);
+                arNode.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scaleFactor})`;
+                arNode.style.zIndex = Math.round(1000 - node.distance); // Closer objects render on top
 
-                let iconUrl = node.isCluster ? ICONS.cluster : (ICONS[node.category] || ICONS.default);
+                let iconUrl = ICONS[node.type] || ICONS.default;
 
                 arNode.innerHTML = `
-                    <div class="ar-icon" style="background-image:url('${iconUrl}'); animation: ${floatSpeed} ${floatDuration} infinite alternate ease-in-out;"></div>
-                    <div class="ar-label">[${Math.round(node.dist)}m]<br>${node.name}</div>
+                    <div class="ar-tooltip">STATUS: ${node.status.toUpperCase()}</div>
+                    <div class="ar-icon" style="background-image:url('${iconUrl}');"></div>
+                    <div class="ar-label">[${Math.round(node.distance)}m] ${node.name}</div>
                 `;
 
                 arNode.onclick = () => SAK_Controller.openModal(node);
@@ -480,15 +582,14 @@ const SAK_Renderer = {
     updateSensors: () => {
         if(STATE.viewLocked) return;
         
-        // Rotate Minimap based on hardware compass
+        // Minimap rotations
         document.getElementById("minimap").style.transform = `rotateX(55deg) rotateZ(${-STATE.heading}deg)`;
-        
-        // Counter-Rotate the Player Compass Arrow so it always faces visual UP
         document.getElementById("map-player").style.transform = `translate(-50%, -50%) rotateZ(${STATE.heading}deg)`;
 
-        // Move Grid (Translating GPS to Pixels for walking effect)
+        // Grid Translation (Walking feeling)
         if(STATE.lat && STATE.lon) {
             const grid = document.getElementById("map-grid");
+            // Multiplier ensures physical steps translate visually
             grid.style.backgroundPosition = `${-STATE.lon * 200000}px ${STATE.lat * 200000}px`;
         }
     }
@@ -502,18 +603,20 @@ async function bootHardware() {
 
         navigator.geolocation.watchPosition(
             (pos) => {
+                let now = Date.now();
+                // GPS Throttling for Performance
+                if (now - STATE.lastGpsTime < CONFIG.GPS_THROTTLE_MS) return;
+                STATE.lastGpsTime = now;
+
                 STATE.lat = pos.coords.latitude;
                 STATE.lon = pos.coords.longitude;
                 
-                // Update Cell ID HUD
                 let newCell = MathGeo.getCellId(STATE.lat, STATE.lon);
                 if(newCell !== STATE.activeCell) {
                     STATE.activeCell = newCell;
                     document.getElementById('grid-id').innerText = newCell;
-                    sysLog(`CELL TRANSITION: ${newCell}`);
                 }
 
-                // Threshold Check Rule (Prevent Jitter)
                 if(!STATE.lastUpdateLat) {
                     STATE.lastUpdateLat = STATE.lat;
                     STATE.lastUpdateLon = STATE.lon;
@@ -523,50 +626,42 @@ async function bootHardware() {
                     if(moveDist > CONFIG.MOVE_THRESHOLD_M) {
                         STATE.lastUpdateLat = STATE.lat;
                         STATE.lastUpdateLon = STATE.lon;
-                        sysLog("THRESHOLD EXCEEDED. RE-COMPILING SCENE.");
-                        SAK_Data.fetch(); // Re-fetch from API to predict/load new local nodes
+                        sysLog(`[MOVE] Threshold crossed (${Math.round(moveDist)}m). Syncing zone...`, 'warn');
+                        SAK_Data.fetch(); 
                     } else {
-                        // Just update distances of current cache
                         SAK_Engine.compileScene();
                     }
                 }
             },
-            (err) => { sysLog("GPS SIGNAL LOST. WAITING..."); },
+            (err) => { sysLog("[ERR] GPS SIGNAL LOST.", "error"); },
             { enableHighAccuracy: true, maximumAge: 0 }
         );
 
-        // Robust Compass Binding for iOS & Android
         if ('ondeviceorientationabsolute' in window) {
             window.addEventListener("deviceorientationabsolute", handleOrientation);
         } else if ('ondeviceorientation' in window) {
             window.addEventListener("deviceorientation", handleOrientation);
         }
 
-        // 60FPS Render Loop
+        // Render Loop
         setInterval(() => {
             SAK_Renderer.updateSensors();
-            SAK_Renderer.draw(); // Continuous draw to handle compass rotation smoothly
-        }, 16);
+            SAK_Renderer.draw(); 
+        }, 30); // ~30fps is stable for DOM-based AR
 
     } catch(e) {
-        sysLog("HARDWARE BOOT FAILED. INJECTING TEST COORDS.");
-        // Test Coordinates Fallback
+        sysLog("[ERR] HARDWARE DENIED. INJECTING DEV COORDS.", "error");
         STATE.lat = 23.5204; STATE.lon = 87.3119; STATE.heading = 0;
         document.getElementById('grid-id').innerText = MathGeo.getCellId(STATE.lat, STATE.lon);
         SAK_Data.fetch();
-        setInterval(() => {
-            SAK_Renderer.updateSensors();
-            SAK_Renderer.draw();
-        }, 16);
+        setInterval(() => { SAK_Renderer.updateSensors(); SAK_Renderer.draw(); }, 30);
     }
 }
 
 function handleOrientation(e) {
     if(e.webkitCompassHeading) {
-        // iOS
         STATE.heading = e.webkitCompassHeading;
     } else if (e.absolute || e.alpha !== null) {
-        // Android Standard
         STATE.heading = 360 - e.alpha;
     }
 }
@@ -574,7 +669,7 @@ function handleOrientation(e) {
 // ---------------- UI CONTROLLER (BUTTON ONLY) ----------------
 const SAK_Controller = {
     forceScan: () => {
-        sysLog("USER TRIGGERED MANUAL SCAN");
+        sysLog("[CMD] MANUAL SCAN EXECUTED", 'warn');
         SAK_Data.fetch();
     },
 
@@ -588,7 +683,7 @@ const SAK_Controller = {
         btn.classList.add('active');
         setTimeout(() => btn.classList.remove('active'), 200);
         
-        sysLog(`FILTER APPLIED: ${STATE.filterMode}`);
+        sysLog(`[CMD] FILTER: ${STATE.filterMode}`, 'success');
         SAK_Engine.compileScene();
     },
 
@@ -599,18 +694,31 @@ const SAK_Controller = {
         if(STATE.viewLocked) {
             btn.classList.add('active');
             cam.classList.add('locked');
-            sysLog("VIEW LOCKED.");
+            sysLog("[CMD] GYRO SENSORS LOCKED.", "warn");
         } else {
             btn.classList.remove('active');
             cam.classList.remove('locked');
-            sysLog("VIEW UNLOCKED.");
-            SAK_Engine.compileScene(); // Refresh immediately
+            sysLog("[CMD] GYRO SENSORS UNLOCKED.", "success");
+            SAK_Engine.compileScene(); 
+        }
+    },
+
+    toggleLogs: () => {
+        STATE.logsVisible = !STATE.logsVisible;
+        const panel = document.getElementById('live-log-panel');
+        const btn = document.getElementById('btn-logs');
+        if(STATE.logsVisible) {
+            panel.style.display = 'flex';
+            btn.classList.add('active');
+        } else {
+            panel.style.display = 'none';
+            btn.classList.remove('active');
         }
     },
 
     expandClusters: () => {
         STATE.clustersExpanded = !STATE.clustersExpanded;
-        sysLog(STATE.clustersExpanded ? "CLUSTERS EXPANDED" : "CLUSTERS COLLAPSED");
+        sysLog(STATE.clustersExpanded ? "[CMD] CLUSTERS EXPANDED" : "[CMD] CLUSTERS COLLAPSED");
         SAK_Engine.compileScene();
     },
 
@@ -623,27 +731,32 @@ const SAK_Controller = {
         const modal = document.getElementById("data-modal");
         document.getElementById("data-title").innerText = node.name;
         
-        let meta = `ID: ${node.id} | TYPE: ${node.rarity.toUpperCase()}<br>GEO: ${node.lat.toFixed(5)}, ${node.lon.toFixed(5)}`;
+        let meta = `ID: ${node.id} | TYPE: ${node.type.toUpperCase()}<br>GEO: ${node.lat.toFixed(5)}, ${node.lon.toFixed(5)}<br>DIST: ${Math.round(node.distance)}m | RARITY: ${node.rarity}`;
         document.getElementById("data-meta").innerHTML = meta;
 
         let lore = node.stories && node.stories.length > 0 ? node.stories[0].content : "No local data streams found at this coordinate.";
         document.getElementById("data-content").innerText = lore;
         
+        let reward = node.reward || 50;
+        document.getElementById("reward-val").innerText = reward;
+        STATE.lastReward = reward;
+
         modal.classList.add("active");
     },
 
     closeModal: () => {
+        STATE.xp += STATE.lastReward;
+        if (STATE.xp >= 100) { STATE.lvl++; STATE.xp = 0; sysLog(`[SYS] LEVEL UP! You are now Level ${STATE.lvl}`, 'success'); }
+        
+        document.getElementById("lvl-tag").innerText = "LVL " + STATE.lvl;
+        document.getElementById("xp-fill").style.width = STATE.xp + "%";
         document.getElementById("data-modal").classList.remove("active");
     }
 };
 
 // Auto-Boot Sequence
 window.onload = () => {
-    document.getElementById("shield").style.opacity = "0";
-    setTimeout(() => {
-        document.getElementById("shield").style.display = "none";
-        bootHardware();
-    }, 500);
+    bootHardware();
 };
 </script>
 

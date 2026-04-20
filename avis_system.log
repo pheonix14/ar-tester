@@ -598,3 +598,844 @@
 2026-04-20 10:07:26,579 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
 2026-04-20 10:07:26,580 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
 2026-04-20 10:07:26,609 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:07:46,568 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:07:46,570 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:07:46,570 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:07:46,573 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:07:46,575 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:07:46,609 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:08:06,575 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:08:06,576 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:08:06,577 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:08:06,579 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:08:06,579 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:08:06,609 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:08:26,589 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:08:26,591 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:08:26,592 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:08:26,594 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:08:26,595 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:08:26,634 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:08:46,599 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:08:46,600 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:08:46,601 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:08:46,604 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:08:46,623 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:08:46,651 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:09:06,605 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:09:06,606 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:09:06,606 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:09:06,609 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:09:06,614 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:09:06,645 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:09:26,612 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:09:26,613 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:09:26,613 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:09:26,616 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:09:26,616 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:09:26,641 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:09:46,635 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:09:46,638 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:09:46,638 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:09:46,641 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:09:46,642 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:09:46,679 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:10:06,650 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:10:06,651 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:10:06,652 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:10:06,654 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:10:06,656 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:10:06,688 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:10:26,658 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:10:26,659 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:10:26,659 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:10:26,661 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:10:26,662 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:10:26,696 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:10:46,663 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:10:46,664 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:10:46,664 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:10:46,667 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:10:46,667 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:10:46,688 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:11:06,805 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:11:06,806 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:11:06,807 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:11:06,810 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:11:06,810 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:11:06,844 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:11:26,815 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:11:26,816 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:11:26,816 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:11:26,819 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:11:26,819 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:11:26,848 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:11:47,223 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:11:47,223 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:11:47,224 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:11:47,226 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:11:47,227 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:11:47,261 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:12:07,242 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:12:07,243 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:12:07,244 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:12:07,246 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:12:07,247 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:12:07,278 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:12:27,307 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:12:27,308 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:12:27,309 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:12:27,311 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:12:27,312 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:12:27,340 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:12:41,221 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:12:41,223 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:12:41,223 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:12:41,227 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:12:41,228 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:12:41,260 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:12:41,756 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:12:41,758 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:12:41,758 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:12:41,763 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:12:41,763 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:12:41,801 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:12:47,274 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:12:47,275 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:12:47,275 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:12:47,277 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:12:47,277 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:12:47,293 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:13:07,828 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:13:07,829 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:13:07,829 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:13:07,832 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:13:07,832 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:13:07,851 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:13:29,849 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:13:29,850 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:13:29,851 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:13:29,853 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:13:29,854 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:13:29,889 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:13:49,854 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:13:49,855 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:13:49,856 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:13:49,858 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:13:49,858 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:13:49,886 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:14:10,022 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:14:10,023 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:14:10,024 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:14:10,026 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:14:10,027 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:14:10,056 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:14:29,892 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:14:29,893 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:14:29,894 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:14:29,896 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:14:29,897 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:14:29,918 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:14:49,903 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:14:49,904 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:14:49,905 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:14:49,908 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:14:49,919 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:14:49,953 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:15:09,912 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:15:09,913 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:15:09,914 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:15:09,916 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:15:09,916 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:15:09,943 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:15:29,934 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:15:29,935 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:15:29,935 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:15:29,938 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:15:29,938 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:15:29,998 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:15:49,940 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:15:49,941 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:15:49,941 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:15:49,943 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:15:49,943 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:15:49,963 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:16:11,206 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:16:11,206 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:16:11,207 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:16:11,208 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:16:11,209 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:16:11,237 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:16:31,332 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:16:31,333 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:16:31,333 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:16:31,335 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:16:31,336 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:16:31,361 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:16:51,348 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:16:51,349 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:16:51,349 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:16:51,350 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:16:51,351 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:16:51,368 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:17:11,354 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:17:11,355 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:17:11,355 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:17:11,356 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:17:11,357 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:17:11,366 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:17:25,139 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:17:25,144 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:17:25,147 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:17:25,215 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 10:17:25,218 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 10:17:27,968 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:17:27,970 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:17:27,970 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:17:27,974 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:17:27,975 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:17:28,008 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:17:45,548 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:17:45,550 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:17:45,551 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:17:45,553 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:17:45,554 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:17:45,578 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:18:05,563 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:18:05,564 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:18:05,565 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:18:05,567 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:18:05,567 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:18:05,592 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:18:25,564 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:18:25,565 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:18:25,565 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:18:25,567 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:18:25,568 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:18:25,592 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:18:45,586 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:18:45,587 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:18:45,588 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:18:45,590 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:18:45,591 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:18:45,640 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:19:05,602 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:19:05,604 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:19:05,605 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:19:05,607 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:19:05,607 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:19:05,632 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:19:25,614 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:19:25,615 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:19:25,616 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:19:25,618 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:19:25,618 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:19:25,635 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:19:45,618 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:19:45,619 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:19:45,621 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:19:45,623 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:19:45,625 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:19:45,657 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:20:05,629 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:20:05,630 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:20:05,630 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:20:05,633 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:20:05,633 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:20:05,656 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:20:26,017 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:20:26,019 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:20:26,019 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:20:26,020 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:20:26,020 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:20:26,029 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:20:46,028 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:20:46,029 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:20:46,030 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:20:46,032 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:20:46,032 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:20:46,059 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:21:06,029 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:21:06,030 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:21:06,031 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:21:06,033 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:21:06,033 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:21:06,057 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:21:26,082 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:21:26,083 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:21:26,083 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:21:26,085 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:21:26,085 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:21:26,113 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:21:30,471 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:21:30,479 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:21:30,481 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:21:34,611 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:21:34,612 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:21:34,613 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:21:34,617 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:21:34,617 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:21:34,696 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:21:40,071 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:21:40,072 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:21:40,073 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:21:40,077 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:21:40,077 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:21:40,110 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:21:50,523 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:21:50,525 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:21:50,526 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:21:50,527 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:21:50,527 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:21:50,546 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:22:10,757 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:22:10,758 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:22:10,758 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:22:10,760 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:22:10,760 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:22:10,775 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:22:30,863 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:22:30,868 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:22:30,869 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:22:30,871 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:22:30,872 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:22:30,895 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:22:53,288 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:22:53,289 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:22:53,290 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:22:53,292 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:22:53,293 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:22:53,323 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:23:13,290 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:23:13,291 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:23:13,291 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:23:13,293 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:23:13,294 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:23:13,316 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:23:33,889 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:23:33,890 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:23:33,890 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:23:33,893 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:23:33,894 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:23:33,965 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:23:53,902 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:23:53,903 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:23:53,903 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:23:53,906 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:23:53,906 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:23:53,926 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:24:13,906 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:24:13,907 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:24:13,907 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:24:13,908 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:24:13,908 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:24:13,916 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:24:33,926 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:24:33,927 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:24:33,927 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:24:33,929 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:24:33,930 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:24:33,960 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:24:38,368 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:24:38,369 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:24:38,370 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:24:38,374 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:24:38,375 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:24:38,407 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:24:39,253 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:24:39,254 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:24:39,255 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:24:39,259 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:24:39,259 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:24:39,291 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:24:54,174 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:24:54,178 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:24:54,179 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:24:54,182 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:24:54,183 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:24:54,199 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:25:14,638 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:25:14,639 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:25:14,640 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:25:14,644 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:25:14,647 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:25:14,678 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:25:34,751 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:25:34,752 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:25:34,752 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:25:34,754 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:25:34,755 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:25:34,779 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:25:55,313 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:25:55,314 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:25:55,324 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:25:55,328 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:25:55,329 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:25:55,356 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:26:15,454 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:26:15,455 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:26:15,455 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:26:15,457 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:26:15,457 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:26:15,477 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:26:35,460 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:26:35,461 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:26:35,461 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:26:35,463 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:26:35,463 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:26:35,483 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:26:55,472 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:26:55,473 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:26:55,473 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:26:55,475 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:26:55,475 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:26:55,497 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:27:15,955 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:27:15,956 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:27:15,956 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:27:15,958 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:27:15,958 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:27:15,973 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:27:36,179 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:27:36,180 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:27:36,180 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:27:36,182 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:27:36,183 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:27:36,213 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:27:56,542 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:27:56,543 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:27:56,543 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:27:56,546 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:27:56,546 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:27:56,574 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:28:16,479 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:28:16,480 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:28:16,480 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:28:16,482 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:28:16,483 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:28:16,506 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:28:37,379 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:28:37,383 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:28:37,384 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:28:37,392 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:28:37,440 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:28:37,484 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:28:57,317 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:28:57,319 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:28:57,319 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:28:57,323 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:28:57,323 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:28:57,345 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:29:01,646 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:29:01,648 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:29:01,650 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:29:03,640 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:29:03,641 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:29:03,642 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:29:03,646 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:29:03,647 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:29:03,679 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:29:22,557 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:29:22,559 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:29:22,559 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:29:22,562 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:29:22,562 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:29:22,586 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:29:42,591 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:29:42,592 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:29:42,592 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:29:42,596 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:29:42,597 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:29:42,627 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:30:02,607 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:30:02,608 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:30:02,608 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:30:02,610 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:30:02,611 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:30:02,633 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:30:22,619 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:30:22,619 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:30:22,619 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:30:22,622 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:30:22,623 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:30:22,657 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:30:42,824 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:30:42,826 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:30:42,826 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:30:42,829 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:30:42,829 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:30:42,851 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:31:02,634 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:31:02,635 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:31:02,636 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:31:02,639 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:31:02,639 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:31:02,662 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:31:23,516 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:31:23,517 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:31:23,518 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:31:23,521 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:31:23,521 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:31:23,544 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:31:43,532 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:31:43,533 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:31:43,534 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:31:43,536 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:31:43,537 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:31:43,567 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:32:03,526 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:32:03,528 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:32:03,528 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:32:03,530 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:32:03,531 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:32:03,558 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:32:23,545 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:32:23,547 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:32:23,547 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:32:23,550 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:32:23,550 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:32:23,572 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:32:43,542 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:32:43,543 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:32:43,543 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:32:43,546 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:32:43,546 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:32:43,570 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:33:03,554 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:33:03,555 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:33:03,556 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:33:03,558 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:33:03,559 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:33:03,584 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:33:23,571 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:33:23,572 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:33:23,572 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:33:23,575 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:33:23,575 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:33:23,599 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:33:43,578 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:33:43,579 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:33:43,579 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:33:43,581 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:33:43,581 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:33:43,601 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:34:03,591 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:34:03,592 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:34:03,593 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:34:03,595 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:34:03,596 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:34:03,621 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:34:23,592 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:34:23,593 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:34:23,594 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:34:23,597 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:34:23,598 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:34:23,625 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:34:43,607 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:34:43,608 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:34:43,608 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:34:43,611 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:34:43,612 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:34:43,632 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:35:04,269 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:35:04,273 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:35:04,274 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:35:04,277 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:35:04,290 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:35:04,311 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:35:24,273 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:35:24,274 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:35:24,274 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:35:24,276 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:35:24,276 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:35:24,292 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:35:44,282 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:35:44,283 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:35:44,283 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:35:44,285 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:35:44,287 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:35:44,311 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:36:04,290 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:36:04,290 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:36:04,291 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:36:04,292 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:36:04,293 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:36:04,311 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:36:24,800 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:36:24,801 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:36:24,801 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:36:24,804 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:36:24,804 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:36:24,823 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:36:46,298 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:36:46,298 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:36:46,299 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:36:46,300 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:36:46,301 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:36:46,319 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:37:06,598 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:37:06,600 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:37:06,600 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:37:06,603 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:37:06,603 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:37:06,637 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:37:26,597 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:37:26,598 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:37:26,598 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:37:26,601 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:37:26,601 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:37:26,629 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:37:47,029 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:37:47,030 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:37:47,031 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:37:47,034 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:37:47,041 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:37:47,064 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:38:07,031 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:38:07,032 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:38:07,032 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:38:07,034 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:38:07,035 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:38:07,061 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:38:27,886 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:38:27,888 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:38:27,889 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:38:27,893 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:38:27,903 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:38:27,929 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:38:48,804 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:38:48,805 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:38:48,805 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:38:48,807 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:38:48,808 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:38:48,849 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:39:08,815 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:39:08,817 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:39:08,817 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:39:08,820 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:39:08,820 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:39:08,863 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:39:28,812 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:39:28,813 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:39:28,813 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:39:28,816 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:39:28,816 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:39:28,838 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:39:48,999 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:39:49,000 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:39:49,000 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:39:49,002 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:39:49,002 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:39:49,021 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:40:09,039 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:40:09,040 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:40:09,040 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:40:09,042 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:40:09,043 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:40:09,067 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:40:29,716 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:40:29,717 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:40:29,717 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:40:29,720 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:40:29,721 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:40:29,747 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:40:49,723 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:40:49,724 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:40:49,725 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:40:49,727 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:40:49,728 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:40:49,756 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:41:09,727 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:41:09,728 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:41:09,728 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:41:09,730 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:41:09,731 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:41:09,758 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:41:29,732 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:41:29,733 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:41:29,733 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:41:29,736 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:41:29,736 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:41:29,766 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:41:49,740 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:41:49,741 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:41:49,741 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:41:49,744 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:41:49,744 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:41:49,762 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:42:09,842 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:42:09,843 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:42:09,843 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:42:09,846 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:42:09,847 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:42:09,872 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:42:29,845 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:42:29,846 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:42:29,846 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:42:29,848 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:42:29,848 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:42:29,867 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:42:49,858 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:42:49,858 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:42:49,859 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:42:49,860 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:42:49,860 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:42:49,880 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:43:09,863 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:43:09,864 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:43:09,864 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:43:09,865 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:43:09,866 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:43:09,883 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:43:29,878 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:43:29,880 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:43:29,881 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:43:29,884 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:43:29,903 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:43:29,931 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:43:50,371 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:43:50,372 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:43:50,372 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:43:50,374 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:43:50,374 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:43:50,385 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:44:00,528 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:44:00,530 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:44:00,532 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:44:02,632 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:44:02,633 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:44:02,634 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:44:02,638 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:44:02,638 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:44:02,670 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:44:20,593 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:44:20,594 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:44:20,594 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:44:20,597 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:44:20,598 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:44:20,621 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:44:40,598 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:44:40,599 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:44:40,599 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:44:40,601 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:44:40,602 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:44:40,623 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:44:57,006 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:44:57,007 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:44:57,010 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:44:57,064 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 10:44:57,065 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 10:44:57,237 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:44:57,238 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:44:57,240 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:44:57,331 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 10:44:57,332 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 10:45:00,540 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:45:00,541 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:45:00,542 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:45:00,546 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:45:00,547 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:45:00,576 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:45:17,392 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:45:17,393 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:45:17,394 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:45:17,397 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:45:17,400 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:45:17,450 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:45:37,732 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:45:37,733 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:45:37,734 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:45:37,736 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:45:37,736 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:45:37,752 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:45:57,744 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:45:57,744 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:45:57,744 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:45:57,745 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:45:57,746 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:45:57,762 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:46:17,748 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:46:17,749 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:46:17,750 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:46:17,751 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:46:17,751 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:46:17,776 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:46:37,751 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:46:37,752 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:46:37,753 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:46:37,755 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:46:37,755 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:46:37,781 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:46:57,753 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:46:57,754 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:46:57,754 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:46:57,756 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:46:57,757 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:46:57,776 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:47:17,759 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:47:17,760 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:47:17,760 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:47:17,762 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:47:17,763 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:47:17,780 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:47:38,569 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:47:38,570 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:47:38,571 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:47:38,573 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:47:38,573 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:47:38,604 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:47:59,230 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:47:59,232 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:47:59,232 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:47:59,235 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:47:59,239 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:47:59,273 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:48:02,178 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:48:02,182 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:48:02,194 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:48:02,285 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 10:48:02,286 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 10:48:02,390 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:48:02,391 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:48:02,392 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:48:02,434 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 10:48:02,436 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 10:54:21,919 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:54:21,930 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:54:21,939 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:55:00,807 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:55:00,809 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:55:00,811 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:55:00,853 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 10:55:00,860 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 10:55:00,932 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:55:00,932 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:55:00,935 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:55:00,970 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 10:55:00,971 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 10:55:01,085 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:55:01,087 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:55:01,089 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:55:01,127 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 10:55:01,128 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 10:55:01,248 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:55:01,249 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:55:01,250 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:55:01,290 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 10:55:01,293 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 10:55:01,382 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:55:01,383 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:55:01,384 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:55:01,419 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 10:55:01,422 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 11:02:06,691 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 11:02:06,692 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 11:02:06,695 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 11:02:06,736 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /favicon.ico
+2026-04-20 11:02:06,736 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 404
+2026-04-20 11:02:08,869 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 11:02:08,870 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 1000.0m
+2026-04-20 11:02:08,871 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 1000.0m)
+2026-04-20 11:02:08,873 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 3 objects within 1000.0m radius.
+2026-04-20 11:02:08,873 - [AVIS-ENGINE] - INFO - [API] Sending 3 location nodes to client device.
+2026-04-20 11:02:08,875 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
