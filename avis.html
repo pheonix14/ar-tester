@@ -111,6 +111,7 @@
         background-image: linear-gradient(var(--neon-cyan) 1px, transparent 1px),
                           linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px);
         background-size: 30px 30px; opacity: 0.15;
+        transition: background-position 0.2s linear;
     }
 
     /* ---------------- GAMEPLAY UI ---------------- */
@@ -215,14 +216,11 @@ let state = {
 // ---------------- PERMISSIONS & START ----------------
 async function requestPermissions() {
     try {
-        // 1. Camera
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
         document.getElementById("cam").srcObject = stream;
 
-        // 2. Geolocation
         navigator.geolocation.watchPosition(updateGPS, handleError, { enableHighAccuracy: true });
 
-        // 3. Orientation
         if (typeof DeviceOrientationEvent.requestPermission === 'function') {
             const permission = await DeviceOrientationEvent.requestPermission();
             if (permission === 'granted') window.addEventListener("deviceorientation", updateHeading);
@@ -237,8 +235,8 @@ async function requestPermissions() {
     }
 }
 
-// Bypasses permissions and sets fake coords for UI/Data testing
 function enterTestMode() {
+    // Falls back to Durgapur, India for testing without GPS
     state.lat = 23.5204; 
     state.lon = 87.3119;
     state.heading = 0;
@@ -271,12 +269,22 @@ async function loadWorld() {
     updateStatus("SCANNING...");
 
     try {
-        // Hits YOUR Python server instead of Supabase directly. 
-        // Radius is set to 40,000,000 meters to ensure the entire Earth is loaded.
         const res = await fetch(`/api/v1/scan?lat=${state.lat}&lon=${state.lon}&radius=40000000`);
         const responseData = await res.json();
         
-        state.objects = responseData.data;
+        let data = responseData.data;
+
+        // Auto-Mock System: If Supabase returns 0, spawn fake local objects to test AR
+        if (data.length === 0) {
+            console.log("Database empty. Injecting local mock locations.");
+            data = [
+                { id: "M1", name: "Alpha Relic", lat: state.lat + 0.0005, lon: state.lon + 0.0002, reward_per_visit: 150, stories: [{content: "A hidden cache just north of your location."}] },
+                { id: "M2", name: "Beta Node", lat: state.lat - 0.0004, lon: state.lon - 0.0003, reward_per_visit: 200, stories: [{content: "Energy spikes detected in this vicinity."}] },
+                { id: "M3", name: "Gamma Core", lat: state.lat, lon: state.lon + 0.0008, reward_per_visit: 500, stories: [{content: "An ancient mapping core."}] }
+            ];
+        }
+
+        state.objects = data;
         updateStatus("SYNCED: " + state.objects.length);
         render();
     } catch (e) {
@@ -293,7 +301,7 @@ function interact(obj) {
     let lore = obj.stories && obj.stories.length > 0 ? obj.stories[0].content : "A fragment of digital history...";
     document.getElementById("story-content").innerText = lore;
     
-    let reward = obj.reward_per_visit || 100;
+    let reward = obj.reward_per_visit || obj.reward || 100;
     document.getElementById("reward-val").innerText = reward;
     state.lastReward = reward;
 
@@ -338,9 +346,11 @@ function render() {
     arWorld.innerHTML = "";
     mapMarkers.innerHTML = "";
 
-    // 1. Update Map Rotation
+    // 1. Update Map Rotation & Walking Grid Effect
     document.getElementById("minimap").style.transform = `rotateX(55deg) rotateZ(${-state.heading}deg)`;
-    grid.style.backgroundPosition = `${state.lon * 1000}px ${state.lat * 1000}px`;
+    
+    // Increased multiplier significantly so walking translates to visible grid movement
+    grid.style.backgroundPosition = `${-state.lon * 150000}px ${state.lat * 150000}px`;
 
     state.objects.forEach(obj => {
         let t_lat = obj.lat || obj.latitude;
@@ -350,26 +360,26 @@ function render() {
         let d = dist(state.lat, state.lon, t_lat, t_lon);
         let br = bearing(state.lat, state.lon, t_lat, t_lon);
 
-        // --- MAP BLIPS: Show ALL objects regardless of distance ---
-        // Scale down the distance. If it's too far, lock it to the outer radius (70px max)
-        let scaledDist = d * 0.05; 
-        if (scaledDist > 70) scaledDist = 70; 
+        // --- MAP BLIPS ---
+        // Dynamically scale distance for the radar so faraway objects lock to the rim
+        let radarScale = 1000; // 1km radar range
+        let scaledDist = (d / radarScale) * 70; 
+        if (scaledDist > 70) scaledDist = 70; // Lock to edge
 
         let b = document.createElement("div");
         b.style.cssText = `position:absolute; width:6px; height:6px; background:cyan; border-radius:50%; top:calc(50% + ${Math.cos(br * Math.PI / 180) * -scaledDist}px); left:calc(50% + ${Math.sin(br * Math.PI / 180) * scaledDist}px); transform:translate(-50%,-50%); box-shadow: 0 0 8px cyan;`;
         mapMarkers.appendChild(b);
 
         // --- AR RENDERING ---
-        // Only render 3D nodes in the real world if they are nearby (e.g., < 200m) 
-        // to prevent screen clutter.
         let rel = br - state.heading;
         if (rel < -180) rel += 360;
         if (rel > 180) rel -= 360;
 
-        if (Math.abs(rel) < 45 && d < 200) {
+        // Expanded Field of View (FOV) to 60 degrees, and render distance up to 1000m
+        if (Math.abs(rel) < 60 && d < 1000) {
             let x = (window.innerWidth / 2) + (rel * (window.innerWidth / 40));
-            let scale = Math.max(0.2, 1 - (d / 250));
-            let y = (window.innerHeight / 2) + (d * 0.5);
+            let scale = Math.max(0.2, 1 - (d / 1000));
+            let y = (window.innerHeight / 2) + (d * 0.2); // Slower vertical drop
 
             let node = document.createElement("div");
             node.className = "ar-node";
