@@ -131,6 +131,16 @@ class AvisDataExtractor:
                     processed_world.append(node)
 
             logger.info(f"[COMPLETED] Filtered down to {len(processed_world)} objects within {radius_m}m radius.")
+            
+            # --- 5. EXPLICIT LOGGING FOR USER SYNC ---
+            logger.info(f"📍 [USER LOCATION SYNC] Active Player Coordinates Locked At: Lat {user_lat}, Lon {user_lon}")
+            if processed_world:
+                logger.info("📦 [PAYLOAD DELIVERY] Beaming the following location nodes to client:")
+                for obj in processed_world:
+                    logger.info(f"   -> [TARGET] {obj['name']} | Coords: {obj['lat']}, {obj['lon']} | Distance: {obj['distance_meters']}m")
+            else:
+                logger.info("⚠️ [PAYLOAD DELIVERY] No objects found within scan radius.")
+
             return processed_world
 
         except Exception as e:
