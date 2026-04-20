@@ -25,26 +25,6 @@
         object-fit: cover; z-index: 1; filter: contrast(1.1) brightness(0.9);
     }
 
-    /* ---------------- PERMISSION SHIELD ---------------- */
-    #shield {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: radial-gradient(circle at center, #111 0%, #000 100%);
-        z-index: 1000; display: flex; flex-direction: column;
-        justify-content: center; align-items: center; text-align: center;
-        padding: 30px; transition: opacity 0.8s ease;
-    }
-
-    .shield-icon {
-        font-size: 60px; color: var(--neon-cyan);
-        text-shadow: 0 0 20px var(--neon-cyan);
-        margin-bottom: 20px; animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.1); opacity: 0.7; }
-    }
-
     /* ---------------- PLAYER HUD ---------------- */
     #top-hud {
         position: fixed; top: 20px; left: 20px; right: 20px; z-index: 10;
@@ -151,11 +131,6 @@
 
     .btn-main:active { transform: scale(0.85) rotate(15deg); }
 
-    .btn-test {
-        background: transparent; border: 2px solid var(--neon-cyan); color: var(--neon-cyan);
-        margin-top: 20px; font-size: 14px; box-shadow: none; width: 200px; height: 50px; border-radius: 25px;
-    }
-
     /* ---------------- MODALS ---------------- */
     .modal {
         position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -176,20 +151,12 @@
 
 <body>
 
-<div id="shield">
-    <div class="shield-icon">📡</div>
-    <h1>AVIS SYSTEM</h1>
-    <p>We need Camera and Location Access to map the World Lore.</p>
-    <button class="btn-main" onclick="requestPermissions()" style="width:200px; height:60px; border-radius:30px; font-size:18px;">INITIATE SYNC</button>
-    <button class="btn-main btn-test" onclick="enterTestMode()">TEST MODE (Bypass)</button>
-</div>
-
 <video id="cam" autoplay playsinline></video>
 
 <div id="top-hud">
     <div class="stat-pill">
         <span id="lvl-tag">LVL 1</span>
-        <span id="status-text" style="font-size:10px; color:var(--neon-cyan);">STANDBY</span>
+        <span id="status-text" style="font-size:10px; color:var(--neon-cyan);">BOOTING...</span>
     </div>
     <div class="stat-pill">
         <span style="color:var(--neon-gold)">💰</span>
@@ -235,7 +202,8 @@ let state = {
 };
 
 // ---------------- PERMISSIONS & START ----------------
-async function requestPermissions() {
+// Automatically requests permissions when the window loads
+window.onload = async () => {
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
         document.getElementById("cam").srcObject = stream;
@@ -254,7 +222,7 @@ async function requestPermissions() {
         console.warn("Permissions denied, forcing test mode.");
         enterTestMode();
     }
-}
+};
 
 function enterTestMode() {
     // Falls back to Durgapur, India for testing without GPS
@@ -265,8 +233,6 @@ function enterTestMode() {
 }
 
 function startEngine(statusMsg) {
-    document.getElementById("shield").style.opacity = "0";
-    setTimeout(() => document.getElementById("shield").style.display = "none", 800);
     state.active = true;
     updateStatus(statusMsg);
     loadWorld();
@@ -284,7 +250,7 @@ function updateHeading(e) {
     render();
 }
 
-// ---------------- BACKEND API INTEGRATION ----------------
+// ---------------- BACKEND API INTEGRATION & TARGETING ----------------
 async function loadWorld() {
     if (!state.lat) return;
     updateStatus("SCANNING...");
@@ -292,21 +258,55 @@ async function loadWorld() {
     try {
         const res = await fetch(`/api/v1/scan?lat=${state.lat}&lon=${state.lon}&radius=40000000`);
         const responseData = await res.json();
-        
         let data = responseData.data;
 
-        // Auto-Mock System: If Supabase returns 0, spawn fake local objects to test AR
+        // Auto-Mock System if DB is empty
         if (data.length === 0) {
             console.log("Database empty. Injecting local mock locations.");
             data = [
                 { id: "M1", name: "Alpha Relic", lat: state.lat + 0.0005, lon: state.lon + 0.0002, reward_per_visit: 150, stories: [{content: "A hidden cache just north of your location."}] },
                 { id: "M2", name: "Beta Node", lat: state.lat - 0.0004, lon: state.lon - 0.0003, reward_per_visit: 200, stories: [{content: "Energy spikes detected in this vicinity."}] },
-                { id: "M3", name: "Gamma Core", lat: state.lat, lon: state.lon + 0.0008, reward_per_visit: 500, stories: [{content: "An ancient mapping core."}] }
             ];
         }
 
-        state.objects = data;
-        updateStatus("SYNCED: " + state.objects.length);
+        // BROWSER CONSOLE LOGGING - User GPS
+        console.log(`📍 [USER GPS] Lat: ${state.lat.toFixed(6)} | Lon: ${state.lon.toFixed(6)}`);
+        console.log(`📦 [BACKEND] Retrieved ${data.length} total world locations.`);
+
+        // TARGETING ALGORITHM: Find the single absolute closest location
+        let nearestObj = null;
+        let minDistance = Infinity;
+
+        data.forEach(obj => {
+            let t_lat = obj.lat || obj.latitude;
+            let t_lon = obj.lon || obj.longitude;
+            if (!t_lat || !t_lon) return;
+
+            let d = dist(state.lat, state.lon, t_lat, t_lon);
+            if (d < minDistance) {
+                minDistance = d;
+                nearestObj = obj;
+            }
+        });
+
+        if (nearestObj) {
+            let n_lat = nearestObj.lat || nearestObj.latitude;
+            let n_lon = nearestObj.lon || nearestObj.longitude;
+            
+            // BROWSER CONSOLE LOGGING - Nearest Location Data
+            console.log(`🎯 [TARGET ACQUIRED]`);
+            console.log(`    Name: ${nearestObj.name || 'Unknown'}`);
+            console.log(`    Coords: ${n_lat.toFixed(6)}, ${n_lon.toFixed(6)}`);
+            console.log(`    Distance: ${Math.round(minDistance)} meters`);
+
+            // Overwrite state objects so only ONE blip and ONE AR node renders
+            state.objects = [nearestObj];
+            updateStatus("1 TARGET FOUND");
+        } else {
+            state.objects = [];
+            updateStatus("NO TARGETS");
+        }
+
         render();
     } catch (e) {
         console.error("Fetch error:", e);
@@ -377,6 +377,7 @@ function render() {
     // 3. Grid moving effect based on GPS coordinates
     grid.style.backgroundPosition = `${-state.lon * 150000}px ${state.lat * 150000}px`;
 
+    // Only iterates over the ONE closest object now
     state.objects.forEach(obj => {
         let t_lat = obj.lat || obj.latitude;
         let t_lon = obj.lon || obj.longitude;
@@ -385,13 +386,12 @@ function render() {
         let d = dist(state.lat, state.lon, t_lat, t_lon);
         let br = bearing(state.lat, state.lon, t_lat, t_lon);
 
-        // --- MAP BLIPS (RED DOTS) ---
+        // --- MAP BLIP (SINGLE RED DOT) ---
         let radarScale = 1000; 
         let scaledDist = (d / radarScale) * 70; 
-        if (scaledDist > 70) scaledDist = 70; 
+        if (scaledDist > 70) scaledDist = 70; // Locks to radar edge if faraway
 
         let b = document.createElement("div");
-        // Changed to glowing Red dots with a white outline
         b.style.cssText = `position:absolute; width:8px; height:8px; background:var(--neon-red); border:1px solid white; border-radius:50%; top:calc(50% + ${Math.cos(br * Math.PI / 180) * -scaledDist}px); left:calc(50% + ${Math.sin(br * Math.PI / 180) * scaledDist}px); transform:translate(-50%,-50%); box-shadow: 0 0 10px var(--neon-red); z-index: 10;`;
         mapMarkers.appendChild(b);
 
@@ -404,412 +404,6 @@ function render() {
             let x = (window.innerWidth / 2) + (rel * (window.innerWidth / 40));
             let scale = Math.max(0.2, 1 - (d / 1000));
             let y = (window.innerHeight / 2) + (d * 0.2); 
-
-            let node = document.createElement("div");
-            node.className = "ar-node";
-            node.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
-            node.innerHTML = `<div class="ar-icon"></div><div style="background:black; padding:2px 8px; border-radius:5px; margin-top:5px; font-size:10px;">${obj.name || 'Relic'} (${Math.round(d)}m)</div>`;
-            node.onclick = () => interact(obj);
-            arWorld.appendChild(node);
-        }
-    });
-}
-
-function updateStatus(t) { document.getElementById("status-text").innerText = t; }
-function refreshScan() { loadWorld(); }
-function handleError(e) { 
-    updateStatus("GPS LOST"); 
-    console.warn("GPS lost, entering test mode automatically.");
-    enterTestMode(); 
-}
-
-// Background Sync
-setInterval(loadWorld, 20000);
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-<title>AVIS AR | World Engine v2.5</title>
-
-<style>
-    /* ---------------- BASE & THEME ---------------- */
-    :root {
-        --neon-cyan: #00ffcc;
-        --neon-gold: #ffd700;
-        --glass: rgba(0, 0, 0, 0.7);
-    }
-
-    body, html {
-        margin: 0; padding: 0; overflow: hidden; background: #000;
-        font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        color: white; user-select: none; touch-action: none;
-    }
-
-    #cam {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        object-fit: cover; z-index: 1; filter: contrast(1.1) brightness(0.9);
-    }
-
-    /* ---------------- PERMISSION SHIELD ---------------- */
-    #shield {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: radial-gradient(circle at center, #111 0%, #000 100%);
-        z-index: 1000; display: flex; flex-direction: column;
-        justify-content: center; align-items: center; text-align: center;
-        padding: 30px; transition: opacity 0.8s ease;
-    }
-
-    .shield-icon {
-        font-size: 60px; color: var(--neon-cyan);
-        text-shadow: 0 0 20px var(--neon-cyan);
-        margin-bottom: 20px; animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.1); opacity: 0.7; }
-    }
-
-    /* ---------------- PLAYER HUD ---------------- */
-    #top-hud {
-        position: fixed; top: 20px; left: 20px; right: 20px; z-index: 10;
-        display: flex; justify-content: space-between; align-items: flex-start;
-    }
-
-    .stat-pill {
-        background: var(--glass); backdrop-filter: blur(12px);
-        padding: 10px 20px; border-radius: 40px; border: 1px solid var(--neon-cyan);
-        display: flex; align-items: center; gap: 12px; font-weight: 800;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .xp-bar-container {
-        position: absolute; top: 75px; left: 30px; width: 150px;
-        height: 6px; background: rgba(255,255,255,0.1); border-radius: 3px;
-    }
-
-    #xp-fill {
-        width: 30%; height: 100%; background: var(--neon-cyan);
-        box-shadow: 0 0 10px var(--neon-cyan); transition: width 0.5s ease;
-    }
-
-    /* ---------------- AR RENDERING ---------------- */
-    #ar-world {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        z-index: 5; pointer-events: none; perspective: 1200px;
-    }
-
-    .ar-node {
-        position: absolute; top: 50%; left: 50%;
-        transform-style: preserve-3d; pointer-events: auto;
-        display: flex; flex-direction: column; align-items: center;
-        transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .ar-icon {
-        width: 80px; height: 80px;
-        background: url('https://cdn-icons-png.flaticon.com/512/1491/1491410.png') no-repeat center;
-        background-size: contain; filter: drop-shadow(0 0 15px var(--neon-cyan));
-        animation: float 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes float {
-        from { transform: translateY(0px) rotate(0deg); }
-        to { transform: translateY(-20px) rotate(5deg); }
-    }
-
-    /* ---------------- ISOMETRIC MINIMAP ---------------- */
-    #minimap-container {
-        position: fixed; bottom: 40px; right: 20px; z-index: 20;
-        width: 160px; height: 160px; perspective: 800px;
-    }
-
-    #minimap {
-        width: 100%; height: 100%; border-radius: 40px;
-        background: rgba(0, 20, 30, 0.85); border: 2px solid var(--neon-cyan);
-        transform: rotateX(55deg) rotateZ(0deg);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,255,204,0.2);
-        overflow: hidden; position: relative;
-    }
-
-    .grid-lines {
-        position: absolute; width: 200%; height: 200%; top: -50%; left: -50%;
-        background-image: linear-gradient(var(--neon-cyan) 1px, transparent 1px),
-                          linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px);
-        background-size: 30px 30px; opacity: 0.15;
-        transition: background-position 0.2s linear;
-    }
-
-    /* ---------------- GAMEPLAY UI ---------------- */
-    #action-bar {
-        position: fixed; bottom: 40px; left: 50%; transform: translateX(-50%);
-        z-index: 30; display: flex; align-items: center; gap: 20px;
-    }
-
-    .btn-main {
-        width: 85px; height: 85px; border-radius: 50%;
-        background: white; border: 6px solid var(--neon-cyan);
-        cursor: pointer; display: flex; justify-content: center; align-items: center;
-        box-shadow: 0 0 30px var(--neon-cyan); transition: 0.2s;
-        font-weight: bold;
-    }
-
-    .btn-main:active { transform: scale(0.85) rotate(15deg); }
-
-    .btn-test {
-        background: transparent; border: 2px solid var(--neon-cyan); color: var(--neon-cyan);
-        margin-top: 20px; font-size: 14px; box-shadow: none; width: 200px; height: 50px; border-radius: 25px;
-    }
-
-    /* ---------------- MODALS ---------------- */
-    .modal {
-        position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        width: 80%; max-width: 400px; background: rgba(5, 10, 15, 0.98);
-        border: 2px solid var(--neon-cyan); border-radius: 30px; padding: 30px;
-        z-index: 100; display: none; text-align: center;
-        box-shadow: 0 0 100px rgba(0,0,0,1);
-    }
-
-    .modal.active { display: block; animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-
-    @keyframes modalPop {
-        from { opacity: 0; transform: translate(-50%, -60%) scale(0.8); }
-        to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-    }
-</style>
-</head>
-
-<body>
-
-<div id="shield">
-    <div class="shield-icon">📡</div>
-    <h1>AVIS SYSTEM</h1>
-    <p>We need Camera and Location Access to map the World Lore.</p>
-    <button class="btn-main" onclick="requestPermissions()" style="width:200px; height:60px; border-radius:30px; font-size:18px;">INITIATE SYNC</button>
-    <button class="btn-main btn-test" onclick="enterTestMode()">TEST MODE (Bypass)</button>
-</div>
-
-<video id="cam" autoplay playsinline></video>
-
-<div id="top-hud">
-    <div class="stat-pill">
-        <span id="lvl-tag">LVL 1</span>
-        <span id="status-text" style="font-size:10px; color:var(--neon-cyan);">STANDBY</span>
-    </div>
-    <div class="stat-pill">
-        <span style="color:var(--neon-gold)">💰</span>
-        <span id="gold-display">0</span>
-    </div>
-</div>
-<div class="xp-bar-container"><div id="xp-fill"></div></div>
-
-<div id="ar-world"></div>
-
-<div id="minimap-container">
-    <div id="minimap">
-        <div class="grid-lines" id="map-grid"></div>
-        <div id="map-player" style="position:absolute; top:50%; left:50%; width:14px; height:14px; background:white; border:3px solid var(--neon-cyan); border-radius:50%; transform:translate(-50%,-50%); z-index:5;"></div>
-        <div id="map-markers"></div>
-    </div>
-</div>
-
-<div id="action-bar">
-    <div class="btn-main" onclick="refreshScan()">🌐</div>
-</div>
-
-<div id="story-modal" class="modal">
-    <h2 id="story-title" style="color:var(--neon-cyan)">Relic Found</h2>
-    <p id="story-content" style="color:#ccc; line-height:1.6;"></p>
-    <div style="background:rgba(255,215,0,0.1); padding:15px; border-radius:15px; margin:20px 0;">
-        <span style="color:var(--neon-gold); font-weight:bold;">+ <span id="reward-val">0</span> GOLD</span>
-    </div>
-    <button onclick="closeStory()" style="background:var(--neon-cyan); color:black; border:none; padding:12px 40px; border-radius:20px; font-weight:800; cursor:pointer;">COLLECT</button>
-</div>
-
-<script>
-const CONFIG = {
-    SUPABASE_URL: "https://ihdllispdbwvwcwxlvhr.supabase.co",
-    SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P"
-};
-
-let state = {
-    lat: null, lon: null, heading: 0,
-    gold: 0, xp: 0, lvl: 1,
-    objects: [],
-    active: false
-};
-
-// ---------------- PERMISSIONS & START ----------------
-async function requestPermissions() {
-    try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } });
-        document.getElementById("cam").srcObject = stream;
-
-        navigator.geolocation.watchPosition(updateGPS, handleError, { enableHighAccuracy: true });
-
-        if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-            const permission = await DeviceOrientationEvent.requestPermission();
-            if (permission === 'granted') window.addEventListener("deviceorientation", updateHeading);
-        } else {
-            window.addEventListener("deviceorientation", updateHeading);
-        }
-
-        startEngine("ONLINE");
-    } catch (err) {
-        console.warn("Permissions denied, forcing test mode.");
-        enterTestMode();
-    }
-}
-
-function enterTestMode() {
-    // Falls back to Durgapur, India for testing without GPS
-    state.lat = 23.5204; 
-    state.lon = 87.3119;
-    state.heading = 0;
-    startEngine("TEST MODE");
-}
-
-function startEngine(statusMsg) {
-    document.getElementById("shield").style.opacity = "0";
-    setTimeout(() => document.getElementById("shield").style.display = "none", 800);
-    state.active = true;
-    updateStatus(statusMsg);
-    loadWorld();
-}
-
-function updateGPS(pos) {
-    state.lat = pos.coords.latitude;
-    state.lon = pos.coords.longitude;
-    if (state.objects.length === 0) loadWorld();
-    render();
-}
-
-function updateHeading(e) {
-    state.heading = e.webkitCompassHeading || (360 - e.alpha);
-    render();
-}
-
-// ---------------- BACKEND API INTEGRATION ----------------
-async function loadWorld() {
-    if (!state.lat) return;
-    updateStatus("SCANNING...");
-
-    try {
-        const res = await fetch(`/api/v1/scan?lat=${state.lat}&lon=${state.lon}&radius=40000000`);
-        const responseData = await res.json();
-        
-        let data = responseData.data;
-
-        // Auto-Mock System: If Supabase returns 0, spawn fake local objects to test AR
-        if (data.length === 0) {
-            console.log("Database empty. Injecting local mock locations.");
-            data = [
-                { id: "M1", name: "Alpha Relic", lat: state.lat + 0.0005, lon: state.lon + 0.0002, reward_per_visit: 150, stories: [{content: "A hidden cache just north of your location."}] },
-                { id: "M2", name: "Beta Node", lat: state.lat - 0.0004, lon: state.lon - 0.0003, reward_per_visit: 200, stories: [{content: "Energy spikes detected in this vicinity."}] },
-                { id: "M3", name: "Gamma Core", lat: state.lat, lon: state.lon + 0.0008, reward_per_visit: 500, stories: [{content: "An ancient mapping core."}] }
-            ];
-        }
-
-        state.objects = data;
-        updateStatus("SYNCED: " + state.objects.length);
-        render();
-    } catch (e) {
-        console.error("Fetch error:", e);
-        updateStatus("SYNC ERROR");
-    }
-}
-
-// ---------------- GAME LOGIC ----------------
-function interact(obj) {
-    const modal = document.getElementById("story-modal");
-    document.getElementById("story-title").innerText = obj.name || "Unknown Relic";
-    
-    let lore = obj.stories && obj.stories.length > 0 ? obj.stories[0].content : "A fragment of digital history...";
-    document.getElementById("story-content").innerText = lore;
-    
-    let reward = obj.reward_per_visit || obj.reward || 100;
-    document.getElementById("reward-val").innerText = reward;
-    state.lastReward = reward;
-
-    modal.classList.add("active");
-}
-
-function closeStory() {
-    state.gold += state.lastReward;
-    state.xp += 25;
-    if (state.xp >= 100) { state.lvl++; state.xp = 0; }
-    
-    document.getElementById("gold-display").innerText = state.gold;
-    document.getElementById("lvl-tag").innerText = "LVL " + state.lvl;
-    document.getElementById("xp-fill").style.width = state.xp + "%";
-    
-    document.getElementById("story-modal").classList.remove("active");
-}
-
-// ---------------- MATH & RENDER ----------------
-function dist(lat1, lon1, lat2, lon2) {
-    const R = 6371000;
-    const dLat = (lat2 - lat1) * Math.PI / 180;
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-    const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-}
-
-function bearing(lat1, lon1, lat2, lon2) {
-    const dLon = (lon2 - lon1) * Math.PI / 180;
-    const y = Math.sin(dLon) * Math.cos(lat2 * Math.PI / 180);
-    const x = Math.cos(lat1 * Math.PI / 180) * Math.sin(lat2 * Math.PI / 180) - Math.sin(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * Math.cos(dLon);
-    return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
-}
-
-function render() {
-    if (!state.active || !state.lat) return;
-
-    const arWorld = document.getElementById("ar-world");
-    const mapMarkers = document.getElementById("map-markers");
-    const grid = document.getElementById("map-grid");
-
-    arWorld.innerHTML = "";
-    mapMarkers.innerHTML = "";
-
-    // 1. Update Map Rotation & Walking Grid Effect
-    document.getElementById("minimap").style.transform = `rotateX(55deg) rotateZ(${-state.heading}deg)`;
-    
-    // Increased multiplier significantly so walking translates to visible grid movement
-    grid.style.backgroundPosition = `${-state.lon * 150000}px ${state.lat * 150000}px`;
-
-    state.objects.forEach(obj => {
-        let t_lat = obj.lat || obj.latitude;
-        let t_lon = obj.lon || obj.longitude;
-        if (!t_lat || !t_lon) return;
-
-        let d = dist(state.lat, state.lon, t_lat, t_lon);
-        let br = bearing(state.lat, state.lon, t_lat, t_lon);
-
-        // --- MAP BLIPS ---
-        // Dynamically scale distance for the radar so faraway objects lock to the rim
-        let radarScale = 1000; // 1km radar range
-        let scaledDist = (d / radarScale) * 70; 
-        if (scaledDist > 70) scaledDist = 70; // Lock to edge
-
-        let b = document.createElement("div");
-        b.style.cssText = `position:absolute; width:6px; height:6px; background:cyan; border-radius:50%; top:calc(50% + ${Math.cos(br * Math.PI / 180) * -scaledDist}px); left:calc(50% + ${Math.sin(br * Math.PI / 180) * scaledDist}px); transform:translate(-50%,-50%); box-shadow: 0 0 8px cyan;`;
-        mapMarkers.appendChild(b);
-
-        // --- AR RENDERING ---
-        let rel = br - state.heading;
-        if (rel < -180) rel += 360;
-        if (rel > 180) rel -= 360;
-
-        // Expanded Field of View (FOV) to 60 degrees, and render distance up to 1000m
-        if (Math.abs(rel) < 60 && d < 1000) {
-            let x = (window.innerWidth / 2) + (rel * (window.innerWidth / 40));
-            let scale = Math.max(0.2, 1 - (d / 1000));
-            let y = (window.innerHeight / 2) + (d * 0.2); // Slower vertical drop
 
             let node = document.createElement("div");
             node.className = "ar-node";
