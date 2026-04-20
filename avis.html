@@ -124,9 +124,15 @@
         background: white; border: 6px solid var(--neon-cyan);
         cursor: pointer; display: flex; justify-content: center; align-items: center;
         box-shadow: 0 0 30px var(--neon-cyan); transition: 0.2s;
+        font-weight: bold;
     }
 
     .btn-main:active { transform: scale(0.85) rotate(15deg); }
+
+    .btn-test {
+        background: transparent; border: 2px solid var(--neon-cyan); color: var(--neon-cyan);
+        margin-top: 20px; font-size: 14px; box-shadow: none; width: 200px; height: 50px; border-radius: 25px;
+    }
 
     /* ---------------- MODALS ---------------- */
     .modal {
@@ -153,6 +159,7 @@
     <h1>AVIS SYSTEM</h1>
     <p>We need Camera and Location Access to map the World Lore.</p>
     <button class="btn-main" onclick="requestPermissions()" style="width:200px; height:60px; border-radius:30px; font-size:18px;">INITIATE SYNC</button>
+    <button class="btn-main btn-test" onclick="enterTestMode()">TEST MODE (Bypass)</button>
 </div>
 
 <video id="cam" autoplay playsinline></video>
@@ -193,11 +200,6 @@
 </div>
 
 <script>
-const CONFIG = {
-    SUPABASE_URL: "https://ihdllispdbwvwcwxlvhr.supabase.co",
-    SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P"
-};
-
 let state = {
     lat: null, lon: null, heading: 0,
     gold: 0, xp: 0, lvl: 1,
@@ -215,7 +217,7 @@ async function requestPermissions() {
         // 2. Geolocation
         navigator.geolocation.watchPosition(updateGPS, handleError, { enableHighAccuracy: true });
 
-        // 3. Orientation (iOS needs click for this)
+        // 3. Orientation
         if (typeof DeviceOrientationEvent.requestPermission === 'function') {
             const permission = await DeviceOrientationEvent.requestPermission();
             if (permission === 'granted') window.addEventListener("deviceorientation", updateHeading);
@@ -223,13 +225,27 @@ async function requestPermissions() {
             window.addEventListener("deviceorientation", updateHeading);
         }
 
-        document.getElementById("shield").style.opacity = "0";
-        setTimeout(() => document.getElementById("shield").style.display = "none", 800);
-        state.active = true;
-        updateStatus("ONLINE");
+        startEngine("ONLINE");
     } catch (err) {
-        alert("System Sync Failed: Please enable Camera/GPS.");
+        console.warn("Permissions denied, forcing test mode.");
+        enterTestMode();
     }
+}
+
+// Bypasses permissions and sets fake coords for UI/Data testing
+function enterTestMode() {
+    state.lat = 23.5204; 
+    state.lon = 87.3119;
+    state.heading = 0;
+    startEngine("TEST MODE");
+}
+
+function startEngine(statusMsg) {
+    document.getElementById("shield").style.opacity = "0";
+    setTimeout(() => document.getElementById("shield").style.display = "none", 800);
+    state.active = true;
+    updateStatus(statusMsg);
+    loadWorld();
 }
 
 function updateGPS(pos) {
@@ -244,21 +260,22 @@ function updateHeading(e) {
     render();
 }
 
-// ---------------- SUPABASE INTEGRATION ----------------
+// ---------------- BACKEND API INTEGRATION ----------------
 async function loadWorld() {
     if (!state.lat) return;
     updateStatus("SCANNING...");
 
     try {
-        // FETCHING ALL: Locations and Stories linked by loc_id
-        const res = await fetch(`${CONFIG.SUPABASE_URL}/rest/v1/locations?select=*,stories(*)`, {
-            headers: { apikey: CONFIG.SUPABASE_KEY, Authorization: "Bearer " + CONFIG.SUPABASE_KEY }
-        });
-        const data = await res.json();
+        // Hits YOUR Python server instead of Supabase directly. 
+        // Radius is set to 40,000,000 meters to ensure the entire Earth is loaded.
+        const res = await fetch(`/api/v1/scan?lat=${state.lat}&lon=${state.lon}&radius=40000000`);
+        const responseData = await res.json();
         
-        state.objects = data;
-        updateStatus("SYNCED");
+        state.objects = responseData.data;
+        updateStatus("SYNCED: " + state.objects.length);
+        render();
     } catch (e) {
+        console.error(e);
         updateStatus("SYNC ERROR");
     }
 }
@@ -266,12 +283,12 @@ async function loadWorld() {
 // ---------------- GAME LOGIC ----------------
 function interact(obj) {
     const modal = document.getElementById("story-modal");
-    document.getElementById("story-title").innerText = obj.name;
+    document.getElementById("story-title").innerText = obj.name || "Unknown Relic";
     
     let lore = obj.stories && obj.stories.length > 0 ? obj.stories[0].content : "A fragment of digital history...";
     document.getElementById("story-content").innerText = lore;
     
-    let reward = obj.reward_per_visit || 100;
+    let reward = obj.reward || 100;
     document.getElementById("reward-val").innerText = reward;
     state.lastReward = reward;
 
@@ -321,30 +338,35 @@ function render() {
     grid.style.backgroundPosition = `${state.lon * 1000}px ${state.lat * 1000}px`;
 
     state.objects.forEach(obj => {
-        let d = dist(state.lat, state.lon, obj.lat, obj.lon);
-        let br = bearing(state.lat, state.lon, obj.lat, obj.lon);
+        let t_lat = obj.lat || obj.latitude;
+        let t_lon = obj.lon || obj.longitude;
+        if (!t_lat || !t_lon) return;
 
-        // Map Blips
-        if (d < 1000) {
-            let b = document.createElement("div");
-            b.style.cssText = `position:absolute; width:8px; height:8px; background:cyan; border-radius:50%; top:calc(50% + ${Math.cos(br * Math.PI / 180) * -d/10}px); left:calc(50% + ${Math.sin(br * Math.PI / 180) * d/10}px); transform:translate(-50%,-50%); box-shadow: 0 0 10px cyan;`;
-            mapMarkers.appendChild(b);
-        }
+        let d = dist(state.lat, state.lon, t_lat, t_lon);
+        let br = bearing(state.lat, state.lon, t_lat, t_lon);
 
-        // AR Rendering
+        // --- MAP BLIPS: Show ALL objects regardless of distance ---
+        let scaledDist = d * 0.05; 
+        if (scaledDist > 70) scaledDist = 70; 
+
+        let b = document.createElement("div");
+        b.style.cssText = `position:absolute; width:6px; height:6px; background:cyan; border-radius:50%; top:calc(50% + ${Math.cos(br * Math.PI / 180) * -scaledDist}px); left:calc(50% + ${Math.sin(br * Math.PI / 180) * scaledDist}px); transform:translate(-50%,-50%); box-shadow: 0 0 8px cyan;`;
+        mapMarkers.appendChild(b);
+
+        // --- AR RENDERING ---
         let rel = br - state.heading;
         if (rel < -180) rel += 360;
         if (rel > 180) rel -= 360;
 
         if (Math.abs(rel) < 45 && d < 200) {
             let x = (window.innerWidth / 2) + (rel * (window.innerWidth / 40));
-            let scale = 1 - (d / 250);
+            let scale = Math.max(0.2, 1 - (d / 250));
             let y = (window.innerHeight / 2) + (d * 0.5);
 
             let node = document.createElement("div");
             node.className = "ar-node";
             node.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
-            node.innerHTML = `<div class="ar-icon"></div><div style="background:black; padding:2px 8px; border-radius:5px; margin-top:5px; font-size:10px;">${obj.name} (${Math.round(d)}m)</div>`;
+            node.innerHTML = `<div class="ar-icon"></div><div style="background:black; padding:2px 8px; border-radius:5px; margin-top:5px; font-size:10px;">${obj.name || 'Relic'} (${Math.round(d)}m)</div>`;
             node.onclick = () => interact(obj);
             arWorld.appendChild(node);
         }
@@ -353,7 +375,11 @@ function render() {
 
 function updateStatus(t) { document.getElementById("status-text").innerText = t; }
 function refreshScan() { loadWorld(); }
-function handleError(e) { updateStatus("GPS LOST"); }
+function handleError(e) { 
+    updateStatus("GPS LOST"); 
+    console.warn("GPS lost, entering test mode automatically.");
+    enterTestMode(); 
+}
 
 // Background Sync
 setInterval(loadWorld, 20000);
