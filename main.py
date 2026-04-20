@@ -19,7 +19,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # Initialize FastAPI
-app = FastAPI(title="AVIS AR World Server", version="2.0")
+app = FastAPI(title="AVIS AR World Server", version="2.5")
 
 # Allow the frontend to communicate with the backend
 app.add_middleware(
@@ -46,6 +46,10 @@ KEY = "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P"
 try:
     logger.info("[STARTUP] Booting AVIS Data Extractor...")
     extractor = AvisDataExtractor(URL, KEY)
+    
+    # 💥 THE TRIGGER: Load everything from Supabase instantly on startup
+    extractor.preload_world_data()
+    
 except Exception as e:
     logger.error(f"[FATAL] Could not initialize AVIS Engine: {e}")
 

@@ -10,3 +10,591 @@
 2026-04-20 09:52:32,389 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
 2026-04-20 09:52:32,391 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
 2026-04-20 09:52:32,394 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:33,417 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:00:33,430 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:00:33,431 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:36,166 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:00:36,170 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:00:36,171 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:00:36,171 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:00:36,172 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:00:36,173 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:38,527 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:00:38,528 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:00:38,529 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:00:38,529 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:00:38,530 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:00:38,531 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:40,272 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:00:40,273 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:00:40,274 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:00:40,275 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:00:40,275 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:00:40,276 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:40,854 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:00:40,855 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:00:40,856 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:00:40,856 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:00:40,857 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:00:40,858 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:41,748 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:00:41,749 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:00:41,750 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:00:41,751 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:00:41,751 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:00:41,753 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:42,557 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:00:42,559 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:00:42,559 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:00:42,560 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:00:42,560 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:00:42,561 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:43,109 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:00:43,110 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:00:43,110 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:00:43,111 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:00:43,112 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:00:43,113 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:43,662 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:00:43,663 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:00:43,664 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:00:43,664 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:00:43,665 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:00:43,666 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:44,996 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:00:44,998 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:00:44,998 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:00:44,999 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:00:45,000 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:00:45,001 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:00:53,635 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:00:53,637 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:00:53,638 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:00:53,638 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:00:53,639 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:00:53,640 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:01:13,474 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:01:13,475 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:01:13,475 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:01:13,475 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:01:13,476 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:01:13,477 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:01:18,957 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:01:18,958 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:01:18,959 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:01:18,959 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:01:18,960 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:01:18,961 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:01:19,788 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:01:19,789 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:01:19,790 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:01:19,791 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:01:19,791 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:01:19,792 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:01:25,750 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /
+2026-04-20 10:01:25,751 - [AVIS-ENGINE] - INFO - [UI] Client requested AR Frontend.
+2026-04-20 10:01:25,753 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:01:29,702 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:01:29,703 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:01:29,704 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:01:29,705 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:01:29,705 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:01:29,706 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:01:34,093 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:01:34,094 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:01:34,095 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:01:34,096 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:01:34,096 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:01:34,097 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:01:34,908 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:01:34,910 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:01:34,910 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:01:34,911 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:01:34,912 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:01:34,913 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:01:35,366 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:01:35,367 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:01:35,368 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:01:35,368 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:01:35,369 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:01:35,370 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:01:35,813 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:01:35,814 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:01:35,815 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:01:35,815 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:01:35,816 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:01:35,817 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:01:45,843 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:01:45,844 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:01:45,844 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:01:45,844 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:01:45,844 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:01:45,844 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:02:05,794 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:02:05,795 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:02:05,796 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:02:05,796 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:02:05,796 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:02:05,796 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:02:25,809 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:02:25,810 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:02:25,811 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:02:25,811 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:02:25,812 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:02:25,814 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:02:45,808 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:02:45,808 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:02:45,809 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:02:45,809 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:02:45,809 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:02:45,809 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:03:05,814 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:03:05,815 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:03:05,816 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:03:05,816 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:03:05,817 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:03:05,817 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:03:26,160 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:03:26,161 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:03:26,162 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:03:26,162 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:03:26,162 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:03:26,163 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:03:46,174 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:03:46,177 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:03:46,178 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:03:46,179 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:03:46,179 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:03:46,180 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:04:06,177 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:04:06,180 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:04:06,180 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:04:06,180 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 0 objects within 40000000.0m radius.
+2026-04-20 10:04:06,181 - [AVIS-ENGINE] - INFO - [API] Sending 0 location nodes to client device.
+2026-04-20 10:04:06,181 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:04:20,857 - [AVIS-ENGINE] - INFO - [STARTUP] Booting AVIS Data Extractor...
+2026-04-20 10:04:21,282 - [AVIS-ENGINE] - INFO - [SUCCESS] Supabase Engine Connection Established.
+2026-04-20 10:04:21,282 - [AVIS-ENGINE] - INFO - [BOOT SEQUENCE] Initiating Global World Extraction...
+2026-04-20 10:04:21,282 - [AVIS-ENGINE] - INFO - [PROCESS] Extracting locations table...
+2026-04-20 10:04:22,941 - [AVIS-ENGINE] - INFO - HTTP Request: GET https://ihdllispdbwvwcwxlvhr.supabase.co/rest/v1/locations?select=%2A "HTTP/2 200 OK"
+2026-04-20 10:04:22,971 - [AVIS-ENGINE] - INFO - [DATABASE] Successfully pulled 342 raw locations.
+2026-04-20 10:04:22,975 - [AVIS-ENGINE] - INFO - [PROCESS] Extracting stories table...
+2026-04-20 10:04:23,544 - [AVIS-ENGINE] - INFO - HTTP Request: GET https://ihdllispdbwvwcwxlvhr.supabase.co/rest/v1/stories?select=%2A "HTTP/2 200 OK"
+2026-04-20 10:04:23,570 - [AVIS-ENGINE] - INFO - [DATABASE] Successfully pulled 151 lore entries.
+2026-04-20 10:04:23,574 - [AVIS-ENGINE] - INFO - [PROCESS] Beginning coordinate validation and global mapping...
+2026-04-20 10:04:23,575 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sector Alpha-1 | Loc ID: LOC-TX01 | Coordinates: 23.5204, 87.3119
+2026-04-20 10:04:23,575 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Neon Cache | Loc ID: LOC-TX02 | Coordinates: 23.525, 87.305
+2026-04-20 10:04:23,575 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ghost Outpost | Loc ID: LOC-TX03 | Coordinates: 23.531, 87.318
+2026-04-20 10:04:23,576 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Iron Stronghold | Loc ID: LOC-TX04 | Coordinates: 23.515, 87.325
+2026-04-20 10:04:23,576 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Delta Supply | Loc ID: LOC-TX05 | Coordinates: 23.54, 87.295
+2026-04-20 10:04:23,576 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Skull Valley | Loc ID: LOC-TX06 | Coordinates: 23.508, 87.302
+2026-04-20 10:04:23,577 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Diamond Grid | Loc ID: LOC-TX07 | Coordinates: 23.522, 87.335
+2026-04-20 10:04:23,577 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ruin Sector 9 | Loc ID: LOC-TX09 | Coordinates: 23.512, 87.285
+2026-04-20 10:04:23,577 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Vanguard Point | Loc ID: LOC-TX10 | Coordinates: 23.528, 87.342
+2026-04-20 10:04:23,577 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Echo Cache | Loc ID: LOC-TX11 | Coordinates: 23.535, 87.275
+2026-04-20 10:04:23,577 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bunker 12 | Loc ID: LOC-TX12 | Coordinates: 23.501, 87.31
+2026-04-20 10:04:23,577 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: The Spire | Loc ID: LOC-TX13 | Coordinates: 23.555, 87.322
+2026-04-20 10:04:23,577 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Nomad camp | Loc ID: LOC-TX14 | Coordinates: 23.518, 87.265
+2026-04-20 10:04:23,577 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Relic site | Loc ID: LOC-TX15 | Coordinates: 23.542, 87.355
+2026-04-20 10:04:23,578 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Dead Zone | Loc ID: LOC-TX16 | Coordinates: 23.495, 87.328
+2026-04-20 10:04:23,578 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Titan Fort | Loc ID: LOC-TX17 | Coordinates: 23.565, 87.3
+2026-04-20 10:04:23,578 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Wraith Point | Loc ID: LOC-TX19 | Coordinates: 23.575, 87.315
+2026-04-20 10:04:23,578 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Omega Terminal | Loc ID: LOC-TX20 | Coordinates: 23.51, 87.365
+2026-04-20 10:04:23,578 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hazard S-21 | Loc ID: LOC-TX21 | Coordinates: 23.548, 87.235
+2026-04-20 10:04:23,579 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Crystal Vault | Loc ID: LOC-TX22 | Coordinates: 23.585, 87.33
+2026-04-20 10:04:23,579 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Silent Hill | Loc ID: LOC-TX24 | Coordinates: 23.562, 87.345
+2026-04-20 10:04:23,579 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Refuge-25 | Loc ID: LOC-TX25 | Coordinates: 23.53, 87.215
+2026-04-20 10:04:23,579 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Toxic Basin | Loc ID: LOC-TX26 | Coordinates: 23.595, 87.305
+2026-04-20 10:04:23,579 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sovereign Lab | Loc ID: LOC-TX27 | Coordinates: 23.515, 87.205
+2026-04-20 10:04:23,579 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Iron gate | Loc ID: LOC-TX28 | Coordinates: 23.54, 87.375
+2026-04-20 10:04:23,580 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Phantom Lake | Loc ID: LOC-TX29 | Coordinates: 23.572, 87.285
+2026-04-20 10:04:23,580 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Safehaven | Loc ID: LOC-TX30 | Coordinates: 23.525, 87.385
+2026-04-20 10:04:23,581 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Crater Edge | Loc ID: LOC-TX31 | Coordinates: 23.605, 87.315
+2026-04-20 10:04:23,581 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Gilded Path | Loc ID: LOC-TX32 | Coordinates: 23.535, 87.395
+2026-04-20 10:04:23,581 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bastion 33 | Loc ID: LOC-TX33 | Coordinates: 23.485, 87.305
+2026-04-20 10:04:23,581 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Comm Tower | Loc ID: LOC-TX35 | Coordinates: 23.545, 87.405
+2026-04-20 10:04:23,581 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Abyss Vent | Loc ID: LOC-TX36 | Coordinates: 23.615, 87.325
+2026-04-20 10:04:23,581 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Golden Gate | Loc ID: LOC-TX37 | Coordinates: 23.522, 87.415
+2026-04-20 10:04:23,581 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Citadel | Loc ID: LOC-TX38 | Coordinates: 23.475, 87.315
+2026-04-20 10:04:23,581 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mist Valley | Loc ID: LOC-TX39 | Coordinates: 23.585, 87.275
+2026-04-20 10:04:23,582 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Frontier Lodge | Loc ID: LOC-TX40 | Coordinates: 23.512, 87.425
+2026-04-20 10:04:23,582 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Blast Site | Loc ID: LOC-TX41 | Coordinates: 23.625, 87.335
+2026-04-20 10:04:23,582 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Artifact 42 | Loc ID: LOC-TX42 | Coordinates: 23.532, 87.435
+2026-04-20 10:04:23,582 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Keep Zero | Loc ID: LOC-TX43 | Coordinates: 23.465, 87.325
+2026-04-20 10:04:23,582 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Haunted Mill | Loc ID: LOC-TX44 | Coordinates: 23.595, 87.265
+2026-04-20 10:04:23,582 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Waypoint 45 | Loc ID: LOC-TX45 | Coordinates: 23.502, 87.445
+2026-04-20 10:04:23,582 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Final Frontier | Loc ID: LOC-TX46 | Coordinates: 23.635, 87.345
+2026-04-20 10:04:23,582 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sector Prime-Zero | Loc ID: LOC-N01 | Coordinates: 23.5204, 87.3119
+2026-04-20 10:04:23,582 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Neon Intersection | Loc ID: LOC-N02 | Coordinates: 23.5255, 87.3021
+2026-04-20 10:04:23,582 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ghost Signal-3 | Loc ID: LOC-N03 | Coordinates: 23.5312, 87.3184
+2026-04-20 10:04:23,583 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Iron Grid-A | Loc ID: LOC-N04 | Coordinates: 23.5148, 87.3255
+2026-04-20 10:04:23,583 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Delta Outpost | Loc ID: LOC-N05 | Coordinates: 23.541, 87.2952
+2026-04-20 10:04:23,583 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Skull Crag | Loc ID: LOC-N06 | Coordinates: 23.5081, 87.3029
+2026-04-20 10:04:23,583 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Diamond Junction | Loc ID: LOC-N07 | Coordinates: 23.5225, 87.3351
+2026-04-20 10:04:23,583 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ruin Sector 09 | Loc ID: LOC-N09 | Coordinates: 23.5122, 87.2859
+2026-04-20 10:04:23,583 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Vanguard Wall | Loc ID: LOC-N10 | Coordinates: 23.5285, 87.3429
+2026-04-20 10:04:23,583 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Echo Cache-11 | Loc ID: LOC-N11 | Coordinates: 23.5358, 87.2751
+2026-04-20 10:04:23,583 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bunker Alpha | Loc ID: LOC-N12 | Coordinates: 23.5012, 87.3101
+2026-04-20 10:04:23,584 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: High Spire | Loc ID: LOC-N13 | Coordinates: 23.5559, 87.3221
+2026-04-20 10:04:23,585 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Nomad Ridge | Loc ID: LOC-N14 | Coordinates: 23.5189, 87.2651
+2026-04-20 10:04:23,586 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Relic Vault | Loc ID: LOC-N15 | Coordinates: 23.5429, 87.3551
+2026-04-20 10:04:23,586 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Silence Zone | Loc ID: LOC-N16 | Coordinates: 23.4959, 87.3281
+2026-04-20 10:04:23,586 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Titan Bastion | Loc ID: LOC-N17 | Coordinates: 23.5659, 87.3001
+2026-04-20 10:04:23,586 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Aegis Wall | Loc ID: LOC-TX23 | Coordinates: 23.505, 87.245
+2026-04-20 10:04:23,586 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Glimmer Node | Loc ID: LOC-TX18 | Coordinates: 23.532, 87.255
+2026-04-20 10:04:23,592 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Shade Forest | Loc ID: LOC-TX34 | Coordinates: 23.555, 87.265
+2026-04-20 10:04:23,592 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Glimmer Node | Loc ID: LOC-N18 | Coordinates: 23.5329, 87.2551
+2026-04-20 10:04:23,592 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Wraith Point | Loc ID: LOC-N19 | Coordinates: 23.5759, 87.3151
+2026-04-20 10:04:23,592 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Omega Base | Loc ID: LOC-N20 | Coordinates: 23.5109, 87.3651
+2026-04-20 10:04:23,593 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hazard S-21 | Loc ID: LOC-N21 | Coordinates: 23.5489, 87.2351
+2026-04-20 10:04:23,593 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Crystal Vault | Loc ID: LOC-N22 | Coordinates: 23.5859, 87.3301
+2026-04-20 10:04:23,593 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Aegis Outpost | Loc ID: LOC-N23 | Coordinates: 23.5059, 87.2451
+2026-04-20 10:04:23,593 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Void Hill | Loc ID: LOC-N24 | Coordinates: 23.5629, 87.3451
+2026-04-20 10:04:23,593 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sanctuary-25 | Loc ID: LOC-N25 | Coordinates: 23.5309, 87.2151
+2026-04-20 10:04:23,593 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Toxin Basin | Loc ID: LOC-N26 | Coordinates: 23.5959, 87.3051
+2026-04-20 10:04:23,593 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sovereign Point | Loc ID: LOC-N27 | Coordinates: 23.5159, 87.2051
+2026-04-20 10:04:23,593 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Iron Gate-Z | Loc ID: LOC-N28 | Coordinates: 23.5409, 87.3751
+2026-04-20 10:04:23,594 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mist Lake | Loc ID: LOC-N29 | Coordinates: 23.5729, 87.2851
+2026-04-20 10:04:23,595 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Final Shelter | Loc ID: LOC-N30 | Coordinates: 23.5259, 87.3851
+2026-04-20 10:04:23,596 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: MANHAT | Loc ID: LOC-8DF6203D | Coordinates: 16.9704600445577, 26.5533959145373
+2026-04-20 10:04:23,596 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Shadow Node-8 | Loc ID: LOC-N08 | Coordinates: 23.5455, 87.3158
+2026-04-20 10:04:23,596 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Shadow Base | Loc ID: LOC-TX08 | Coordinates: 23.545, 87.315
+2026-04-20 10:04:23,596 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: locator | Loc ID: LOC-3C8F5F70 | Coordinates: 19.1660461875137, 75.2520509204658
+2026-04-20 10:04:23,597 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: test subject | Loc ID: LOC-28102C4A | Coordinates: 23.9625329, 85.4888279
+2026-04-20 10:04:23,597 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Taj Mahal | Loc ID: TX8R2K | Coordinates: 27.1751, 78.0421
+2026-04-20 10:04:23,597 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Agra Fort | Loc ID: B9W4ML | Coordinates: 27.1795, 78.0211
+2026-04-20 10:04:23,597 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Fatehpur Sikri | Loc ID: Q2P9SH | Coordinates: 27.0911, 77.6617
+2026-04-20 10:04:23,597 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Red Fort | Loc ID: V5N1XJ | Coordinates: 28.6562, 77.241
+2026-04-20 10:04:23,597 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Qutub Minar | Loc ID: L7M3KB | Coordinates: 28.5244, 77.1855
+2026-04-20 10:04:23,597 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Humayun’s Tomb | Loc ID: H4F6YT | Coordinates: 28.5933, 77.2507
+2026-04-20 10:04:23,597 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Jantar Mantar Jaipur | Loc ID: Z8D2RQ | Coordinates: 26.9248, 75.8246
+2026-04-20 10:04:23,598 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Amer Fort | Loc ID: C1G9PN | Coordinates: 26.9855, 75.8513
+2026-04-20 10:04:23,598 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hawa Mahal | Loc ID: K3V7WD | Coordinates: 26.9239, 75.8267
+2026-04-20 10:04:23,598 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mehrangarh Fort | Loc ID: J2B4NX | Coordinates: 26.2978, 73.0185
+2026-04-20 10:04:23,598 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Jaisalmer Fort | Loc ID: M9S1GV | Coordinates: 26.9124, 70.9127
+2026-04-20 10:04:23,598 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Kumbhalgarh Fort | Loc ID: R6L8TZ | Coordinates: 25.1491, 73.5873
+2026-04-20 10:04:23,598 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Chittorgarh Fort | Loc ID: Y4H7MF | Coordinates: 24.8879, 74.6451
+2026-04-20 10:04:23,598 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Golden Temple | Loc ID: W1X3CJ | Coordinates: 31.62, 74.8765
+2026-04-20 10:04:23,598 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: India Gate | Loc ID: D8K2PL | Coordinates: 28.6129, 77.2295
+2026-04-20 10:04:23,598 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Jama Masjid | Loc ID: E5N9QB | Coordinates: 28.6507, 77.2334
+2026-04-20 10:04:23,599 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bara Imambara | Loc ID: P7T1RX | Coordinates: 26.8689, 80.9128
+2026-04-20 10:04:23,599 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sarnath Stupa | Loc ID: F4V6GY | Coordinates: 25.3761, 82.9897
+2026-04-20 10:04:23,599 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hemis Monastery | Loc ID: G9J3ZW | Coordinates: 33.9128, 77.7011
+2026-04-20 10:04:23,600 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Leh Palace | Loc ID: I1M7KD | Coordinates: 34.1661, 77.5866
+2026-04-20 10:04:23,600 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sanchi Stupa | Loc ID: A8S2BH | Coordinates: 23.4877, 77.7399
+2026-04-20 10:04:23,600 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Khajuraho Temples | Loc ID: U5H9NC | Coordinates: 24.8518, 79.9215
+2026-04-20 10:04:23,600 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Gwalior Fort | Loc ID: O3V1RD | Coordinates: 26.2303, 78.1691
+2026-04-20 10:04:23,600 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bhimbetka Caves | Loc ID: N7X4FJ | Coordinates: 22.9392, 77.6127
+2026-04-20 10:04:23,600 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ajanta Caves | Loc ID: S1M3TV | Coordinates: 20.5519, 75.7033
+2026-04-20 10:04:23,600 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ellora Caves | Loc ID: K8B2LW | Coordinates: 20.0258, 75.178
+2026-04-20 10:04:23,600 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Elephanta Caves | Loc ID: Y6P9ZC | Coordinates: 18.9633, 72.9315
+2026-04-20 10:04:23,600 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Gateway of India | Loc ID: T4R7NK | Coordinates: 18.922, 72.8347
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Raigad Fort | Loc ID: X2L5GH | Coordinates: 18.2347, 73.4464
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Shaniwar Wada | Loc ID: M3F1DS | Coordinates: 18.5194, 73.8553
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Rani Ki Vav | Loc ID: G7H2WQ | Coordinates: 23.8589, 72.1023
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sun Temple Modhera | Loc ID: V8K4LM | Coordinates: 23.5835, 72.133
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sabarmati Ashram | Loc ID: P1N9BV | Coordinates: 23.0605, 72.5808
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Lothal Ruins | Loc ID: C3X2ZK | Coordinates: 22.5212, 72.2355
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Basilica of Bom Jesus | Loc ID: J5B7YT | Coordinates: 15.5009, 73.9116
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Se Cathedral | Loc ID: S9R4FK | Coordinates: 15.5039, 73.9131
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Aguada Fort | Loc ID: U2M1QD | Coordinates: 15.4925, 73.7738
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hampi Virupaksha | Loc ID: Z4X6WP | Coordinates: 15.335, 76.46
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Vittala Temple | Loc ID: L8K3JH | Coordinates: 15.3389, 76.4672
+2026-04-20 10:04:23,601 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mysore Palace | Loc ID: Q1N5GD | Coordinates: 12.3051, 76.6551
+2026-04-20 10:04:23,602 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Badami Caves | Loc ID: F7S3RY | Coordinates: 15.9135, 75.6791
+2026-04-20 10:04:23,602 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Gol Gumbaz | Loc ID: M2B9XZ | Coordinates: 16.8302, 75.736
+2026-04-20 10:04:23,602 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Brihadeeswarar Temple | Loc ID: H5T1NM | Coordinates: 10.7828, 79.1318
+2026-04-20 10:04:23,602 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Shore Temple | Loc ID: W4G8LK | Coordinates: 12.6167, 80.1917
+2026-04-20 10:04:23,602 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Meenakshi Temple | Loc ID: D3V2CP | Coordinates: 9.9195, 78.1193
+2026-04-20 10:04:23,602 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Charminar | Loc ID: K6X9BT | Coordinates: 17.3616, 78.4747
+2026-04-20 10:04:23,603 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Golconda Fort | Loc ID: Y1N5MF | Coordinates: 17.3833, 78.4011
+2026-04-20 10:04:23,603 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sun Temple Konark | Loc ID: Z9L4JH | Coordinates: 19.8876, 86.0945
+2026-04-20 10:04:23,603 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Jagannath Temple | Loc ID: P3R7QD | Coordinates: 19.8131, 85.8312
+2026-04-20 10:04:23,603 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Victoria Memorial | Loc ID: S5V2TY | Coordinates: 22.5448, 88.3426
+2026-04-20 10:04:23,603 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hazarduari Palace | Loc ID: G8B4XZ | Coordinates: 24.1866, 88.2686
+2026-04-20 10:04:23,604 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mahabodhi Temple | Loc ID: M1F9WS | Coordinates: 24.696, 84.9914
+2026-04-20 10:04:23,604 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Nalanda University | Loc ID: K4J2RQ | Coordinates: 25.135, 85.4439
+2026-04-20 10:04:23,604 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Cellular Jail | Loc ID: L7X5PT | Coordinates: 11.6743, 92.7483
+2026-04-20 10:04:23,604 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Jhansi Fort | Loc ID: A2H9BK | Coordinates: 25.4589, 78.5786
+2026-04-20 10:04:23,605 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Chittorgarh Tower | Loc ID: U8G4YT | Coordinates: 24.8911, 74.6467
+2026-04-20 10:04:23,605 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Umaid Bhawan | Loc ID: O6V1NM | Coordinates: 26.2811, 73.0472
+2026-04-20 10:04:23,605 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Lake Palace Udaipur | Loc ID: J9B3QD | Coordinates: 24.5753, 73.6806
+2026-04-20 10:04:23,605 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bishnupur Temples | Loc ID: E4X2ZS | Coordinates: 23.07, 87.319
+2026-04-20 10:04:23,605 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Coober Pedy | Loc ID: W7G5BT | Coordinates: 26.3333, 73
+2026-04-20 10:04:23,605 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Adalaj Stepwell | Loc ID: T5K1RQ | Coordinates: 23.1667, 72.58
+2026-04-20 10:04:23,605 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Kondane Caves | Loc ID: F2N9XJ | Coordinates: 18.82, 73.38
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Murud Janjira | Loc ID: Q8M4WP | Coordinates: 18.2989, 72.9642
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sindhudurg Fort | Loc ID: H1S7KD | Coordinates: 16.0583, 73.4619
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bidar Fort | Loc ID: V3B5TY | Coordinates: 17.9272, 77.5303
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Pattadakal | Loc ID: P9G4JH | Coordinates: 15.9467, 75.8167
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Aihole Temples | Loc ID: Z2X6QD | Coordinates: 16.0178, 75.8858
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Belur Temple | Loc ID: L1N5MT | Coordinates: 13.1622, 75.8597
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Halebidu Temple | Loc ID: K8J3RY | Coordinates: 13.2125, 75.9939
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Shravanabelagola | Loc ID: M5F1WS | Coordinates: 12.8572, 76.4864
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Gommateshwara | Loc ID: S4V7NK | Coordinates: 12.85, 76.48
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Srirangapatna | Loc ID: G3B2XZ | Coordinates: 12.4239, 76.6947
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Tipu Summer Palace | Loc ID: T9H5QD | Coordinates: 12.9594, 77.5739
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Madras High Court | Loc ID: D1X6BT | Coordinates: 13.0886, 80.2881
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Fort St George | Loc ID: K4L7RQ | Coordinates: 13.0797, 80.2872
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Gingee Fort | Loc ID: M2J9PT | Coordinates: 12.2533, 79.4186
+2026-04-20 10:04:23,606 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Padmanabhapuram | Loc ID: F5S3BK | Coordinates: 8.2508, 77.3278
+2026-04-20 10:04:23,607 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bekal Fort | Loc ID: A8G4YT | Coordinates: 12.3922, 75.0347
+2026-04-20 10:04:23,607 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Thalassery Fort | Loc ID: U6V1NM | Coordinates: 11.7486, 75.4892
+2026-04-20 10:04:23,607 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Dutch Palace Kochi | Loc ID: O2B3QD | Coordinates: 9.9575, 76.2594
+2026-04-20 10:04:23,607 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Jewish Synagogue | Loc ID: W9X2ZS | Coordinates: 9.9572, 76.2592
+2026-04-20 10:04:23,607 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: St Francis Church | Loc ID: J4G5BT | Coordinates: 9.9675, 76.2411
+2026-04-20 10:04:23,607 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hill Palace Kochi | Loc ID: Z7K1RQ | Coordinates: 9.9536, 76.3508
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ramappa Temple | Loc ID: P2M4WP | Coordinates: 18.2612, 79.9431
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Warangal Fort | Loc ID: S1H7KD | Coordinates: 17.9547, 79.6106
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Thousand Pillar | Loc ID: V9B5TY | Coordinates: 18.0058, 79.5303
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Nagarjunakonda | Loc ID: G2G4JH | Coordinates: 16.525, 79.2431
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Amaravati Stupa | Loc ID: T4X6QD | Coordinates: 16.5744, 80.3581
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Chandragiri Fort | Loc ID: L9N5MT | Coordinates: 13.5828, 79.3172
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Lepakshi Temple | Loc ID: K1J3RY | Coordinates: 13.8025, 77.6103
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Gandikota Fort | Loc ID: M8F1WS | Coordinates: 14.815, 78.2861
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Udayagiri Caves | Loc ID: S2V7NK | Coordinates: 20.2631, 85.7853
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Dhauli Giri | Loc ID: G5B2XZ | Coordinates: 20.1925, 85.8394
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Lingaraj Temple | Loc ID: T1H5QD | Coordinates: 20.2383, 85.8339
+2026-04-20 10:04:23,608 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sher Shah Tomb | Loc ID: D4X6BT | Coordinates: 24.945, 84.0097
+2026-04-20 10:04:23,609 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Vikramshila Uni | Loc ID: K7L2RQ | Coordinates: 25.32, 87.27
+2026-04-20 10:04:23,609 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Rang Ghar Sibsagar | Loc ID: M9J4PT | Coordinates: 26.9808, 94.6297
+2026-04-20 10:04:23,609 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Talatal Ghar | Loc ID: F1S5BK | Coordinates: 26.9822, 94.6311
+2026-04-20 10:04:23,609 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Kamakhya Temple | Loc ID: A5G1YT | Coordinates: 26.1663, 91.7056
+2026-04-20 10:04:23,609 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Rumtek Monastery | Loc ID: U3V9NM | Coordinates: 27.2797, 88.6014
+2026-04-20 10:04:23,610 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Lodhi Gardens | Loc ID: BR9L2M | Coordinates: 28.5931, 77.2197
+2026-04-20 10:04:23,610 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Safdarjung Tomb | Loc ID: XW7V1P | Coordinates: 28.5891, 77.2106
+2026-04-20 10:04:23,611 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Tughlaqabad Fort | Loc ID: KJ4N8S | Coordinates: 28.5144, 77.2581
+2026-04-20 10:04:23,611 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Chota Imambara | Loc ID: PL9K3X | Coordinates: 26.8775, 80.9031
+2026-04-20 10:04:23,612 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: The Residency Lucknow | Loc ID: MN1G7Y | Coordinates: 26.8624, 80.9272
+2026-04-20 10:04:23,612 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Dhamek Stupa | Loc ID: ZQ5V2B | Coordinates: 25.3811, 82.9867
+2026-04-20 10:04:23,613 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ramnagar Fort | Loc ID: RF8W1C | Coordinates: 25.2686, 83.0233
+2026-04-20 10:04:23,613 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Kushinagar Nirvana | Loc ID: TG3M9L | Coordinates: 26.7414, 83.8906
+2026-04-20 10:04:23,613 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Kangra Fort | Loc ID: HB7X4D | Coordinates: 32.0911, 76.25
+2026-04-20 10:04:23,613 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Viceregal Lodge | Loc ID: YH2N6K | Coordinates: 31.1039, 77.1408
+2026-04-20 10:04:23,613 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Martand Sun Temple | Loc ID: UJ8M1P | Coordinates: 33.7461, 75.2167
+2026-04-20 10:04:23,614 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Shalimar Bagh | Loc ID: IK4L9Z | Coordinates: 34.1486, 74.8731
+2026-04-20 10:04:23,614 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Pari Mahal | Loc ID: OL7V2S | Coordinates: 34.0792, 74.8872
+2026-04-20 10:04:23,614 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Orchha Fort Complex | Loc ID: GH5N3X | Coordinates: 25.3497, 78.6444
+2026-04-20 10:04:23,614 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Jehangir Mahal | Loc ID: DA2B1M | Coordinates: 25.3506, 78.6447
+2026-04-20 10:04:23,614 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Jahaz Mahal Mandu | Loc ID: ST9P4W | Coordinates: 22.3456, 75.4022
+2026-04-20 10:04:23,614 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Aga Khan Palace | Loc ID: RE3K1L | Coordinates: 18.5522, 73.9014
+2026-04-20 10:04:23,615 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bibi Ka Maqbara | Loc ID: WQ8V7N | Coordinates: 19.9014, 75.3203
+2026-04-20 10:04:23,615 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Daulatabad Fort | Loc ID: XZ4M2B | Coordinates: 19.9406, 75.2111
+2026-04-20 10:04:23,615 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Kanheri Caves | Loc ID: LV7X9P | Coordinates: 19.2058, 72.9069
+2026-04-20 10:04:23,615 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Champaner Park | Loc ID: NM1G3Y | Coordinates: 22.4833, 73.5333
+2026-04-20 10:04:23,615 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Uparkot Fort | Loc ID: KJ4B8S | Coordinates: 21.5239, 70.4706
+2026-04-20 10:04:23,616 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Chapora Fort | Loc ID: PQ9V2D | Coordinates: 15.6069, 73.7364
+2026-04-20 10:04:23,616 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mangeshi Temple | Loc ID: AZ1W7X | Coordinates: 15.4439, 73.9686
+2026-04-20 10:04:23,616 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bidar Fort | Loc ID: LM3K9Z | Coordinates: 17.9272, 77.5303
+2026-04-20 10:04:23,616 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Airavatesvara | Loc ID: XW4V2P | Coordinates: 10.9472, 79.3564
+2026-04-20 10:04:23,617 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Gangaikonda Temple | Loc ID: GH8N1M | Coordinates: 11.2014, 79.4519
+2026-04-20 10:04:23,617 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Thirumalai Mahal | Loc ID: ST3P9W | Coordinates: 9.9158, 78.1228
+2026-04-20 10:04:23,617 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Padmanabhaswamy | Loc ID: RE7K4L | Coordinates: 8.4831, 76.9436
+2026-04-20 10:04:23,617 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mattancherry Palace | Loc ID: WQ2V1N | Coordinates: 9.9583, 76.2592
+2026-04-20 10:04:23,617 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Chowmahalla Palace | Loc ID: NM4G7Y | Coordinates: 17.3578, 78.4717
+2026-04-20 10:04:23,618 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Qutb Shahi Tombs | Loc ID: KJ9B3S | Coordinates: 17.3956, 78.3972
+2026-04-20 10:04:23,618 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ujjayanta Palace | Loc ID: PQ1V8D | Coordinates: 23.8378, 91.2847
+2026-04-20 10:04:23,618 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Unakoti Carvings | Loc ID: AZ5W3X | Coordinates: 24.3167, 92.0167
+2026-04-20 10:04:23,618 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Neermahal Palace | Loc ID: LM7K2Z | Coordinates: 23.4731, 91.3197
+2026-04-20 10:04:23,618 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Cellular Jail | Loc ID: XW9V4P | Coordinates: 11.6743, 92.7483
+2026-04-20 10:04:23,619 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ross Island | Loc ID: GH2N7M | Coordinates: 11.6761, 92.7606
+2026-04-20 10:04:23,619 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Jaisalmer War Museum | Loc ID: ST4P1W | Coordinates: 26.9167, 71.05
+2026-04-20 10:04:23,619 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Chandigarh Capitol | Loc ID: RE9K2L | Coordinates: 30.7589, 76.8042
+2026-04-20 10:04:23,620 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Nilgiri Railway | Loc ID: WQ5V4N | Coordinates: 11.3333, 76.8333
+2026-04-20 10:04:23,620 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Darjeeling Railway | Loc ID: NM7G1Y | Coordinates: 27.0333, 88.2667
+2026-04-20 10:04:23,620 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Palitana Temples | Loc ID: KJ2B9S | Coordinates: 21.5, 71.8333
+2026-04-20 10:04:23,620 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Victory Tower | Loc ID: PQ4V7D | Coordinates: 24.8879, 74.6451
+2026-04-20 10:04:23,620 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sidi Bashir Mosque | Loc ID: AZ8W5X | Coordinates: 23.0189, 72.5961
+2026-04-20 10:04:23,621 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Brahma Temple | Loc ID: LM1K4Z | Coordinates: 26.4889, 74.5558
+2026-04-20 10:04:23,621 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ajmer Sharif | Loc ID: XW2V9P | Coordinates: 26.4561, 74.6283
+2026-04-20 10:04:23,621 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hazratbal Shrine | Loc ID: GH4N2M | Coordinates: 34.1281, 74.8425
+2026-04-20 10:04:23,621 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Kailasa Temple | Loc ID: ST8P5W | Coordinates: 20.0258, 75.178
+2026-04-20 10:04:23,621 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Tawang Monastery | Loc ID: RE2K7L | Coordinates: 27.5878, 91.8594
+2026-04-20 10:04:23,622 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Basgo Monastery | Loc ID: WQ1V4N | Coordinates: 34.2167, 77.2833
+2026-04-20 10:04:23,622 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ibrahim Rauza | Loc ID: NM9G4Y | Coordinates: 16.8225, 75.6989
+2026-04-20 10:04:23,622 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Cooch Behar Palace | Loc ID: KJ7B1S | Coordinates: 26.3267, 89.4447
+2026-04-20 10:04:23,622 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Itmad Ud Daulah | Loc ID: PQ2V9D | Coordinates: 27.1928, 78.0322
+2026-04-20 10:04:23,622 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Akbar Tomb | Loc ID: AZ4W8X | Coordinates: 27.2206, 77.9506
+2026-04-20 10:04:23,622 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Daria Daulat Bagh | Loc ID: LM9K3Z | Coordinates: 12.4231, 76.7028
+2026-04-20 10:04:23,622 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Arjuna Penance | Loc ID: XW1V7P | Coordinates: 12.6164, 80.1922
+2026-04-20 10:04:23,622 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Chaturbhuj Temple | Loc ID: GH7N4M | Coordinates: 25.3503, 78.6436
+2026-04-20 10:04:23,622 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Rajwada Palace | Loc ID: ST1P2W | Coordinates: 22.7186, 75.8547
+2026-04-20 10:04:23,623 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Patwon Ki Haveli | Loc ID: RE8K5L | Coordinates: 26.9167, 70.9167
+2026-04-20 10:04:23,623 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Karni Mata Temple | Loc ID: WQ4V9N | Coordinates: 27.7914, 73.3406
+2026-04-20 10:04:23,623 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ranakpur Temple | Loc ID: NM2G8Y | Coordinates: 25.115, 73.4722
+2026-04-20 10:04:23,623 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Dilwara Temples | Loc ID: KJ5B2S | Coordinates: 24.5967, 72.7114
+2026-04-20 10:04:23,623 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Statue of Unity | Loc ID: PQ7V1D | Coordinates: 21.8381, 73.7191
+2026-04-20 10:04:23,623 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Golconda Tombs | Loc ID: AZ2W9X | Coordinates: 17.3956, 78.3972
+2026-04-20 10:04:23,623 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Shravasti Ruins | Loc ID: LM4K1Z | Coordinates: 27.5114, 82.0467
+2026-04-20 10:04:23,623 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Pinjore Gardens | Loc ID: XW5V8P | Coordinates: 30.7981, 76.9158
+2026-04-20 10:04:23,623 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hemis Museum | Loc ID: GH9N5M | Coordinates: 33.9128, 77.7011
+2026-04-20 10:04:23,624 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Lothal Dockyard | Loc ID: ST2P4W | Coordinates: 22.5212, 72.2355
+2026-04-20 10:04:23,624 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Adalaj Vav | Loc ID: RE5K9L | Coordinates: 23.1667, 72.58
+2026-04-20 10:04:23,624 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Se Cathedral Goa | Loc ID: WQ7V2N | Coordinates: 15.5039, 73.9131
+2026-04-20 10:04:23,624 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Badami Fort | Loc ID: NM3G5Y | Coordinates: 15.9211, 75.6844
+2026-04-20 10:04:23,624 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bijapur Gumbaz | Loc ID: KJ1B4S | Coordinates: 16.8302, 75.736
+2026-04-20 10:04:23,625 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Madurai Meenakshi | Loc ID: PQ5V8D | Coordinates: 9.9195, 78.1193
+2026-04-20 10:04:23,625 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Srirangam Temple | Loc ID: AZ7W2X | Coordinates: 10.8624, 78.6902
+2026-04-20 10:04:23,625 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Konark Wheel | Loc ID: LM2K7Z | Coordinates: 19.8876, 86.0945
+2026-04-20 10:04:23,625 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Puri Jagannath | Loc ID: XW3V5P | Coordinates: 19.8131, 85.8312
+2026-04-20 10:04:23,625 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Victoria Kolkata | Loc ID: GH1N8M | Coordinates: 22.5448, 88.3426
+2026-04-20 10:04:23,625 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Murshidabad Palace | Loc ID: ST5P2W | Coordinates: 24.1866, 88.2686
+2026-04-20 10:04:23,625 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Terracotta Bankura | Loc ID: RE1K8L | Coordinates: 23.07, 87.319
+2026-04-20 10:04:23,625 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bodh Gaya Tree | Loc ID: WQ9V4N | Coordinates: 24.696, 84.9914
+2026-04-20 10:04:23,625 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sibsagar Ahom | Loc ID: NM5G2Y | Coordinates: 26.9808, 94.6297
+2026-04-20 10:04:23,626 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Kamakhya Hill | Loc ID: KJ8B5S | Coordinates: 26.1663, 91.7056
+2026-04-20 10:04:23,626 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Rumtek Sikkim | Loc ID: PQ2V7D | Coordinates: 27.2797, 88.6014
+2026-04-20 10:04:23,626 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Agra Chini Rauza | Loc ID: AZ9W1X | Coordinates: 27.2028, 78.0411
+2026-04-20 10:04:23,626 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sikandra Tomb | Loc ID: LM5K8Z | Coordinates: 27.2206, 77.9506
+2026-04-20 10:04:23,626 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: St Francis Kochi | Loc ID: XW1V4P | Coordinates: 9.9675, 76.2411
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hill Palace Museum | Loc ID: GH7N2M | Coordinates: 9.9536, 76.3508
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ramappa Pillar | Loc ID: ST9P5W | Coordinates: 18.2612, 79.9431
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Warangal Gateway | Loc ID: RE4K1L | Coordinates: 17.9547, 79.6106
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Nagarjuna Stupa | Loc ID: WQ3V8N | Coordinates: 16.525, 79.2431
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Chandragiri AP | Loc ID: NM1G9Y | Coordinates: 13.5828, 79.3172
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Lepakshi Nandi | Loc ID: KJ4B2S | Coordinates: 13.8025, 77.6103
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Gandikota Canyon | Loc ID: PQ8V5D | Coordinates: 14.815, 78.2861
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Udayagiri Odisha | Loc ID: AZ3W7X | Coordinates: 20.2631, 85.7853
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Dhauli Shanti | Loc ID: LM1K9Z | Coordinates: 20.1925, 85.8394
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bhubaneswar Lingaraj | Loc ID: XW7V2P | Coordinates: 20.2383, 85.8339
+2026-04-20 10:04:23,627 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Vikramshila Ruins | Loc ID: GH5N9M | Coordinates: 25.32, 87.27
+2026-04-20 10:04:23,628 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ahom Talatal | Loc ID: ST3P1W | Coordinates: 26.9822, 94.6311
+2026-04-20 10:04:23,628 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Nilgiri Heritage | Loc ID: RE8K2L | Coordinates: 11.3333, 76.8333
+2026-04-20 10:04:23,628 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Dholavira Kutch | Loc ID: WQ4V1N | Coordinates: 23.8825, 70.2131
+2026-04-20 10:04:23,629 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Eiffel Tower, France | Loc ID: 1ABE8E | Coordinates: 48.8584, 2.2945
+2026-04-20 10:04:23,629 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Colosseum, Italy | Loc ID: C6CCA6 | Coordinates: 41.8902, 12.4922
+2026-04-20 10:04:23,629 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Leaning Tower of Pisa, Italy | Loc ID: E7ACB8 | Coordinates: 43.723, 10.3966
+2026-04-20 10:04:23,629 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Parthenon, Greece | Loc ID: D3196F | Coordinates: 37.9715, 23.7257
+2026-04-20 10:04:23,629 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Stonehenge, UK | Loc ID: 2DB516 | Coordinates: 51.1789, -1.8262
+2026-04-20 10:04:23,630 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Big Ben, UK | Loc ID: 8FB834 | Coordinates: 51.5007, -0.1246
+2026-04-20 10:04:23,630 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Buckingham Palace, UK | Loc ID: EB87C5 | Coordinates: 51.5014, -0.1419
+2026-04-20 10:04:23,630 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sagrada Familia, Spain | Loc ID: B7B7DA | Coordinates: 41.4036, 2.1744
+2026-04-20 10:04:23,630 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Alhambra, Spain | Loc ID: 1079A3 | Coordinates: 37.1773, -3.5893
+2026-04-20 10:04:23,630 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Louvre Museum, France | Loc ID: E731E5 | Coordinates: 48.8606, 2.3376
+2026-04-20 10:04:23,630 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Acropolis of Athens, Greece | Loc ID: 9DEBD5 | Coordinates: 37.9715, 23.7257
+2026-04-20 10:04:23,630 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mont Saint-Michel, France | Loc ID: 07F6B0 | Coordinates: 48.6361, -1.5115
+2026-04-20 10:04:23,630 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Berlin Wall Memorial, Germany | Loc ID: 8F279E | Coordinates: 52.5351, 13.3904
+2026-04-20 10:04:23,630 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Brandenburg Gate, Germany | Loc ID: 6C1ED6 | Coordinates: 52.5163, 13.3777
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Grand Canal, Venice | Loc ID: 841471 | Coordinates: 45.4375, 12.3338
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Pompeii, Italy | Loc ID: 2B023D | Coordinates: 40.7489, 14.4842
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Great Wall of China | Loc ID: DFF9E2 | Coordinates: 40.4319, 116.5704
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Forbidden City, China | Loc ID: 656FDC | Coordinates: 39.9163, 116.3972
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mount Fuji, Japan | Loc ID: 59FDA3 | Coordinates: 35.3606, 138.7274
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Tokyo Tower, Japan | Loc ID: 9DF510 | Coordinates: 35.6586, 139.7454
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Angkor Wat, Cambodia | Loc ID: E17FCB | Coordinates: 13.4125, 103.867
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Petra, Jordan | Loc ID: CE65D8 | Coordinates: 30.3285, 35.4444
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Burj Khalifa, UAE | Loc ID: 933740 | Coordinates: 25.1972, 55.2744
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Palm Jumeirah, UAE | Loc ID: F0C44A | Coordinates: 25.1124, 55.139
+2026-04-20 10:04:23,631 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Western Wall, Israel | Loc ID: 1A2EBB | Coordinates: 31.7767, 35.2345
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Ha Long Bay, Vietnam | Loc ID: 5EAB69 | Coordinates: 20.9101, 107.1839
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Marina Bay Sands, Singapore | Loc ID: 848EB4 | Coordinates: 1.2847, 103.861
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Petronas Towers, Malaysia | Loc ID: 1A325F | Coordinates: 3.1578, 101.7123
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Temple of the Emerald Buddha, Thailand | Loc ID: 24ABF1 | Coordinates: 13.7516, 100.4927
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Bagan, Myanmar | Loc ID: AEE430 | Coordinates: 21.1717, 94.8585
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Great Pyramid of Giza, Egypt | Loc ID: 8D5CD2 | Coordinates: 29.9792, 31.1342
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: The Great Sphinx, Egypt | Loc ID: 0E8EA5 | Coordinates: 29.9753, 31.1376
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Valley of the Kings, Egypt | Loc ID: C6ECCD | Coordinates: 25.7402, 32.6014
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Table Mountain, South Africa | Loc ID: 49F7D7 | Coordinates: -33.9628, 18.4098
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Victoria Falls, Zimbabwe/Zambia | Loc ID: 07203B | Coordinates: -17.9243, 25.8572
+2026-04-20 10:04:23,632 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mount Kilimanjaro, Tanzania | Loc ID: 5954E1 | Coordinates: -3.0674, 37.3556
+2026-04-20 10:04:23,633 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Djemaa el-Fna, Morocco | Loc ID: 3084D7 | Coordinates: 31.6258, -7.9891
+2026-04-20 10:04:23,633 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Statue of Liberty, USA | Loc ID: 8149E7 | Coordinates: 40.6892, -74.0445
+2026-04-20 10:04:23,633 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Empire State Building, USA | Loc ID: BC2C5B | Coordinates: 40.7484, -73.9857
+2026-04-20 10:04:23,633 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Golden Gate Bridge, USA | Loc ID: 5CA124 | Coordinates: 37.8199, -122.4783
+2026-04-20 10:04:23,633 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Grand Canyon, USA | Loc ID: 4EA9AE | Coordinates: 36.107, -112.113
+2026-04-20 10:04:23,633 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Mount Rushmore, USA | Loc ID: 0199C1 | Coordinates: 43.8791, -103.4591
+2026-04-20 10:04:23,634 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Niagara Falls, USA/Canada | Loc ID: 243C1F | Coordinates: 43.0896, -79.0849
+2026-04-20 10:04:23,634 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hollywood Sign, USA | Loc ID: C2249B | Coordinates: 34.1341, -118.3215
+2026-04-20 10:04:23,634 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Chichen Itza, Mexico | Loc ID: A7571B | Coordinates: 20.6843, -88.5678
+2026-04-20 10:04:23,634 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Teotihuacan, Mexico | Loc ID: 6BEC7F | Coordinates: 19.6923, -98.8435
+2026-04-20 10:04:23,634 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: CN Tower, Canada | Loc ID: 0EE001 | Coordinates: 43.6426, -79.3871
+2026-04-20 10:04:23,634 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Machu Picchu, Peru | Loc ID: F52D71 | Coordinates: -13.1631, -72.545
+2026-04-20 10:04:23,634 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Christ the Redeemer, Brazil | Loc ID: 9E32BE | Coordinates: -22.9519, -43.2105
+2026-04-20 10:04:23,634 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Iguazu Falls, Brazil/Argentina | Loc ID: 382865 | Coordinates: -25.6953, -54.4367
+2026-04-20 10:04:23,634 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Easter Island, Chile | Loc ID: 0425E0 | Coordinates: -27.1127, -109.3497
+2026-04-20 10:04:23,634 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Galapagos Islands, Ecuador | Loc ID: 1CF075 | Coordinates: -0.8293, -90.9821
+2026-04-20 10:04:23,635 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Salar de Uyuni, Bolivia | Loc ID: 9D1634 | Coordinates: -20.1338, -67.4891
+2026-04-20 10:04:23,635 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Sydney Opera House, Australia | Loc ID: 103A96 | Coordinates: -33.8568, 151.2153
+2026-04-20 10:04:23,635 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Great Barrier Reef, Australia | Loc ID: 70D1C1 | Coordinates: -18.2871, 147.6992
+2026-04-20 10:04:23,635 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Uluru, Australia | Loc ID: 5007C4 | Coordinates: -25.3444, 131.0369
+2026-04-20 10:04:23,635 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Hobbiton, New Zealand | Loc ID: 782E64 | Coordinates: -37.8721, 175.6829
+2026-04-20 10:04:23,635 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Milford Sound, New Zealand | Loc ID: 7959D0 | Coordinates: -44.6414, 167.8974
+2026-04-20 10:04:23,635 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Svalbard Global Seed Vault, Norway | Loc ID: 51F21D | Coordinates: 78.2381, 15.4491
+2026-04-20 10:04:23,635 - [AVIS-ENGINE] - WARNING - [ERROR] Could not extract coordinates for South Pole Station | Loc ID: 236C0E
+2026-04-20 10:04:23,635 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Doom sector 200 | Loc ID: LOC-429FC72C | Coordinates: 23.7200718, 86.856784
+2026-04-20 10:04:23,635 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Doome r8383 | Loc ID: LOC-5C23AA18 | Coordinates: 23.7200842, 86.856731
+2026-04-20 10:04:23,636 - [AVIS-ENGINE] - INFO - [SUCCESS] Extracted: Doomer 0000 | Loc ID: LOC-64FD3F45 | Coordinates: 23.720245, 86.8565451
+2026-04-20 10:04:23,636 - [AVIS-ENGINE] - INFO - [BOOT SEQUENCE] Global Extraction Complete. System is primed.
+2026-04-20 10:04:23,668 - [AVIS-ENGINE] - INFO - 🚀 Uvicorn Server spinning up on http://0.0.0.0:8000
+2026-04-20 10:04:26,187 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:04:26,190 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:04:26,191 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:04:26,192 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:04:26,193 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:04:26,205 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:04:46,179 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:04:46,180 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:04:46,180 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:04:46,182 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:04:46,182 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:04:46,202 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:04:46,477 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:04:46,478 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:04:46,479 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:04:46,483 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:04:46,484 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:04:46,572 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:04:47,741 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:04:47,743 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:04:47,744 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:04:47,748 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:04:47,749 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:04:47,781 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:05:06,194 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:05:06,195 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:05:06,196 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:05:06,198 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:05:06,198 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:05:06,219 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:05:26,435 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:05:26,436 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:05:26,436 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:05:26,439 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:05:26,440 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:05:26,470 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:05:46,444 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:05:46,445 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:05:46,446 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:05:46,448 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:05:46,449 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:05:46,493 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:06:06,447 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:06:06,448 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:06:06,451 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:06:06,453 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:06:06,455 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:06:06,494 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:06:26,451 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:06:26,453 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:06:26,453 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:06:26,455 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:06:26,460 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:06:26,496 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:06:46,468 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:06:46,470 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:06:46,470 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:06:46,473 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:06:46,473 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:06:46,515 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:07:06,565 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:07:06,566 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:07:06,567 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:07:06,569 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:07:06,569 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:07:06,589 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200
+2026-04-20 10:07:26,573 - [AVIS-ENGINE] - INFO - [HTTP] Incoming: GET /api/v1/scan
+2026-04-20 10:07:26,577 - [AVIS-ENGINE] - INFO - [API] GPS Scan Triggered | Target: 23.5204, 87.3119 | Radius: 40000000.0m
+2026-04-20 10:07:26,578 - [AVIS-ENGINE] - INFO - [PROCESS] Initiating local scan for user at 23.5204, 87.3119 (Radius: 40000000.0m)
+2026-04-20 10:07:26,579 - [AVIS-ENGINE] - INFO - [COMPLETED] Filtered down to 341 objects within 40000000.0m radius.
+2026-04-20 10:07:26,580 - [AVIS-ENGINE] - INFO - [API] Sending 341 location nodes to client device.
+2026-04-20 10:07:26,609 - [AVIS-ENGINE] - INFO - [HTTP] Outgoing Status: 200

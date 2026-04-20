@@ -200,6 +200,11 @@
 </div>
 
 <script>
+const CONFIG = {
+    SUPABASE_URL: "https://ihdllispdbwvwcwxlvhr.supabase.co",
+    SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P"
+};
+
 let state = {
     lat: null, lon: null, heading: 0,
     gold: 0, xp: 0, lvl: 1,
@@ -275,7 +280,7 @@ async function loadWorld() {
         updateStatus("SYNCED: " + state.objects.length);
         render();
     } catch (e) {
-        console.error(e);
+        console.error("Fetch error:", e);
         updateStatus("SYNC ERROR");
     }
 }
@@ -288,7 +293,7 @@ function interact(obj) {
     let lore = obj.stories && obj.stories.length > 0 ? obj.stories[0].content : "A fragment of digital history...";
     document.getElementById("story-content").innerText = lore;
     
-    let reward = obj.reward || 100;
+    let reward = obj.reward_per_visit || 100;
     document.getElementById("reward-val").innerText = reward;
     state.lastReward = reward;
 
@@ -346,6 +351,7 @@ function render() {
         let br = bearing(state.lat, state.lon, t_lat, t_lon);
 
         // --- MAP BLIPS: Show ALL objects regardless of distance ---
+        // Scale down the distance. If it's too far, lock it to the outer radius (70px max)
         let scaledDist = d * 0.05; 
         if (scaledDist > 70) scaledDist = 70; 
 
@@ -354,6 +360,8 @@ function render() {
         mapMarkers.appendChild(b);
 
         // --- AR RENDERING ---
+        // Only render 3D nodes in the real world if they are nearby (e.g., < 200m) 
+        // to prevent screen clutter.
         let rel = br - state.heading;
         if (rel < -180) rel += 360;
         if (rel > 180) rel -= 360;
