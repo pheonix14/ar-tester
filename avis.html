@@ -119,6 +119,7 @@
         transition: background-position 0.5s ease-out;
     }
 
+    /* PLAYER DOT & COMPASS DIRECTIONAL ARROW */
     #map-player {
         position: absolute; top: 50%; left: 50%;
         width: 14px; height: 14px; background: white;
@@ -128,10 +129,11 @@
     }
 
     #map-player::after {
-        content: ''; position: absolute; top: -16px; left: 50%;
+        content: ''; position: absolute; top: -18px; left: 50%;
         transform: translateX(-50%);
-        border-left: 7px solid transparent; border-right: 7px solid transparent;
-        border-bottom: 14px solid var(--neon-cyan);
+        border-left: 6px solid transparent; border-right: 6px solid transparent;
+        border-bottom: 14px solid var(--neon-red); /* Red tip compass arrow */
+        filter: drop-shadow(0 -2px 5px var(--neon-red));
     }
 
     .map-blip {
@@ -226,8 +228,8 @@
 const CONFIG = {
     SUPABASE_URL: "https://ihdllispdbwvwcwxlvhr.supabase.co",
     SUPABASE_KEY: "sb_publishable_TbC7C4Gf277RzfQtBd3CTw_M68nRP2P",
-    GRID_PRECISION: 3, // Decimals for Lat/Lon (3 = ~110m cells)
-    MOVE_THRESHOLD_M: 15, // Meters user must move to trigger hard scene refresh
+    GRID_PRECISION: 4, // Decimals for Lat/Lon (4 = ~11m cells)
+    MOVE_THRESHOLD_M: 10, // Meters user must move to trigger hard scene refresh
     CLUSTER_RADIUS_M: 20, // Distance to group nodes into a cluster
     RENDER_RAD_M: 800, // Max distance to render AR nodes
     MINIMAP_RAD_M: 400 // Scale reference for minimap edges
@@ -285,19 +287,23 @@ const MathGeo = {
 // ---------------- DATA PIPELINE ----------------
 const SAK_Data = {
     fetch: async () => {
+        if (!STATE.lat || !STATE.lon) return;
         sysLog("INITIATING API SPATIAL SCAN...");
         try {
-            // Simulating API Call to Python Backend (or direct to Supabase for test)
-            const res = await fetch(`${CONFIG.SUPABASE_URL}/rest/v1/locations?select=*,stories(*)`, {
-                headers: { apikey: CONFIG.SUPABASE_KEY, Authorization: "Bearer " + CONFIG.SUPABASE_KEY }
-            });
-            const rawData = await res.json();
+            // Hit Python Backend to process Haversine filtering natively based on user GPS
+            const res = await fetch(`/api/v1/scan?lat=${STATE.lat}&lon=${STATE.lon}&radius=${CONFIG.RENDER_RAD_M}`);
+            const responseData = await res.json();
+            let data = responseData.data;
             
-            // Auto-Mock if DB is unreachable or empty
-            let data = rawData.length ? rawData : SAK_Data.generateMockGrid();
+            // Auto-Predictive Spawn if DB is unreachable or empty within radius
+            if (!data || data.length === 0) {
+                sysLog("NO LOCAL DB NODES. GENERATING PREDICTIVE GRID.");
+                data = SAK_Data.generateMockGrid();
+            }
+            
             SAK_Data.process(data);
         } catch (e) {
-            sysLog("NETWORK ERROR. USING LOCAL CACHE.");
+            sysLog("NETWORK ERROR. USING PREDICTIVE LOCAL CACHE.");
             SAK_Data.process(SAK_Data.generateMockGrid());
         }
     },
@@ -311,7 +317,7 @@ const SAK_Data = {
 
             // Enforce Rules: Assign Rarity & Status
             let rand = Math.random();
-            let rarity = rand > 0.95 ? 'ultra-rare' : (rand > 0.7 ? 'rare' : 'common');
+            let rarity = item.rarity || (rand > 0.95 ? 'ultra-rare' : (rand > 0.7 ? 'rare' : 'common'));
             
             let node = {
                 id: item.id || Math.random().toString(36).substr(2, 9),
@@ -332,14 +338,14 @@ const SAK_Data = {
     },
 
     generateMockGrid: () => {
-        // Generates an S2-style grid of POIs around the user
+        // Predicts and generates an S2-style grid of POIs around the user in real-time
         let mocks = [];
         if(!STATE.lat) return mocks;
-        const spread = 0.005; // Roughly 500m
-        for(let i=0; i<10; i++) {
+        const spread = 0.002; // Roughly 200m
+        for(let i=0; i<8; i++) {
             mocks.push({
-                id: "MOCK_"+i,
-                name: "ECHO PROTOCOL " + i,
+                id: "PREDICTED_"+i,
+                name: "ECHO ANOMALY " + i,
                 lat: STATE.lat + (Math.random() * spread * 2 - spread),
                 lon: STATE.lon + (Math.random() * spread * 2 - spread),
                 category: i % 3 === 0 ? 'legend' : 'landmark'
@@ -360,7 +366,7 @@ const SAK_Engine = {
             return true;
         });
 
-        // Calculate Distances
+        // Calculate Distances continuously 
         activeNodes.forEach(n => {
             n.dist = MathGeo.dist(STATE.lat, STATE.lon, n.lat, n.lon);
             n.bearing = MathGeo.bearing(STATE.lat, STATE.lon, n.lat, n.lon);
@@ -474,11 +480,13 @@ const SAK_Renderer = {
     updateSensors: () => {
         if(STATE.viewLocked) return;
         
-        // Rotate Minimap
+        // Rotate Minimap based on hardware compass
         document.getElementById("minimap").style.transform = `rotateX(55deg) rotateZ(${-STATE.heading}deg)`;
-        document.getElementById("map-player").style.transform = `translate(-50%, -50%) rotateZ(${state.heading}deg)`;
+        
+        // Counter-Rotate the Player Compass Arrow so it always faces visual UP
+        document.getElementById("map-player").style.transform = `translate(-50%, -50%) rotateZ(${STATE.heading}deg)`;
 
-        // Move Grid (Translating GPS to Pixels)
+        // Move Grid (Translating GPS to Pixels for walking effect)
         if(STATE.lat && STATE.lon) {
             const grid = document.getElementById("map-grid");
             grid.style.backgroundPosition = `${-STATE.lon * 200000}px ${STATE.lat * 200000}px`;
@@ -516,6 +524,9 @@ async function bootHardware() {
                         STATE.lastUpdateLat = STATE.lat;
                         STATE.lastUpdateLon = STATE.lon;
                         sysLog("THRESHOLD EXCEEDED. RE-COMPILING SCENE.");
+                        SAK_Data.fetch(); // Re-fetch from API to predict/load new local nodes
+                    } else {
+                        // Just update distances of current cache
                         SAK_Engine.compileScene();
                     }
                 }
@@ -524,11 +535,11 @@ async function bootHardware() {
             { enableHighAccuracy: true, maximumAge: 0 }
         );
 
-        if (typeof DeviceOrientationEvent !== 'undefined' && typeof DeviceOrientationEvent.requestPermission === 'function') {
-            const perm = await DeviceOrientationEvent.requestPermission();
-            if (perm === 'granted') window.addEventListener("deviceorientation", (e) => handleOrientation(e));
-        } else {
-            window.addEventListener("deviceorientation", (e) => handleOrientation(e));
+        // Robust Compass Binding for iOS & Android
+        if ('ondeviceorientationabsolute' in window) {
+            window.addEventListener("deviceorientationabsolute", handleOrientation);
+        } else if ('ondeviceorientation' in window) {
+            window.addEventListener("deviceorientation", handleOrientation);
         }
 
         // 60FPS Render Loop
@@ -539,19 +550,23 @@ async function bootHardware() {
 
     } catch(e) {
         sysLog("HARDWARE BOOT FAILED. INJECTING TEST COORDS.");
-        // Test Coordinates (Durgapur)
+        // Test Coordinates Fallback
         STATE.lat = 23.5204; STATE.lon = 87.3119; STATE.heading = 0;
         document.getElementById('grid-id').innerText = MathGeo.getCellId(STATE.lat, STATE.lon);
         SAK_Data.fetch();
-        setInterval(() => SAK_Renderer.draw(), 16);
+        setInterval(() => {
+            SAK_Renderer.updateSensors();
+            SAK_Renderer.draw();
+        }, 16);
     }
 }
 
 function handleOrientation(e) {
     if(e.webkitCompassHeading) {
+        // iOS
         STATE.heading = e.webkitCompassHeading;
-    } else {
-        // Android fallback (approximate)
+    } else if (e.absolute || e.alpha !== null) {
+        // Android Standard
         STATE.heading = 360 - e.alpha;
     }
 }
